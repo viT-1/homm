@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="index.xsl" type="text/xsl"?>
+<html lang="ru" vocab="http://schema.org/">
+	<head data-xml="3-sod-ru">
+		<title>Заклинания Heroes of Might &amp; Magic III Shadow of Death</title>
+		<link rel="stylesheet" href="homm3/index.css" />
+	</head>
+	<body>
+		<main>
+			<magic-book>
+				<nav data-xml="3-sod-ru">
+					<menu role="navigation" iam-filter="main">
+						<a href="#/battle/" title="Боевые заклинания">Боевые</a>
+						<a href="#/adv-map/" title="Заклинания карты приключений">Для карты</a>
+						<a href="#/earth/">Школа земли</a>
+						<a href="#/air/">Школа воздуха</a>
+						<a href="#/fire/">Школа огня</a>
+						<a href="#/water/">Школа воды</a>
+					</menu>
+					<menu role="navigation" iam-filter="additional">
+						<a href="#/mind/" title="Заклинания, влияющие на разум войск">Разум</a>
+						<a href="#/movement/" title="Заклинания, влияющие на перемещение войск по полю битвы">Перемещение</a>
+						<a href="#/magic-dmg/" title="Заклинания магического урона">Ударные</a>
+						<a href="#/creature-dmg/" title="Заклинания, влияющие на урон войск">Модификаторы повреждений</a>
+						<a href="#/summon/" title="Заклинания призыва">Призыв</a>
+						<a href="#/creature-spec/" title="Уникальные заклинания, присущие только некоторым видам войск">Специфические</a>
+					</menu>
+				</nav>
+			</magic-book>
+		</main>
+		<hr class="css-naked-day" />
+	</body>
+</html>

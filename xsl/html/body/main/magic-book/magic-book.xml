@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="magic-book" data-xml="xsl/html/body/magic-book">
+	<p>Тестовый вид Magic Book из vue-шаблона</p>
+</script>

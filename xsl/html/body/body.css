@@ -1,0 +1,8 @@
+/* displays special markup only if this css file excluded */
+.css-naked-day {
+	display: none;
+}
+
+[iam-body] {
+	color: orange;
+}

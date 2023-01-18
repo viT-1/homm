@@ -1,9 +1,6 @@
-/* displays special markup only if this css file excluded */
-.css-naked-day {
+.css-naked-day /* displays special markup only if this css file excluded */
+, [v-cloak] { /* remove content blinking while vue components loading */
 	display: none;
-}
-
-:root {
 }
 
 [iam-body] {

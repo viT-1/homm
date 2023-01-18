@@ -3,6 +3,15 @@
 	display: none;
 }
 
+:root {
+}
+
 [iam-body] {
+	--check-var: italic;
+
 	color: orange;
+}
+
+a {
+	font-style: var(--check-var);
 }

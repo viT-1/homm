@@ -11,14 +11,14 @@
 		
 	<head>
 		<xsl:apply-templates select="@* | $head.xml/@*"/>
-		<xsl:call-template name="html-config.data-xsl"/>
+		<xsl:call-template name="config.data-xsl"/>
 
 		<!-- Всё, кроме ссылок и скриптов head.xml -->
 		<xsl:apply-templates select="$head.xml/*[count(. | $head.xml.l-s) != count($head.xml.l-s)]" />
 
 		<!-- Ссылки и скрипты head.xml -->
 		<xsl:apply-templates select="$head.xml.links[not(@rel = 'stylesheet')]" />
-		<xsl:if test="not($html-config.is-css-naked-day)">
+		<xsl:if test="not($config.is-css-naked-day)">
 			<!-- Стили head.xml -->
 			<xsl:apply-templates select="$head.xml.links[@rel = 'stylesheet']" />
 			<!-- Стили index.xml -->

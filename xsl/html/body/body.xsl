@@ -13,9 +13,9 @@
 <xsl:template match="html/body">
 	<body iam-body="">
 		<xsl:apply-templates select="@*"/>
-		<xsl:call-template name="html-config.data-xsl"/>
+		<xsl:call-template name="config.data-xsl"/>
 		<xsl:apply-templates />
-		<h3><xsl:value-of select="$html.lang" /></h3>
+		<h3 iam-h="3"><xsl:value-of select="$html.lang" /></h3>
 	</body>
 </xsl:template>
 

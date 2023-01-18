@@ -6,7 +6,7 @@
 <xsl:template match="body/nav">
 	<nav>
 		<xsl:apply-templates select="@* | $nav.xml/@*"/>
-		<xsl:call-template name="html-config.data-xsl"/>
+		<xsl:call-template name="config.data-xsl"/>
 		<xsl:apply-templates select="$nav.xml/*[@lang = $html.lang]"/>
 		<xsl:apply-templates />
 	</nav>

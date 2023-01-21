@@ -1,3 +1,0 @@
-<!ENTITY importmap SYSTEM "xsl/config/importmap.json">
-<!ENTITY spells-homm2 SYSTEM "homm2/spells.json">
-<!ENTITY spells-homm3 SYSTEM "homm3/spells.json">

@@ -5,6 +5,8 @@ Local XML-translation preview:
 - Google Chrome with command line `--allow-file-access-from-files --process-per-site`
 - Opera can run local files with `--disable-web-security --user-data-dir="d:\my-root-dev-folder"`
 
+Including ENTITIES into XML is [blocked by Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=22942#c116) due to potential recursion vulnerability.
+
 [Using](http://www.sagehill.net/docbookxsl/SpecialChars.html) special [characteres](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references) in XML
 On client side we have support only [XSLT 1.0](https://www.w3.org/TR/1999/REC-xslt-19991116) (browsers)
 but we have [3.0 specification](https://www.w3.org/TR/xslt-30/) already but server side
@@ -28,7 +30,5 @@ subcomponent dependencies.
 
 Forced to use deprecated `slot` attribute with named slots, because `v-slot` [isn't supported](https://github.com/vuejs/rfcs/pull/2#issuecomment-521420394)
 strict xhtml attribute-value setting as `v-bind = {data: data}` workaround does (need additional curly braces in xslt).
-Also [see note](https://stackoverflow.com/questions/73065424/#73065732):
-`<template #slot-name="">` is shorthand for `<template v-slot:slot-name="">`
 
 [XSLT Entites/dtd](https://www.artlebedev.ru/technogrette/xslt/entity-1/) (rus).

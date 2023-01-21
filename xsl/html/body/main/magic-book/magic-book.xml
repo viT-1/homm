@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/magic-book">
-	<p iam-magic-book="">Тестовый вид Magic Book из vue-шаблона</p>
+	<div iam-magic-book="">
+		<ul iam-spells="">
+			<magic-spell v-for="spell in filteredByLevel(5)" v-bind="{spell: spell}" />
+		</ul>
+		<slot name="nav"></slot>
+	</div>
 </script>

@@ -2,15 +2,13 @@
 // dom is loaded
 // @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
 document.addEventListener('DOMContentLoaded', function() {
+	window.homm_ns = {};
 	setAttrsIsOnOff();
-
-	if (window.depp) {
-		if (!depp.isDefined('config paths')) {
-			depp.define({'config paths': ['xsl/config/constants.js']});
-		}
-		depp.require(['config paths'], function() {
-			loadLibs(window.homm_ns.importmap.imports);
-		});
+	parseJsons();
+	if (window.depp && window.homm_ns.imports) {
+		loadLibs(window.homm_ns.imports);
+	} else {
+		console.warn("Externals aren't loaded. Application is failed!");
 	}
 	
 	// Set attributes html[is-on] & html[is-off] for css UX-rules
@@ -58,13 +56,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		);
 	}
 
+	function parseJsons() {
+		const scriptImportmap = document.querySelector('#importmap');
+		if (scriptImportmap && scriptImportmap.textContent && scriptImportmap.textContent != '&importmap;') {
+			window.homm_ns.imports = JSON.parse(scriptImportmap.textContent).imports;
+		} else {
+			console.warn("importmap.json isn't loaded!");
+		}
+
+		const scriptSpells = document.querySelector('#spells');
+		if (scriptSpells && scriptSpells.textContent && scriptSpells.textContent != '&spells;') {
+			window.homm_ns.spells = JSON.parse(scriptSpells.textContent).spells;
+		} else {
+			console.warn("spells.json isn't loaded!");
+		}
+	}
+
+	// map of externals dependencies
 	function loadLibs(paths) {
 		const libIds = Object.keys(paths);
 		if (!depp.isDefined(libIds[0])) {
 			depp.define({
 				'any-fills': [paths['any-fills']],
-				'main': ['#vue', paths.main],
+				'main': ['#vue', '#any-fills', '#store', paths.main],
+				'store': ['#vue', '#vuex', paths.store],
 				'vue': [paths.vue],
+				'vuex': [paths.vuex],
 			});
 		}
 

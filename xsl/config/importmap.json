@@ -1,0 +1,9 @@
+{
+	"imports": {
+		"any-fills": "xsl/config/any-fills.js",
+		"main": "xsl/html/body/main/main.js",
+		"store": "xsl/html/body/main/store.js",
+		"vue": "externals/vue.min.js",
+		"vuex": "externals/vuex.min.js"
+	}
+}

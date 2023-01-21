@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<set name="css-naked-day" disabled="" />
-	<set name="debug-mode" disabled="" />
+	<set name="css-naked-day" disabled=""/>
+	<set name="debug-mode" disabled=""/>
 </config>

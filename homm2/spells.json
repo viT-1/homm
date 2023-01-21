@@ -1,0 +1,458 @@
+{"spells": [
+{
+	"id": 1,
+	"level": 1,
+	"title": "Bless",
+	"ru": {
+		"title": "Благословление"
+	}
+},{
+	"id": 2,
+	"level": 1,
+	"title": "Bloodlust",
+	"ru": {
+		"title": "Жажда крови"
+	}
+},{
+	"id": 3,
+	"level": 1,
+	"title": "Cure",
+	"ru": {
+		"title": "Лечение"
+	}
+},{
+	"id": 4,
+	"level": 1,
+	"title": "Curse",
+	"ru": {
+		"title": "Проклятие"
+	}
+},{
+	"id": 5,
+	"level": 1,
+	"title": "Dispel Magic",
+	"ru": {
+		"title": "Снятие заклинаний"
+	}
+},{
+	"id": 6,
+	"level": 1,
+	"title": "Haste",
+	"ru": {
+		"title": "Ускорение"
+	}
+},{
+	"id": 7,
+	"level": 1,
+	"title": "Magic Arrow",
+	"ru": {
+		"title": "Магическая стрела"
+	}
+},{
+	"id": 8,
+	"level": 1,
+	"title": "Shield",
+	"ru": {
+		"title": "Щит"
+	}
+},{
+	"id": 9,
+	"level": 1,
+	"title": "Slow",
+	"ru": {
+		"title": "Замедление"
+	}
+},{
+	"id": 10,
+	"level": 1,
+	"title": "Stoneskin",
+	"ru": {
+		"title": "Камненная кожа"
+	}
+},{
+	"id": 11,
+	"level": 1,
+	"title": "View Mines",
+	"ru": {
+		"title": "Просмотр шахт"
+	}
+},{
+	"id": 12,
+	"level": 1,
+	"title": "View Resources",
+	"ru": {
+		"title": "Просмотр ресурсов"
+	}
+},{
+	"id": 13,
+	"level": 2,
+	"title": "Blind",
+	"ru": {
+		"title": "Ослепление"
+	}
+},{
+	"id": 14,
+	"level": 2,
+	"title": "Cold Ray",
+	"ru": {
+		"title": "Луч холода"
+	}
+},{
+	"id": 15,
+	"level": 2,
+	"title": "Death Ripple",
+	"ru": {
+		"title": "Дрожь смерти"
+	}
+},{
+	"id": 16,
+	"level": 2,
+	"title": "Disrupting Ray",
+	"ru": {
+		"title": "Разрушающий луч"
+	}
+},{
+	"id": 17,
+	"level": 2,
+	"title": "Dragon Slayer",
+	"ru": {
+		"title": "Убийца драконов"
+	}
+},{
+	"id": 18,
+	"level": 2,
+	"title": "Haunt",
+	"ru": {
+		"title": "Запустение"
+	}
+},{
+	"id": 19,
+	"level": 2,
+	"title": "Lighting Bolt",
+	"ru": {
+		"title": "Удар молнии"
+	}
+},{
+	"id": 20,
+	"level": 2,
+	"title": "Steelskin",
+	"ru": {
+		"title": "Стальная кожа"
+	}
+},{
+	"id": 21,
+	"level": 2,
+	"title": "Summon Boat",
+	"ru": {
+		"title": "Вызов корабля"
+	}
+},{
+	"id": 22,
+	"level": 2,
+	"title": "View Artifacts",
+	"ru": {
+		"title": "Просмотр артефактов"
+	}
+},{
+	"id": 23,
+	"level": 2,
+	"title": "Visions",
+	"ru": {
+		"title": "Видения"
+	}
+},{
+	"id": 24,
+	"level": 3,
+	"title": "Animate Dead",
+	"ru": {
+		"title": "Поднять мёртвых"
+	}
+},{
+	"id": 25,
+	"level": 3,
+	"title": "Anti-Magic",
+	"ru": {
+		"title": "Антимагия"
+	}
+},{
+	"id": 26,
+	"level": 3,
+	"title": "Cold Ring",
+	"ru": {
+		"title": "Кольцо холода"
+	}
+},{
+	"id": 27,
+	"level": 3,
+	"title": "Death Wave",
+	"ru": {
+		"title": "Волна смерти"
+	}
+},{
+	"id": 28,
+	"level": 3,
+	"title": "Earthquake",
+	"ru": {
+		"title": "Землетрясение"
+	}
+},{
+	"id": 29,
+	"level": 3,
+	"title": "Fireball",
+	"ru": {
+		"title": "Огненный шар"
+	}
+},{
+	"id": 30,
+	"level": 3,
+	"title": "Holy Word",
+	"ru": {
+		"title": "Святое слово"
+	}
+},{
+	"id": 31,
+	"level": 3,
+	"title": "Identify Hero",
+	"ru": {
+		"title": "Опознать героя"
+	}
+},{
+	"id": 32,
+	"level": 3,
+	"title": "Mass Bless",
+	"ru": {
+		"title": "Общее благословление"
+	}
+},{
+	"id": 33,
+	"level": 3,
+	"title": "Mass Curse",
+	"ru": {
+		"title": "Общее проклятие"
+	}
+},{
+	"id": 34,
+	"level": 3,
+	"title": "Mass Dispel",
+	"ru": {
+		"title": "Общее снятие заклинаний"
+	}
+},{
+	"id": 35,
+	"level": 3,
+	"title": "Mass Haste",
+	"ru": {
+		"title": "Общее ускорение"
+	}
+},{
+	"id": 36,
+	"level": 3,
+	"title": "Paralyze",
+	"ru": {
+		"title": "Паралич"
+	}
+},{
+	"id": 37,
+	"level": 3,
+	"title": "Teleport",
+	"ru": {
+		"title": "Телепорт"
+	}
+},{
+	"id": 38,
+	"level": 3,
+	"title": "View Heroes",
+	"ru": {
+		"title": "Просмотр героев"
+	}
+},{
+	"id": 39,
+	"level": 3,
+	"title": "View Towns",
+	"ru": {
+		"title": "Просмотр городов"
+	}
+},{
+	"id": 40,
+	"level": 4,
+	"title": "Berserk",
+	"ru": {
+		"title": "Берсерк"
+	}
+},{
+	"id": 41,
+	"level": 4,
+	"title": "Chain Lighting",
+	"ru": {
+		"title": "Цепная молния"
+	}
+},{
+	"id": 42,
+	"level": 4,
+	"title": "Elemental Storm",
+	"ru": {
+		"title": "Буря стихий"
+	}
+},{
+	"id": 43,
+	"level": 4,
+	"title": "Fireblast",
+	"ru": {
+		"title": "Огненный взрыв"
+	}
+},{
+	"id": 44,
+	"level": 4,
+	"title": "Holy Shout",
+	"ru": {
+		"title": "Святой глас"
+	}
+},{
+	"id": 45,
+	"level": 4,
+	"title": "Mass Cure",
+	"ru": {
+		"title": "Общее лечение"
+	}
+},{
+	"id": 46,
+	"level": 4,
+	"title": "Mass Shield",
+	"ru": {
+		"title": "Общий щит"
+	}
+},{
+	"id": 47,
+	"level": 4,
+	"title": "Mass Slow",
+	"ru": {
+		"title": "Общее замедление"
+	}
+},{
+	"id": 48,
+	"level": 4,
+	"title": "Meteor Shower",
+	"ru": {
+		"title": "Метеоритный дождь"
+	}
+},{
+	"id": 49,
+	"level": 4,
+	"title": "Ressurection",
+	"ru": {
+		"title": "Воскрешение"
+	}
+},{
+	"id": 50,
+	"level": 4,
+	"title": "Set Air Guardian",
+	"ru": {
+		"title": "Стража воздуха"
+	}
+},{
+	"id": 51,
+	"level": 4,
+	"title": "Set Earth Guardian",
+	"ru": {
+		"title": "Стража земли"
+	}
+},{
+	"id": 52,
+	"level": 4,
+	"title": "Set Fire Guardian",
+	"ru": {
+		"title": "Стража огня"
+	}
+},{
+	"id": 53,
+	"level": 4,
+	"title": "Set Water Guardian",
+	"ru": {
+		"title": "Стража воды"
+	}
+},{
+	"id": 54,
+	"level": 4,
+	"title": "Town Gate",
+	"ru": {
+		"title": "Врата города"
+	}
+},{
+	"id": 55,
+	"level": 4,
+	"title": "View All",
+	"ru": {
+		"title": "Просмотр карты"
+	}
+},{
+	"id": 56,
+	"level": 5,
+	"title": "Armageddon",
+	"ru": {
+		"title": "Армагедон"
+	}
+},{
+	"id": 57,
+	"level": 5,
+	"title": "Dimension Door",
+	"ru": {
+		"title": "Дверь измерений"
+	}
+},{
+	"id": 58,
+	"level": 5,
+	"title": "Hypnotize",
+	"ru": {
+		"title": "Гипноз"
+	}
+},{
+	"id": 59,
+	"level": 5,
+	"title": "Mirror Image",
+	"ru": {
+		"title": "Фантом"
+	}
+},{
+	"id": 60,
+	"level": 5,
+	"title": "Ressurection True",
+	"ru": {
+		"title": "Истинное воскрешение"
+	}
+},{
+	"id": 61,
+	"level": 5,
+	"title": "Summon Air Elemental",
+	"ru": {
+		"title": "Призыв воздуха"
+	}
+},{
+	"id": 62,
+	"level": 5,
+	"title": "Summon Earth Elemental",
+	"ru": {
+		"title": "Призыв земли"
+	}
+},{
+	"id": 63,
+	"level": 5,
+	"title": "Summon Fire Elemental",
+	"ru": {
+		"title": "Призыв огня"
+	}
+},{
+	"id": 64,
+	"level": 5,
+	"title": "Summon Water Elemental",
+	"ru": {
+		"title": "Призыв воды"
+	}
+},{
+	"id": 65,
+	"level": 5,
+	"title": "Town Portal",
+	"ru": {
+		"title": "Городской портал"
+	}
+}
+]}

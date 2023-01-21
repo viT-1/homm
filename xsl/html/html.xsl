@@ -13,7 +13,9 @@
 
 <xsl:template match="html">
 	<xsl:variable name="defIsOff" select="'js touch'" />
-	<xsl:variable name="defIsOn" select="''" />
+	<xsl:variable name="defIsOn">
+		<xsl:if test="config.is-css-naked-day">css-naked-day</xsl:if>
+	</xsl:variable>
 
 	<html is-off="{$defIsOff}" is-on="{$defIsOn}" lang="{$html.lang}">
 		<xsl:apply-templates select="@*"/>

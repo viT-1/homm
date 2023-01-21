@@ -1,0 +1,105 @@
+{"spells": [
+{
+	"id": 1,
+	"level": 1,
+	"title": "Bless",
+	"descr": "Causes the selected friendly unit to inflict maximum damage when it attacks. The Bless spell counters the Curse spell.",
+	"ru": {
+		"title": "Благословление",
+		"descr": "Увеличивает урон существа до максимального, снимает проклятие."
+	},
+	"cost": 5,
+	"formula": "max(@dmg)",
+	"mass": false,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "max(@dmg)+1"
+	},
+	"expert": {
+		"mass": true
+	},
+	"type": "phys",
+	"effect": "+",
+	"magic": "water",
+	"artifacts": []
+},{
+	"id": 2,
+	"level": 1,
+	"title": "Bloodlust",
+	"descr": "It increases the attack skill of target allied creature for melee attacks.",
+	"ru": {
+		"title": "Жажда крови",
+		"descr": "Увеличивает основной навык атаки существа на 3, не влияет на дистанционную атаку."
+	},
+	"cost": 5,
+	"formula": "@At+3",
+	"mass": false,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@At+6"
+	},
+	"expert": {
+		"mass": true
+	},
+	"type": "phys",
+	"effect": "+",
+	"magic": "fire",
+	"artifacts": []
+},{
+	"id": 3,
+	"level": 1,
+	"title": "Cure",
+	"descr": "Removes all negative spell effects from the selected friendly unit and heals it.",
+	"ru": {
+		"title": "Лечение",
+		"descr": "Снимает действие всех негативных заклинаний со своего существа и восстанавливает некоторое количество очков жизни (не больше максимума)."
+	},
+	"cost": 6,
+	"formula": "@SP*5+10",
+	"mass": false,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "@SP*5+20"
+	},
+	"expert": {
+		"formula": "@SP*5+30",
+		"mass": true
+	},
+	"type": "phys",
+	"effect": "+",
+	"magic": "water",
+	"artifacts": []
+},{
+	"id": 4,
+	"level": 1,
+	"title": "Curse",
+	"descr": "Causes the selected creature to inflict minimal damage.",
+	"ru": {
+		"title": "Проклятие",
+		"descr": "Вражеское существо наносит минимальный урон, снимает благословление."
+	},
+	"cost": 6,
+	"formula": "min(@dmg)",
+	"mass": false,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "min(@dmg)-1"
+	},
+	"expert": {
+		"mass": true
+	},
+	"type": "phys",
+	"effect": "-",
+	"magic": "fire",
+	"artifacts": []
+
+}
+]}

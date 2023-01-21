@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="magic-spell" data-xml="xsl/html/body/spell">
+	<li iam-magic-spell=""><label v-bind="{ 'iam-magic-spell-title': spell.title }">{{spell.title}}[{{spell.level}}]</label></li>
+</script>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="index.xsl" type="text/xsl"?>
 <html lang="ru" vocab="http://schema.org/">
-	<head data-xml="2-pol-ru">
-		<title>Заклинания Heroes of Might &amp; Magic II</title>
+	<head>
+		<title data-xml="2-pol-ru">Заклинания Heroes of Might &amp; Magic II</title>
 		<link rel="stylesheet" href="homm2/index.css" />
 	</head>
 	<body>

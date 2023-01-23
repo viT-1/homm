@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<script type="text/x-template" id="magic-book" data-xml="xsl/html/body/magic-book">
+<script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
 		<ul iam-spells="">
 			<magic-spell v-for="spell in filteredByLevel(5)" v-bind="{spell: spell}" />

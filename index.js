@@ -1,16 +1,19 @@
-// IIFE isn't needed, because of using callback function context only
-// dom is loaded
 // @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
-document.addEventListener('DOMContentLoaded', function() {
-	window.homm_ns = {};
-	setAttrsIsOnOff();
-	parseJsons();
-	if (window.depp && window.homm_ns.imports) {
-		loadLibs(window.homm_ns.imports);
-	} else {
-		console.warn("Externals aren't loaded. Application is failed!");
+(function() {
+	// document.addEventListener('DOMContentLoaded', setup);
+	window.addEventListener('load', setup);
+
+	function setup() {
+		window.homm_ns = {};
+		setAttrsIsOnOff();
+		parseJsons();
+		if (window.depp && window.homm_ns.imports) {
+			loadLibs(window.homm_ns.imports);
+		} else {
+			console.warn("Externals aren't loaded. Application is failed!");
+		}
 	}
-	
+
 	// Set attributes html[is-on] & html[is-off] for css UX-rules
 	function setAttrsIsOnOff() {
 		const htmlTag = document.querySelector('html[is-off]');
@@ -65,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		const scriptSpells = document.querySelector('#spells');
-		if (scriptSpells && scriptSpells.textContent && scriptSpells.textContent != '&spells;') {
+		if (scriptSpells && scriptSpells.textContent && scriptSpells.textContent.indexOf('&spells') < 0) {
 			window.homm_ns.spells = JSON.parse(scriptSpells.textContent).spells;
 		} else {
 			console.warn("spells.json isn't loaded!");
@@ -87,4 +90,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		depp.require(libIds);
 	}
-});
+})();

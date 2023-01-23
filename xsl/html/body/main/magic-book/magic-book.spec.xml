@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+<head data-relpath-root="../../../../../">
+	<script src="../magic-spell/magic-spell.js"></script>
+	<script src="magic-book.js"></script>
+	<script src="magic-book.spec.js"></script>
+	<script data-component-tmpl="../magic-spell/magic-spell.xml"></script>
+	<script data-component-tmpl="magic-book.xml"></script>
+</head>

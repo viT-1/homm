@@ -4,7 +4,7 @@
 <xsl:include href="magic-book/magic-book.xsl" />
 
 <xsl:template match="body/main">
-	<main iam-main="vueApp" v-cloak="">
+	<main iam-main="beforeMount" v-cloak="">
 		<xsl:apply-templates select="@*"/>
 		<xsl:call-template name="config.data-xsl"/>
 		<span>{{some}}</span>

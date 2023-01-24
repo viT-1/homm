@@ -5,8 +5,8 @@
 		// filters deprecated
 		// @see https://v3-migration.vuejs.org/breaking-changes/filters.html
 		methods: {
-			filteredByLevel: function(level) {
-				return this.spells.filter(function(spell){ return spell.level == level; });
+			filteredByLevel: function(arrSpells, level) {
+				return arrSpells.filter(function(spell){ return spell.level == level; });
 			}
 		}
 	};

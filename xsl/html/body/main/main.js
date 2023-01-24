@@ -1,17 +1,21 @@
 // loaded by loadjs after vue loaded
 (function() {
 	const mainConfig = {
-		queryElVueApp: '[iam-main ~= "vueApp"]',
+		queryElVueApp: '[iam-main]',
 		components: {},
+		initApp: function() {
+			const componentsNames = ['magic-book', 'magic-spell'];		
+			initComponents(componentsNames);
+			initVueApp(componentsNames);
+			// clear beforeMount
+		}
 	}
 	Object.assign(window.homm_ns, mainConfig);
 
-	const componentsNames = ['magic-book', 'magic-spell'];
+	window.homm_ns.initApp();
 
-	initComponents();
-	initVueApp();
-
-	function initComponents() {
+	// TODO remove homm_ns.imports (path to components) dependency to use in spec
+	function initComponents(componentsNames) {
 		const pathSep = '/';
 		var arrMainPath = homm_ns.imports.main.split(pathSep);
 		arrMainPath.pop();
@@ -31,19 +35,23 @@
 		depp.define(componentsBundles);
 	}
 
-	function initVueApp() {
+	function initVueApp(componentsNames) {
 		depp.require(componentsNames, function(){
 			// can register all components & subcomponents only after requiring src scripts!
 			Object.keys(window.homm_ns.components).forEach(function(key) {
 				Vue.component(key, window.homm_ns.components[key]);
 			});
+
+			// clear beforeMount state value before Vue reserved this element to render function
+			document.querySelector(window.homm_ns.queryElVueApp).setAttribute('iam-main', '');
+
 			// Vue.config.silent = true;
-			new Vue({
+			window.homm_ns.vueApp = new Vue({
 				el: window.homm_ns.queryElVueApp,
 				store: window.homm_ns.store,
 				// fail on Opera 12 when DevTools is already open
 				// components: {'magic-book': {template: '<b>test</b>'}},
-				data: function() {
+				data:  window.homm_ns.data ? window.homm_ns.data : function() {
 					return {
 						some: this.$store.state.spells.length,
 					}

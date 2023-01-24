@@ -6,13 +6,13 @@
 	indent="no"
 	method="html"
 	doctype-system="about:legacy-compat"
-	media-type="application/xhtml+xml" />
+	media-type="application/xhtml+xml"/>
 
-<xsl:include href="head/head.xsl" />
-<xsl:include href="body/body.xsl" />
+<xsl:include href="head/head.xsl"/>
+<xsl:include href="body/body.xsl"/>
 
 <xsl:template match="html">
-	<xsl:variable name="defIsOff" select="'js touch'" />
+	<xsl:variable name="defIsOff" select="'js touch'"/>
 	<xsl:variable name="defIsOn">
 		<xsl:if test="config.is-css-naked-day">css-naked-day</xsl:if>
 	</xsl:variable>
@@ -24,11 +24,11 @@
 	</html>
 </xsl:template>
 
-<xsl:variable name="html.lang" select="//html/@lang" />
+<xsl:variable name="html.lang" select="//html/@lang"/>
 
 <xsl:template match="@* | node()">
 	<xsl:copy>
-		<xsl:apply-templates select="@* | node()" />
+		<xsl:apply-templates select="@* | node()"/>
 	</xsl:copy>
 </xsl:template>
 

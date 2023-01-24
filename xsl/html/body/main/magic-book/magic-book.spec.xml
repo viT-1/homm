@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
-<head data-relpath-root="../../../../../">
-	<script src="../magic-spell/magic-spell.js"></script>
-	<script src="magic-book.js"></script>
-	<script src="magic-book.spec.js"></script>
-	<script data-component-tmpl="../magic-spell/magic-spell.xml"></script>
-	<script data-component-tmpl="magic-book.xml"></script>
-</head>
+<html>
+	<head data-relpath-root="../../../../../">
+		<title>HoMM: magic-book</title>
+		<script src="magic-book.js"></script>
+	</head>
+	<body>
+		<!--without vue mounting-->
+		<script src="magic-book.spec.js"></script>
+	</body>
+</html>

@@ -14,7 +14,7 @@
 	// @see https://stackoverflow.com/questions/30498318/#49108759
 	if (typeof Object.assign != 'function') {
 		// Must be writable: true, enumerable: false, configurable: true
-		Object.defineProperty(Object, "assign", {
+		Object.defineProperty(Object, 'assign', {
 			value: function assign(target, varArgs) { // .length of function is 2
 				'use strict';
 				if (target == null) { // TypeError if undefined or null

@@ -2,7 +2,7 @@
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
 		<ul iam-spells="">
-			<magic-spell v-for="spell in filteredByLevel(5)" v-bind="{spell: spell}" />
+			<magic-spell v-for="spell in spells" v-bind="{spell: spell}" />
 		</ul>
 		<slot name="nav"></slot>
 	</div>

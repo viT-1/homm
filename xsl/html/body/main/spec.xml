@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="spec.xsl" type="text/xsl"?>
-<head data-relpath-root="../../../../">
-	<script src="magic-spell/magic-spell.js"></script>
-	<script src="magic-book/magic-book.js"></script>
-	<script src="magic-book/magic-book.spec.js"></script>
-	<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
-	<script data-component-tmpl="magic-book/magic-book.xml"></script>
-</head>
+<html>
+	<head data-relpath-root="../../../../">
+		<title>HoMM: all components</title>
+		<script src="magic-spell/magic-spell.js"></script>
+		<script src="magic-book/magic-book.js"></script>
+	</head>
+	<body>
+		<main>
+			<magic-book v-bind="{ spells: magicspells }">
+				<magic-spell/>
+			</magic-book>
+		</main>
+		<script data-component-tmpl="magic-book/magic-book.xml"></script>
+		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
+
+		<script src="magic-book/magic-book.spec.js"></script>
+		<script src="magic-spell/magic-spell.spec.js"></script>
+	</body>
+</html>

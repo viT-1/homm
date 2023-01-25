@@ -27,19 +27,8 @@
 
 		<xsl:if test="body/main"><script src="{$externals}/vue.min.js"></script></xsl:if>
 		<script>window.homm_ns = { components: {}, data: {} };</script>
-
-		<xsl:if test="body/main">
-			<!--Loads components configuration collection-->
-			<xsl:apply-templates select="head/script"/>
-			<script>
-				window.homm_ns.specInitApp = function(vueConfig) {
-					// TODO: pop out spec register data from homm_ns.data to homm_ns.vues
-					vueConfig.data = window.homm_ns.data;
-					window.homm_ns.f.appendVueConfig(vueConfig);
-					window.homm_ns.f.mount();
-				}
-			</script>
-		</xsl:if>
+		<!--Loads components configuration collection-->
+		<xsl:apply-templates select="head/script"/>
 		<style>[iam-app]{display:none}</style>
 	</head>
 	<xsl:apply-templates select="body"/>
@@ -60,7 +49,10 @@
 		<xsl:apply-templates select="script[@src]"/>
 
 		<xsl:if test="main">
-			<script>window.homm_ns.specInitApp({el: '[iam-app ~= "vueSpec"]'});</script>
+			<script>
+				window.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]', data: window.homm_ns.data});
+				window.homm_ns.f.mount();
+			</script>
 		</xsl:if>
 	</body>
 </xsl:template>

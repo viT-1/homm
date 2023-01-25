@@ -3,10 +3,10 @@
 <html>
 	<head data-relpath-root="../../../../../">
 		<title>HoMM: magic-book</title>
+		<script src="magic-book.js"></script>
 	</head>
 	<body>
 		<!--without vue mounting-->
-		<script src="magic-book.js"></script>
 		<script src="magic-book.spec.js"></script>
 	</body>
 </html>

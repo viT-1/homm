@@ -92,11 +92,11 @@
 		depp.require(libIds, function() {
 			// defined in html/body/main/main.js
 			// Can be called only after 'main' script is loaded
-			window.homm_ns.deppRequireApp({el: '[iam-app ~= "vueMain"]'});
+			deppRequireApp({el: '[iam-app ~= "vueMain"]'});
 		});
 	}
 
-	window.homm_ns.deppRequireApp = function(vueConfig) {
+	function deppRequireApp(vueConfig) {
 		window.homm_ns.f.appendVueConfig(vueConfig);
 
 		const compNames = [];

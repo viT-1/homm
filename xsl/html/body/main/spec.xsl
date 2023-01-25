@@ -8,6 +8,8 @@
 	doctype-system="about:legacy-compat"
 	media-type="application/xhtml+xml" />
 
+<xsl:variable name="spec.mainFolderPath" select="concat(html/head/@data-relpath-root, 'xsl/html/body/main')"/>
+
 <xsl:template match="html">
 	<xsl:variable name="externals" select="concat(head/@data-relpath-root, 'externals')"/>
 	<xsl:variable name="config" select="concat(head/@data-relpath-root, 'xsl/config')"/>
@@ -25,33 +27,20 @@
 
 		<xsl:if test="body/main"><script src="{$externals}/vue.min.js"></script></xsl:if>
 		<script>window.homm_ns = { components: {}, data: {} };</script>
-		<xsl:apply-templates select="head/script"/>
 
-		<xsl:if test="body/main"><script>
-			window.homm_ns.initApp = function() {
-				const attName = 'iam-main';
-				const el = '[' + attName + ']';
-				const elApp = document.querySelector(el);
-				
-				// Vue isn't mounted yet
-				if (!window.homm_ns.vueApp) {
-					Object.keys(window.homm_ns.components).forEach(function(key) {
-						Vue.component(key, window.homm_ns.components[key]);
-					});
-
-					const vueConfig = {
-						el: el,
-						data: window.homm_ns.data,
-					}
-
-					// clear beforeMount state value before Vue reserved this element to render function
-					elApp.setAttribute(attName, '');
-
-					window.homm_ns.vueApp = new Vue(vueConfig);
+		<xsl:if test="body/main">
+			<!--Loads components configuration collection-->
+			<xsl:apply-templates select="head/script"/>
+			<script>
+				window.homm_ns.specInitApp = function(vueConfig) {
+					// TODO: pop out spec register data from homm_ns.data to homm_ns.vues
+					vueConfig.data = window.homm_ns.data;
+					window.homm_ns.f.appendVueConfig(vueConfig);
+					window.homm_ns.f.mount();
 				}
-			}
-		</script></xsl:if>
-		<style>[iam-main]{display:none}</style>
+			</script>
+		</xsl:if>
+		<style>[iam-app]{display:none}</style>
 	</head>
 	<xsl:apply-templates select="body"/>
 	</html>
@@ -64,13 +53,20 @@
 		<!--vue components templates-->
 		<xsl:apply-templates select="script[@data-component-tmpl]"/>
 
+		<xsl:if test="main">
+			<script src="{$spec.mainFolderPath}/main.js"></script>
+		</xsl:if>
+
 		<xsl:apply-templates select="script[@src]"/>
-		<xsl:if test="main"><script>window.homm_ns.initApp();</script></xsl:if>
+
+		<xsl:if test="main">
+			<script>window.homm_ns.specInitApp({el: '[iam-app ~= "vueSpec"]'});</script>
+		</xsl:if>
 	</body>
 </xsl:template>
 
 <xsl:template match="body/main">
-	<main iam-main="beforeMount">
+	<main iam-app="vueSpec">
 		<xsl:apply-templates select="node() | @*"/>
 	</main>
 </xsl:template>

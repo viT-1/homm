@@ -2,13 +2,14 @@
 (function() {
 	// document.addEventListener('DOMContentLoaded', setup);
 	window.addEventListener('load', setup);
+	// TODO: ??? move component list into vues array, needs redefine every component js
+	window.homm_ns = { components: {} };
 
 	function setup() {
-		window.homm_ns = {};
 		setAttrsIsOnOff();
 		parseJsons();
 		if (window.depp && window.homm_ns.imports) {
-			loadLibs(window.homm_ns.imports);
+			deppLoadLibs(window.homm_ns.imports);
 		} else {
 			console.warn("Externals aren't loaded. Application is failed!");
 		}
@@ -76,7 +77,7 @@
 	}
 
 	// map of externals dependencies
-	function loadLibs(paths) {
+	function deppLoadLibs(paths) {
 		const libIds = Object.keys(paths);
 		if (!depp.isDefined(libIds[0])) {
 			depp.define({
@@ -88,6 +89,42 @@
 			});
 		}
 
-		depp.require(libIds);
+		depp.require(libIds, function() {
+			// defined in html/body/main/main.js
+			// Can be called only after 'main' script is loaded
+			window.homm_ns.deppRequireApp({el: '[iam-app ~= "vueMain"]'});
+		});
+	}
+
+	window.homm_ns.deppRequireApp = function(vueConfig) {
+		window.homm_ns.f.appendVueConfig(vueConfig);
+
+		const compNames = [];
+		window.homm_ns.f.getComponentNames(vueConfig.el, compNames);
+
+		deppDefineComponentsFiles(compNames);
+		// can register all components & subcomponents only after requiring src scripts!
+		depp.require(compNames, window.homm_ns.f.mount);
+	}
+
+	// TODO remove homm_ns.imports (path to components) dependency to use in spec
+	function deppDefineComponentsFiles(componentsNames) {
+		const pathSep = '/';
+		var arrMainPath = homm_ns.imports.main.split(pathSep);
+		arrMainPath.pop();
+		const componentsBasePathToMain = arrMainPath.join(pathSep) + pathSep;
+	
+		const useStyles = Boolean(document.querySelector('html[is-on ~= "css-naked-day"]'));
+
+		const componentsBundles = {};
+		componentsNames.forEach(function(name) {
+			const path = componentsBasePathToMain + name + '/' + name;
+			componentsBundles[name] = [path + '.js'];
+			if (useStyles) {
+				componentsBundles[name].push(path + '.css');
+			}
+		});
+
+		depp.define(componentsBundles);
 	}
 })();

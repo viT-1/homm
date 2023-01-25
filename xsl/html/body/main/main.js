@@ -1,57 +1,64 @@
 // loaded by loadjs after vue loaded
 (function() {
 	const mainConfig = {
-		queryElVueApp: '[iam-main]',
-		components: {},
-		initApp: function() {
-			const componentsNames = ['magic-book', 'magic-spell'];		
-			initComponents(componentsNames);
-			initVueApp(componentsNames);
-			// clear beforeMount
-		}
+		f: {}, // common functions fo vueMain and vueSpec
+		vues: [],
 	}
+
+	// adds mainConfig to properties defined in index.js: imports & spells and store.js: store
 	Object.assign(window.homm_ns, mainConfig);
 
-	window.homm_ns.initApp();
+	// recursive function to get plain list of components in cssquery (unique) element
+	window.homm_ns.f.getComponentNames = function(cssQuery, reduceArray) {
+		var elem = document.querySelector(cssQuery);
+		const attType = elem.getAttribute('type');
 
-	// TODO remove homm_ns.imports (path to components) dependency to use in spec
-	function initComponents(componentsNames) {
-		const pathSep = '/';
-		var arrMainPath = homm_ns.imports.main.split(pathSep);
-		arrMainPath.pop();
-		const componentsBasePathToMain = arrMainPath.join(pathSep) + pathSep;
-	
-		const useStyles = Boolean(document.querySelector('html[is-on ~= "css-naked-day"]'));
+		// template convert for querying children dom-nodes
+		if (attType && attType.indexOf('template') > -1) {
+			elem = new DOMParser().parseFromString(elem.innerHTML, "text/html");
+		}
 
-		const componentsBundles = {};
-		componentsNames.forEach(function(name) {
-			const path = componentsBasePathToMain + name + '/' + name;
-			componentsBundles[name] = [path + '.js'];
-			if (useStyles) {
-				componentsBundles[name].push(path + '.css');
-			}
-		});
-
-		depp.define(componentsBundles);
+		if (elem) {
+			Array.prototype.forEach.call(elem.querySelectorAll('*'), function(elem){
+				const elemName = elem.tagName.toLowerCase();
+				if (reduceArray.indexOf(elemName) == -1 && elemName.indexOf('-') > -1) {
+					reduceArray.push(elemName);
+					
+					// check for templates nesting
+					window.homm_ns.f.getComponentNames('#' + elemName, reduceArray);
+				}
+			});
+		}
 	}
 
-	function initVueApp(componentsNames) {
-		depp.require(componentsNames, function(){
-			// can register all components & subcomponents only after requiring src scripts!
-			Object.keys(window.homm_ns.components).forEach(function(key) {
-				Vue.component(key, window.homm_ns.components[key]);
-			});
+	window.homm_ns.f.appendVueConfig = function (vueConfig) {
+		const isAlready = window.homm_ns.vues.filter(function(config) {
+			return config.el == vueConfig.el;
+		}).length;
 
-			// clear beforeMount state value before Vue reserved this element to render function
-			document.querySelector(window.homm_ns.queryElVueApp).setAttribute('iam-main', '');
+		if (isAlready) {
+			console.warn(vueConfig.el, 'We already have that vueConfig!');
+		} else {
+			window.homm_ns.vues.push(vueConfig);
+		}
+	}
 
-			// Vue.config.silent = true;
-			window.homm_ns.vueApp = new Vue({
-				el: window.homm_ns.queryElVueApp,
+	// mount once last vueConfig
+	window.homm_ns.f.mount = function () {
+		if (!window.homm_ns.vues || !window.homm_ns.vues.length) {
+			throw Error('window.homm_ns.vues shoud be initiated!');
+		}
+
+		Object.keys(window.homm_ns.components).forEach(function(key) {
+			Vue.component(key, window.homm_ns.components[key]);
+		});
+
+		var vueConfig = window.homm_ns.vues.pop();
+		// this vue isn't initiated
+		if (!vueConfig.vue) {
+			vueConfig = Object.assign({
 				store: window.homm_ns.store,
-				// fail on Opera 12 when DevTools is already open
-				// components: {'magic-book': {template: '<b>test</b>'}},
-				data:  window.homm_ns.data ? window.homm_ns.data : function() {
+				data: function() {
 					return {
 						some: this.$store.state.spells.length,
 					}
@@ -61,7 +68,15 @@
 						return this.$store.state.spells;
 					}
 				}
-			});
-		});
+			}, vueConfig);
+
+			// DOM manipulation only before Vue reserved this element to render function
+
+			// Vue.config.silent = true;
+			vueConfig.vue = new Vue(vueConfig);
+			window.homm_ns.vues.push(vueConfig);
+		} else {
+			console.warn(vueConfig.el, 'Vue is already mounted!');
+		}
 	}
 })();

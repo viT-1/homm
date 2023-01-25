@@ -12,10 +12,10 @@
 	describe('main/magic-spell template', function () {
 		it('title is rendered with ' + spellTitleAttName + ' attribute and title property', function () {
 			const elTitles = document.querySelectorAll('['+spellTitleAttName+']');
-			const elTitle = elTitles[elTitles.length - 1];
-
 			expect(elTitles).toBeTruthy();
-			expect(elTitle.innerHTML).toContain(spellTitle);
+
+			const elTitle = elTitles[elTitles.length - 1];
+			expect(elTitle.innerText).toContain(spellTitle);
 		});
 	});
 

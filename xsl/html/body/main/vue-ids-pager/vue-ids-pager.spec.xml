@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+<html>
+	<head data-relpath-root="../../../../../">
+		<title>HoMM: vue-ids-pager</title>
+		<script src="vue-ids-pager.js"></script>
+	</head>
+	<body>
+		<main>
+			<vue-ids-pager v-slot="pagerSlot">
+				Any {{pagerSlot.some}}
+			</vue-ids-pager>
+		</main>
+		<script src="vue-ids-pager.spec.js"></script>
+	</body>
+</html>

@@ -29,7 +29,10 @@
 		<script>window.homm_ns = { components: {}, data: {} };</script>
 		<!--Loads components configuration collection-->
 		<xsl:apply-templates select="head/script"/>
-		<style>[iam-app]{display:none}</style>
+		<style>
+			[iam-app]{ display: none }
+			.jasmine-results{ font-size: 16px; line-height: 20px; }
+		</style>
 	</head>
 	<xsl:apply-templates select="body"/>
 	</html>
@@ -44,16 +47,12 @@
 
 		<xsl:if test="main">
 			<script src="{$spec.mainFolderPath}/main.js"></script>
-		</xsl:if>
-
-		<xsl:apply-templates select="script[@src]"/>
-
-		<xsl:if test="main">
 			<script>
 				window.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]', data: window.homm_ns.data});
-				window.homm_ns.f.mount();
 			</script>
 		</xsl:if>
+
+		<xsl:apply-templates select="script[not(@data-component-tmpl)]"/>
 	</body>
 </xsl:template>
 

@@ -1,7 +1,7 @@
-Pet project to make Vue SPA without bundlers.
+Pet project to make Vue SPA without NodeJS bundlers, but XSLT "bundling" and JohnnyDepp dependencies library.
 
 ## Browsers support
-Local XML-translation preview:
+These browsers can display XML-translation with local files:
 - IE11,
 - Google Chrome with command line `--allow-file-access-from-files --process-per-site`
 - Opera can run local files with `--disable-web-security --user-data-dir="d:\my-root-dev-folder"`
@@ -38,12 +38,19 @@ strict xhtml attribute-value setting as `v-bind = {data: data}` workaround does 
 ## Linting
 This project isn't using NodeJS, that's why isn't linted.
 You can see my [another project](https://github.com/viT-1/systemjs-babel-es6-vue) with linting (even html) and NodeJS setup.
+[ESLint in browser](https://stackoverflow.com/questions/52702512)? Can be [with Browserify](https://www.npmjs.com/package/eslint-linter-browserify), but Browserify uses NodeJS...
 
 ## TDD, unit testing
 We have only one client-side (supports IE11, can start with local files and without NodeJS) framework: [Jasmine 3.99 standalone](https://github.com/jasmine/jasmine/releases/#hd-65ccb7e7).
 All components tests we can run by `xsl/html/body/main/spec.xml`.
 Individual components tests we can run by `*.spec.xml` located near component template file.
 Specs [expectation API](https://jasmine.github.io/api/4.5/matchers.html) shoud be consistent with [Jest API](https://jestjs.io/docs/expect).
+
+If you interested in Jest on NodeJS setup, you can see another [my project](https://github.com/viT-1/systemjs-babel-es6-vue).
+
+## Modules
+This project is supported IE11, that's why it can be only SystemJS option, but this project
+is experimental setup without NodeJS scripting.
 
 ## Further reading
 [XSLT Entites/dtd](https://www.artlebedev.ru/technogrette/xslt/entity-1/) (rus).

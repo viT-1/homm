@@ -7,6 +7,21 @@
 		methods: {
 			filteredByLevel: function(arrSpells, level) {
 				return arrSpells.filter(function(spell){ return spell.level == level; });
+			},
+			getIds: function(arrObjWithId) {
+				const arrIds = [];
+				arrObjWithId.forEach(function(obj){ arrIds.push(obj.id); });
+				return arrIds;
+			},
+			getSublistByIds: function(arrObjWithId, arrIds) {
+				const sublist = [];
+				arrObjWithId.forEach(function(obj){
+					if (arrIds.indexOf(obj.id) > -1) {
+						sublist.push(obj);
+					}
+				});
+				return sublist;
+
 			}
 		}
 	};

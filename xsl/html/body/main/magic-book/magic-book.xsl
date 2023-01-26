@@ -5,6 +5,7 @@
 		<xsl:apply-templates select="@*"/>
 		<xsl:call-template name="config.data-xsl"/>
 		
+		<!--"index" xml is free from vue instructions-->
 		<template slot="nav">
 			<xsl:apply-templates select="nav" />
 		</template>

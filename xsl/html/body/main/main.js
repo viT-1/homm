@@ -49,13 +49,13 @@
 			throw Error('window.homm_ns.vues shoud be initiated!');
 		}
 
-		Object.keys(window.homm_ns.components).forEach(function(key) {
-			Vue.component(key, window.homm_ns.components[key]);
-		});
-
 		var vueConfig = window.homm_ns.vues.pop();
 		// this vue isn't initiated
 		if (!vueConfig.vue) {
+			Object.keys(window.homm_ns.components).forEach(function(key) {
+				Vue.component(key, window.homm_ns.components[key]);
+			});
+
 			vueConfig = Object.assign({
 				store: window.homm_ns.store,
 				data: function() {
@@ -75,8 +75,6 @@
 			// Vue.config.silent = true;
 			vueConfig.vue = new Vue(vueConfig);
 			window.homm_ns.vues.push(vueConfig);
-		} else {
-			console.warn(vueConfig.el, 'Vue is already mounted!');
 		}
 	}
 })();

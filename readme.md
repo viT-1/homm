@@ -53,4 +53,7 @@ This project is supported IE11, that's why it can be only SystemJS option, but t
 is experimental setup without NodeJS scripting.
 
 ## Further reading
-[XSLT Entites/dtd](https://www.artlebedev.ru/technogrette/xslt/entity-1/) (rus).
+- [XSLT Entites/dtd](https://www.artlebedev.ru/technogrette/xslt/entity-1/) (rus).
+- [xmlns](https://www.artlebedev.ru/technogrette/xslt/xmlns-1/)
+- [xmlns:](https://stackoverflow.com/questions/41875921/#63101503) for declaring xml attributes with `:`
+not only for `v-bind`, but for [v-slot](https://stackoverflow.com/questions/73065424/#73065732) also.

@@ -32,8 +32,18 @@ Browserify needs to transpile modules, that's why I don't use it.
 All Vue components located in `xsl/html/body/main` folder, registered globally to avoid
 subcomponent dependencies.
 
-Forced to use deprecated `slot` attribute with named slots, because `v-slot` [isn't supported](https://github.com/vuejs/rfcs/pull/2#issuecomment-521420394)
+Forced to use ~~deprecated `slot` attribute~~ for named slots, because `v-slot` [isn't supported](https://github.com/vuejs/rfcs/pull/2#issuecomment-521420394)
 strict xhtml attribute-value setting as `v-bind = {data: data}` workaround does (need additional curly braces in xslt).
+Solved with custom namespace:
+```xsl
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:v-slot="https://v2.vuejs.org/v2/api/#v-slot"
+	exclude-result-prefixes="v-slot">
+```
+
+The code still use deprecated `this.$scopedSlots` for renderless component.
+Without Vue3 but with Composition API Vue2, can we get rid of the obsolete?
 
 ## Linting
 This project isn't using NodeJS, that's why isn't linted.

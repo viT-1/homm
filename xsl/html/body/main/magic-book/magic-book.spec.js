@@ -8,8 +8,6 @@
 	const spellsQ = spells.length;
 	const component = homm_ns.components['magic-book'];
 
-	// window.homm_ns.data.magicspells = spells;
-
 	// without initApp, because testing only methods
 	// TODO: id methods can be moved to renderless component or mix?
 	describe('main/magic-book methods', function () {

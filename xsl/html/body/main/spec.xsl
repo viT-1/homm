@@ -15,7 +15,6 @@
 	<xsl:variable name="config" select="concat(head/@data-relpath-root, 'xsl/config')"/>
 	<html>
 	<head>
-		<xsl:apply-templates select="title"/>
 		<link rel="shortcut icon" type="image/png" href="{$externals}/jasmine/jasmine_favicon.png"/>
 		<link rel="stylesheet" href="{$externals}/jasmine/jasmine.css"/>
 
@@ -27,12 +26,12 @@
 
 		<xsl:if test="body/main"><script src="{$externals}/vue.min.js"></script></xsl:if>
 		<script>window.homm_ns = { components: {}, data: {} };</script>
-		<!--Loads components configuration collection-->
-		<xsl:apply-templates select="head/script"/>
-		<style>
-			[iam-app]{ display: none }
-			.jasmine-results{ font-size: 16px; line-height: 20px; }
-		</style>
+		<xsl:apply-templates select="head/node() | @*"/>
+
+		<style>.jasmine-results{ font-size: 16px; line-height: 20px; }</style>
+		<xsl:if test="contains(head/title/text(), 'HoMM: all')">
+			<style>[iam-app]{ display: none }</style>
+		</xsl:if>
 	</head>
 	<xsl:apply-templates select="body"/>
 	</html>
@@ -48,7 +47,7 @@
 		<xsl:if test="main">
 			<script src="{$spec.mainFolderPath}/main.js"></script>
 			<script>
-				window.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]', data: window.homm_ns.data});
+				window.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]'});
 			</script>
 		</xsl:if>
 

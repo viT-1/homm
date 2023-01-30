@@ -4,7 +4,7 @@
 	xmlns:v-slot="https://v2.vuejs.org/v2/api/#v-slot"
 	exclude-result-prefixes="v-slot">
 <xsl:template match="main/magic-book" xmlns:v-slot="https://v2.vuejs.org/v2/api/#v-slot">
-	<magic-book v-bind="{{spells: spells}}">
+	<magic-book v-bind="{{spells: computedSpells}}">
 		<xsl:apply-templates select="@*"/>
 		<xsl:call-template name="config.data-xsl"/>
 		

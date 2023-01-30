@@ -11,7 +11,7 @@
 	homm_ns.store = new Vuex.Store({
 		state: {
 			// spells: homm_ns.spells.filter(function(spell){ return spell.level == level; }),
-			spells: homm_ns.spells,
+			storeSpells: homm_ns.spells,
 		}
 	});
 })();

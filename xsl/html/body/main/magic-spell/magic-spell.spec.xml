@@ -3,11 +3,12 @@
 <html>
 	<head data-relpath-root="../../../../../">
 		<title>HoMM: magic-spell</title>
+		<link rel="stylesheet" href="magic-spell.css"/>
 		<script src="magic-spell.js"></script>
 	</head>
 	<body>
 		<main>
-			<ul><magic-spell v-bind="{ spell: magicspell }"/></ul>
+			<ul><magic-spell v-bind="{ spell: specSpell }"/></ul>
 		</main>
 		<script data-component-tmpl="magic-spell.xml"></script>
 		<script src="magic-spell.spec.js"></script>

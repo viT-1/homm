@@ -2,14 +2,18 @@
 	const spellTitle = 'something';
 	const spellTitleAttName = 'iam-magic-spell-title';
 
-	window.homm_ns.data.magicspell = { level: 1, title: spellTitle };
-
-	// fix for magic-spell as child for magic-book
-	if (!window.homm_ns.data.magicspells) {
-		window.homm_ns.data.magicspells = [];
-	}
-	window.homm_ns.data.magicspells.push(window.homm_ns.data.magicspell);
-
+	window.homm_ns.f.injectToVueConfig({
+		computed: {
+			// test magic-spell separate in magic-spell.spec.xml
+			specSpell: function() {
+				return { level: 1, title: spellTitle };
+			},
+			// test magic-spell with magic-book context defined in spec.xml
+			computedSpells: function() {
+				return [this.specSpell];
+			}
+		},
+	});
 	window.homm_ns.f.mount();
 	const elVue = document.querySelector(homm_ns.vues[0].el);
 

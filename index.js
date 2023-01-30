@@ -90,16 +90,35 @@
 		}
 
 		depp.require(libIds, function() {
-			// defined in html/body/main/main.js
-			// Can be called only after 'main' script is loaded
 			deppRequireApp({el: '[iam-app ~= "vueMain"]'});
 		});
 	}
 
+	// Can be called only after 'main' script is loaded
 	function deppRequireApp(vueConfig) {
+		// special configuration for appMain
+		if (window.homm_ns.store) {
+			Object.assign(vueConfig, {
+				store: window.homm_ns.store,
+				// data as a function to prevent mutating data properties in components
+				data: function() {
+					return {
+						some: this.$store.state.storeSpells.length,
+					}
+				},
+				computed: {
+					computedSpells: function() {
+						return this.$store.state.storeSpells;
+					}
+				}
+			});
+		}
+
+		// defined in html/body/main/main.js
 		window.homm_ns.f.appendVueConfig(vueConfig);
 
 		const compNames = [];
+		// defined in html/body/main/main.js
 		window.homm_ns.f.getComponentNames(vueConfig.el, compNames);
 
 		deppDefineComponentsFiles(compNames);
@@ -107,20 +126,20 @@
 		depp.require(compNames, window.homm_ns.f.mount);
 	}
 
-	// TODO remove homm_ns.imports (path to components) dependency to use in spec
 	function deppDefineComponentsFiles(componentsNames) {
 		const pathSep = '/';
 		var arrMainPath = homm_ns.imports.main.split(pathSep);
 		arrMainPath.pop();
 		const componentsBasePathToMain = arrMainPath.join(pathSep) + pathSep;
 	
-		const useStyles = Boolean(document.querySelector('html[is-on ~= "css-naked-day"]'));
+		const useStyles = !Boolean(document.querySelector('html[is-on ~= "css-naked-day"]'));
 
 		const componentsBundles = {};
 		componentsNames.forEach(function(name) {
 			const path = componentsBasePathToMain + name + '/' + name;
 			componentsBundles[name] = [path + '.js'];
 			if (useStyles) {
+				// TODO: renderless haven't such file, but trying to load
 				componentsBundles[name].push(path + '.css');
 			}
 		});

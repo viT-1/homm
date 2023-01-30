@@ -43,38 +43,28 @@
 		}
 	}
 
+	window.homm_ns.f.injectToVueConfig = function (injectConfig) {
+		const lastVueConfig = window.homm_ns.vues[window.homm_ns.vues.length - 1];
+		Object.assign(lastVueConfig, injectConfig);
+	}
+
 	// mount once last vueConfig
 	window.homm_ns.f.mount = function () {
 		if (!window.homm_ns.vues || !window.homm_ns.vues.length) {
 			throw Error('window.homm_ns.vues shoud be initiated!');
 		}
 
-		var vueConfig = window.homm_ns.vues.pop();
+		var vueConfig = window.homm_ns.vues[window.homm_ns.vues.length - 1];
 		// this vue isn't initiated
 		if (!vueConfig.vue) {
 			Object.keys(window.homm_ns.components).forEach(function(key) {
 				Vue.component(key, window.homm_ns.components[key]);
 			});
 
-			vueConfig = Object.assign({
-				store: window.homm_ns.store,
-				data: function() {
-					return {
-						some: this.$store.state.spells.length,
-					}
-				},
-				computed: {
-					spells: function() {
-						return this.$store.state.spells;
-					}
-				}
-			}, vueConfig);
-
 			// DOM manipulation only before Vue reserved this element to render function
 
 			// Vue.config.silent = true;
 			vueConfig.vue = new Vue(vueConfig);
-			window.homm_ns.vues.push(vueConfig);
 		}
 	}
 })();

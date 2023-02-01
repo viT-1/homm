@@ -81,11 +81,12 @@
 		const libIds = Object.keys(paths);
 		if (!depp.isDefined(libIds[0])) {
 			depp.define({
-				'any-fills': [paths['any-fills']],
-				'main': ['#vue', '#any-fills', '#store', paths.main],
-				'store': ['#vue', '#vuex', paths.store],
-				'vue': [paths.vue],
-				'vuex': [paths.vuex],
+				'any-fills':	[paths['any-fills']],
+				'main':			['#any-fills', '#merge', '#store', '#vue', paths.main],
+				'merge':		['#any-fills', paths.merge],
+				'store':		['#vue', '#vuex', paths.store],
+				'vue':			[paths.vue],
+				'vuex':			[paths.vuex],
 			});
 		}
 

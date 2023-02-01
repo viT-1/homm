@@ -7,12 +7,15 @@
 	</head>
 	<body>
 		<main>
-			<vue-ids-pager v-bind="{ config: { ids: ids, n: pageNum, limit: 3 }}">
+			<vue-ids-pager
+				v-model="inputIndex"
+				v-bind="{ ids: ids, limit: perPage }">
 				<template v-slot="pager">
 					<div>
-						Page <button v-on="{ click: decr }" v-bind="{ disabled: pageNum == 0 }">Prev</button>
-						<input type="number" v-model="pageNum" min="0" v-bind="{ max: pager.max }"/>
-						<button	v-on="{ click: incr }" v-bind="{ disabled: pager.isLast }">Next</button>
+						Page <button v-on="pager.prevEvents" v-bind="{ disabled: !pager.canPrevPg }">Prev</button>
+						<input type="number" v-model.number="inputIndex" min="0" v-bind="{ max: pager.lastPgIndex }"/>
+						<button	v-on="pager.nextEvents" v-bind="{ disabled: !pager.canNextPg }">Next</button>
+						Per page: <input type="number" v-model.number="perPage" min="1"/>
 						<p>Any {{pager.some}}</p>
 						<p>Ids: <b>{{pager.currentIds}}</b> on page.</p>
 					</div>
@@ -21,16 +24,17 @@
 		</main>
 		<script>
 			window.homm_ns.f.injectToVueConfig({
-				methods: {
-					incr: function() {
-						this.pageNum++;
-					},
-					decr: function() {
-						this.pageNum--;
+				data: function() {
+					return {
+						inputIndex: 0,
+						ids:  ['A', 'Aff', 'C', 'Errs', 'oom', 'trl', 'just', 'some'],
+						perPage: 3,
 					}
-				}
+				},
 			});
+			window.homm_ns.f.mount();
 		</script>
-		<script src="vue-ids-pager.spec.js"></script>
+		<script src="vue-ids-pager.vue.spec.js"></script>
+		<script src="vue-ids-pager.methods.spec.js"></script>
 	</body>
 </html>

@@ -23,8 +23,9 @@
 		<script src="{$externals}/jasmine/boot0.js"></script>
 		<script src="{$externals}/jasmine/boot1.js"></script>
 		<script src="{$config}/any-fills.js"></script>
+		<script src="{$externals}/merge.js"></script>
 
-		<xsl:if test="body/main"><script src="{$externals}/vue.min.js"></script></xsl:if>
+		<xsl:if test="body/main"><script src="{$externals}/vue.js"></script></xsl:if>
 		<script>window.homm_ns = { components: {}, data: {} };</script>
 		<xsl:apply-templates select="head/node() | @*"/>
 

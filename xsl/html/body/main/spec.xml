@@ -20,6 +20,6 @@
 
 		<script src="magic-book/magic-book.spec.js"></script>
 		<script src="magic-spell/magic-spell.spec.js"></script>
-		<script src="vue-ids-pager/vue-ids-pager.spec.js"></script>
+		<script src="vue-ids-pager/vue-ids-pager.methods.spec.js"></script>
 	</body>
 </html>

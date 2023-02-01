@@ -6,7 +6,7 @@
 	}
 
 	// adds mainConfig to properties defined in index.js: imports & spells and store.js: store
-	Object.assign(window.homm_ns, mainConfig);
+	merge(window.homm_ns, mainConfig);
 
 	// recursive function to get plain list of components in cssquery (unique) element
 	window.homm_ns.f.getComponentNames = function(cssQuery, reduceArray) {
@@ -45,7 +45,7 @@
 
 	window.homm_ns.f.injectToVueConfig = function (injectConfig) {
 		const lastVueConfig = window.homm_ns.vues[window.homm_ns.vues.length - 1];
-		Object.assign(lastVueConfig, injectConfig);
+		merge(lastVueConfig, injectConfig);
 	}
 
 	// mount once last vueConfig

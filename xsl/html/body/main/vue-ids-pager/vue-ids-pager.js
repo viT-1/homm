@@ -1,29 +1,54 @@
 (function() {
 	window.homm_ns.components['vue-ids-pager'] = {
+		emits: ['input'],
 		props: {
-			// @see https://stackoverflow.com/questions/56904327/access-props-value-in-another-props-validator
-			config: {
-				type: Object,
-				default: function () {
-					return {
-						ids: [], /** List of items which will be divided into parts (pages) */
-						limit: 6, /** Number of list items per page */
-						n: 0, /** Set page number */
-					}
-				}
-
+			ids: {
+				type: Array,
+				default: function() { return [] },
 			},
+			/** Items per page */
+			limit: {
+				type: Number,
+				default: 12,
+				validator: function(value) {
+					return value > 0;
+				}
+			},
+			value: {
+				type: Number,
+				default: 0,
+				validator: function(val) {
+					return val > -1;
+				}
+			}
+		},
+		data: function() {
+			return {
+				pageIndex: 0,
+			};
+		},
+		computed: {
+			config: function() {
+				return { ids: this.ids, limit: this.limit }
+			},
+			canPrevPg: function() {
+				return  !(this.pageIndex == 0);
+			},
+			canNextPg: function() {
+				return  !(this.isLastPageIndex(this.config, this.pageIndex));
+			}
 		},
 		methods: {
 			/**
-			 * @param {Object} config - Initial config (this.$props.config)
-			 * @param {Number} n - page number
+			 * @param {Object} config - Initial config (computed.config)
+			 * @param {Number} pageIndex - page index (minimum 0)
 			 * @returns {Array} retIds - subarray ids from config.ids on given page number (n)
 			 */
-			getIdsOnPage: function(config) {
-				const indexStart = config.n * config.limit;
+			getIdsOnPage: function(config, pageIndex) {
+				const indexStart = pageIndex * config.limit;
 				var indexEnd = indexStart + config.limit - 1;
 				const indexMax = config.ids.length - 1;
+
 				if (indexEnd > indexMax)
 					indexEnd = indexMax;
 				const retIds = [];
@@ -37,39 +62,79 @@
 			getLastPageIndex: function(config) {
 				return Math.ceil(config.ids.length / config.limit) - 1;
 			},
-			isLastPageIndex: function(config) {
-				return config.n == this.getLastPageIndex(config);
+			isLastPageIndex: function(config, pageIndex) {
+				return pageIndex == this.getLastPageIndex(config);
 			},
-			validateConf: function(config) {
-				if (config.limit < 1) {
-					throw Error('Invalid config.limit. Can not set items per page less than 1');
-				}
+			isValidPageIndex: function(config, pageIndex) {
+				const isPositive = pageIndex > -1;
+				const isNotGreaterThanLast = pageIndex < this.getLastPageIndex(config) + 1;
 
-				if (config.n < 0) {
-					throw Error('Invalid config.n. Can not set page index less than 0');
+				return Number.isInteger(pageIndex) && isPositive && isNotGreaterThanLast;
+			},
+			setPageIndex: function(config, pageIndex) {
+				if (this.isValidPageIndex(config, pageIndex)) {
+					this.pageIndex = pageIndex;
+					this.$emit('input', this.pageIndex);
+				} else {
+					throw Error('Invalid page index value: ' + pageIndex);
 				}
-				if (config.n > config.ids.length / config.limit) {
-					const maxPages = this.getLastPageIndex(config);
-					// TODO: emit event for page index decrease to max available index
-					throw Error('Invalid config.n. Can not set page index over than max index of pages (' + maxPages + ')');
-				}
+			},
+			setPrevIndex: function() {
+				this.setPageIndex(this.config, this.pageIndex - 1);
+			},
+			setNextIndex: function() {
+				this.setPageIndex(this.config, this.pageIndex + 1);
 			}
 		},
 		watch: {
 			config: {
 				deep: true,
-				immediate: true,
-				handler: function() {
-					this.validateConf(this.$props.config);
+				handler: function(val) {
+					const maxPageIndex = this.getLastPageIndex(val);
+					if (this.pageIndex > maxPageIndex) {
+						this.setPageIndex(val, maxPageIndex);
+					}
+				}
+			},
+			value: {
+				handler: function(val) {
+					this.setPageIndex(this.config, val);
 				}
 			}
 		},
 		render: function() {
+			const self = this;
+			const maxPageIndex = this.getLastPageIndex(this.config);
+
 			return this.$scopedSlots.default({
-				isLast: this.isLastPageIndex(this.$props.config),
-				max: this.getLastPageIndex(this.$props.config),
+				currentIds: this.getIdsOnPage(this.config, this.pageIndex),
+				lastPgIndex: maxPageIndex,
+				currPgIndex: this.pageIndex,
+				canFirstPg: this.canPrevPg,
+				canPrevPg: this.canPrevPg,
+				canNextPg: this.canNextPg,
+				canLastPg: this.canNextPg,
+				firstEvents: {
+					click: function() {
+						self.setPageIndex(self.config, 0);
+					}
+				},
+				prevEvents: {
+					click: function() {
+						self.setPageIndex(self.config, self.pageIndex - 1);
+					}
+				},
+				nextEvents: {
+					click: function() {
+						self.setPageIndex(self.config, self.pageIndex + 1);
+					}
+				},
+				lastEvents: {
+					click: function() {
+						self.setPageIndex(self.config, maxPageIndex);
+					}
+				},
 				some: 'thing',
-				currentIds: this.getIdsOnPage(this.$props.config),
 			});
 		},
 	};

@@ -107,12 +107,7 @@
 			value: {
 				immediate: true,
 				handler: function(val) {
-					// if config changed too, thos.config have previous state of its data
-					const actualConfig = { ids: this.ids, limit: this.limit };
-					const maxPageIndex = this.getLastPageIndex(actualConfig);
-					if (val <= maxPageIndex) {
-						this.setPageIndex(actualConfig, val);
-					}
+					this.setPageIndex(this.config, val);
 				}
 			}
 		},

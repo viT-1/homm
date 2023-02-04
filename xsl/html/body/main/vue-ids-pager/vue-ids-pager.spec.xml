@@ -14,26 +14,13 @@
 					<div>
 						Page <button v-on="pager.prevEvents" v-bind="{ disabled: !pager.canPrevPg }">Prev</button>
 						<input type="number" v-model.number="inputIndex" min="0" v-bind="{ max: pager.lastPgIndex }"/>
-						<button	v-on="pager.nextEvents" v-bind="{ disabled: !pager.canNextPg }">Next</button>
+						<button ref="next" v-on="pager.nextEvents" v-bind="{ disabled: !pager.canNextPg }">Next</button>
 						Per page: <input type="number" v-model.number="perPage" min="1"/>
-						<p>Any {{pager.some}}</p>
-						<p>Ids: <b>{{pager.currentIds}}</b> on page.</p>
+						<p>Ids: <b ref="ids">{{pager.currentIds}}</b> on page.</p>
 					</div>
 				</template>
 			</vue-ids-pager>
 		</main>
-		<script>
-			window.homm_ns.f.injectToVueConfig({
-				data: function() {
-					return {
-						inputIndex: 0,
-						ids:  ['A', 'Aff', 'C', 'Errs', 'oom', 'trl', 'just', 'some'],
-						perPage: 3,
-					}
-				},
-			});
-			window.homm_ns.f.mount();
-		</script>
 		<script src="vue-ids-pager.vue.spec.js"></script>
 		<script src="vue-ids-pager.methods.spec.js"></script>
 	</body>

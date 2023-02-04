@@ -45,6 +45,14 @@
 			 * @returns {Array} retIds - subarray ids from config.ids on given page number (n)
 			 */
 			getIdsOnPage: function(config, pageIndex) {
+				if (typeof config == 'undefined' || Object.keys(config).length == 0) {
+					throw ReferenceError('Invalid config parameter');
+				}
+
+				if (typeof pageIndex == 'undefined') {
+					throw ReferenceError('Invalid pageIndex parameter');
+				}
+
 				const indexStart = pageIndex * config.limit;
 				var indexEnd = indexStart + config.limit - 1;
 				const indexMax = config.ids.length - 1;
@@ -73,7 +81,7 @@
 			},
 			setPageIndex: function(config, pageIndex) {
 				if (this.isValidPageIndex(config, pageIndex)) {
-					this.pageIndex = pageIndex;
+					this.pageIndex = Number(pageIndex);
 					this.$emit('input', this.pageIndex);
 				} else {
 					throw Error('Invalid page index value: ' + pageIndex);
@@ -97,8 +105,14 @@
 				}
 			},
 			value: {
+				immediate: true,
 				handler: function(val) {
-					this.setPageIndex(this.config, val);
+					// if config changed too, thos.config have previous state of its data
+					const actualConfig = { ids: this.ids, limit: this.limit };
+					const maxPageIndex = this.getLastPageIndex(actualConfig);
+					if (val <= maxPageIndex) {
+						this.setPageIndex(actualConfig, val);
+					}
 				}
 			}
 		},
@@ -133,8 +147,7 @@
 					click: function() {
 						self.setPageIndex(self.config, maxPageIndex);
 					}
-				},
-				some: 'thing',
+				}
 			});
 		},
 	};

@@ -22,6 +22,12 @@
 		<script src="{$externals}/jasmine/jasmine-html.js"></script>
 		<script src="{$externals}/jasmine/boot0.js"></script>
 		<script src="{$externals}/jasmine/boot1.js"></script>
+		<script>
+			jasmine.getEnv().addReporter({
+				specStarted: function(result) { jasmine.currentTest = result; },
+				specDone: function(result) { jasmine.currentTest = result; },
+			});
+		</script>
 		<script src="{$config}/any-fills.js"></script>
 		<script src="{$externals}/merge.js"></script>
 

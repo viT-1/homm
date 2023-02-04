@@ -19,6 +19,13 @@
 			expect(function() {	methods.setPageIndex(conf, 4); }).toThrow();
 		});
 
+		it('warns us if any param for getting ids is undefined', function () {
+			const conf = { ids: numIds, limit: 2 };
+			var uConf;
+			expect(function() {	methods.getIdsOnPage(conf); }).toThrow();
+			expect(function() {	methods.getIdsOnPage(uConf, 0); }).toThrow();
+		});
+
 		it('get us right ids on given page number', function () {
 			var conf = { ids: numIds, limit: 3 };
 			expect(methods.getIdsOnPage(conf, 2)).toEqual([42]);

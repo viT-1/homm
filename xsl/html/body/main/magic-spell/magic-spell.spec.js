@@ -15,7 +15,7 @@
 		},
 	});
 	window.homm_ns.f.mount();
-	const elVue = document.querySelector(homm_ns.vues[0].el);
+	const elVue = document.querySelector(homm_ns.vues[homm_ns.vues.length - 1].el);
 
 	describe('main/magic-spell template', function () {
 		it('title is rendered with ' + spellTitleAttName + ' attribute and title property', function () {

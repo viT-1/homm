@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	const _ns = globalThis.homm_ns;
 
 	const spells = [
@@ -32,7 +32,7 @@
 		it('getSublistByIds should give us array with items exist ids', function () {
 			const realIds = component.methods.getIds(spells);
 			const filterIds = [spells[0].id, 2];
-			const expectedIds = filterIds.filter(function(id) {
+			const expectedIds = filterIds.filter(function (id) {
 				return realIds.indexOf(id) > -1;
 			});
 			

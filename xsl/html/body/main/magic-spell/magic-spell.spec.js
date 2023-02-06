@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	const _ns = globalThis.homm_ns;
 
 	const spellTitle = 'something';
@@ -7,11 +7,11 @@
 	_ns.f.injectToVueConfig({
 		computed: {
 			// test magic-spell separate in magic-spell.spec.xml
-			specSpell: function() {
+			specSpell: function () {
 				return { level: 1, title: spellTitle };
 			},
 			// test magic-spell with magic-book context defined in spec.xml
-			computedSpells: function() {
+			computedSpells: function () {
 				return [this.specSpell];
 			}
 		},

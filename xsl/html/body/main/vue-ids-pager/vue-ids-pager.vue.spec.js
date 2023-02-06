@@ -12,7 +12,7 @@
 		perPage: 3,
 	};
 	// initiating base UX playground
-	_ns.f.injectToVueConfig({ data: function() { return defaultData; } });
+	_ns.f.injectToVueConfig({ data: function () { return defaultData; } });
 	_ns.f.mount();
 
 	const methods = _ns.components['vue-ids-pager'].methods;
@@ -33,7 +33,7 @@
 			}
 		});
 
-		beforeEach(function() {
+		beforeEach(function () {
 			vm = new App().$mount(
 				// real DOM mounting is not necessary because of using refs
 				// _ns.f.createMountDiv(jasmine.currentTest.description)
@@ -55,7 +55,7 @@
 			}
 
 			const arrFound = [];
-			expectedIds.forEach(function(id) {
+			expectedIds.forEach(function (id) {
 				if(renderedIdsStr.indexOf(id) > -1) {
 					arrFound.push(id);
 				}				
@@ -70,7 +70,7 @@
 
 			if(!methods.isLastPageIndex(config, initialIndex)) {
 				// register callback before "actions"
-				vm.$nextTick(function() {
+				vm.$nextTick(function () {
 					const afterClickNextIndex = vm.inputIndex;
 					expect(afterClickNextIndex).toEqual(initialIndex + 1);
 					done();

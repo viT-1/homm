@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	const _ns = globalThis.homm_ns;
 
 	const vueSpecConfig = _ns.vues[_ns.vues.length - 1];

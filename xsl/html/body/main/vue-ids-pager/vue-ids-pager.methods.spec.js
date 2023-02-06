@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	const _ns = globalThis.homm_ns;
 
 	const numIds = [1, 2, 4, 8, 9, 12, 42];
@@ -18,14 +18,14 @@
 
 		it('warns us invalid page index while trying to set it', function () {
 			const conf = { ids: numIds, limit: 2 };
-			expect(function() {	methods.setPageIndex(conf, 4); }).toThrow();
+			expect(function () {	methods.setPageIndex(conf, 4); }).toThrow();
 		});
 
 		it('warns us if any param for getting ids is undefined', function () {
 			const conf = { ids: numIds, limit: 2 };
 			var uConf;
-			expect(function() {	methods.getIdsOnPage(conf); }).toThrow();
-			expect(function() {	methods.getIdsOnPage(uConf, 0); }).toThrow();
+			expect(function () {	methods.getIdsOnPage(conf); }).toThrow();
+			expect(function () {	methods.getIdsOnPage(uConf, 0); }).toThrow();
 		});
 
 		it('get us right ids on given page number', function () {

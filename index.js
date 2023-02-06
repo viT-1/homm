@@ -1,5 +1,5 @@
 // @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
-(function() {
+(function () {
 	// document.addEventListener('DOMContentLoaded', setup);
 	window.addEventListener('load', setup);
 	// TODO: ??? move component list into vues array, needs redefine every component js
@@ -30,7 +30,7 @@
 			const strInitialIsOff = htmlTag.getAttribute(attIsOffName);
 			const arrInitialIsOff = strInitialIsOff.length
 				? htmlTag.getAttribute(attIsOffName).split(' ') : [];
-			const arrIsOff = arrInitialIsOff.filter(function(item) {
+			const arrIsOff = arrInitialIsOff.filter(function (item) {
 				switch(item) {
 					case 'js': return false;
 					case 'touch': return !useTouch;
@@ -90,8 +90,8 @@
 			});
 		}
 
-		depp.require(libIds, function() {
-			deppRequireApp({el: '[iam-app ~= "vueMain"]'});
+		depp.require(libIds, function () {
+			deppRequireApp({ el: '[iam-app ~= "vueMain"]' });
 		});
 	}
 
@@ -102,13 +102,13 @@
 			Object.assign(vueConfig, {
 				store: _ns.store,
 				// data as a function to prevent mutating data properties in components
-				data: function() {
+				data: function () {
 					return {
 						some: this.$store.state.storeSpells.length,
 					}
 				},
 				computed: {
-					computedSpells: function() {
+					computedSpells: function () {
 						return this.$store.state.storeSpells;
 					}
 				}
@@ -136,7 +136,7 @@
 		const useStyles = !Boolean(document.querySelector('html[is-on ~= "css-naked-day"]'));
 
 		const componentsBundles = {};
-		componentsNames.forEach(function(name) {
+		componentsNames.forEach(function (name) {
 			const path = componentsBasePathToMain + name + '/' + name;
 			componentsBundles[name] = [path + '.js'];
 			if (useStyles) {

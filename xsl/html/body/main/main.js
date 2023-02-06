@@ -1,5 +1,5 @@
 // loaded by loadjs after vue loaded
-(function() {
+(function () {
 	const mainConfig = {
 		f: {}, // common functions fo vueMain and vueSpec
 		vues: [],
@@ -11,7 +11,7 @@
 	merge(_ns, mainConfig);
 
 	// recursive function to get plain list of components in cssquery (unique) element
-	_ns.f.getComponentNames = function(cssQuery, reduceArray) {
+	_ns.f.getComponentNames = function (cssQuery, reduceArray) {
 		var elem = document.querySelector(cssQuery);
 		var attType;
 
@@ -28,7 +28,7 @@
 		}
 
 		if (elem) {
-			Array.prototype.forEach.call(elem.querySelectorAll('*'), function(elem){
+			Array.prototype.forEach.call(elem.querySelectorAll('*'), function (elem){
 				const elemName = elem.tagName.toLowerCase();
 				if (reduceArray.indexOf(elemName) == -1 && elemName.indexOf('-') > -1) {
 					reduceArray.push(elemName);
@@ -41,7 +41,7 @@
 	}
 
 	_ns.f.appendVueConfig = function (vueConfig) {
-		const isAlready = _ns.vues.filter(function(config) {
+		const isAlready = _ns.vues.filter(function (config) {
 			return config.el == vueConfig.el;
 		}).length;
 
@@ -66,7 +66,7 @@
 		var vueConfig = _ns.vues[_ns.vues.length - 1];
 		// this vue isn't initiated
 		if (!vueConfig.vue) {
-			Object.keys(_ns.components).forEach(function(key) {
+			Object.keys(_ns.components).forEach(function (key) {
 				// TODO: if not registered yet
 				Vue.component(key, _ns.components[key]);
 			});

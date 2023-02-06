@@ -27,8 +27,8 @@
 		<script src="{$externals}/jasmine/boot1.js"></script>
 		<script>
 			jasmine.getEnv().addReporter({
-				specStarted: function(result) { jasmine.currentTest = result; },
-				specDone: function(result) { jasmine.currentTest = result; },
+				specStarted: function (result) { jasmine.currentTest = result; },
+				specDone: function (result) { jasmine.currentTest = result; },
 			});
 		</script>
 
@@ -55,7 +55,7 @@
 		<xsl:if test="main">
 			<script src="{$spec.mainFolderPath}/main.js"></script>
 			<script>
-				globalThis.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]'});
+				globalThis.homm_ns.f.appendVueConfig({ el: '[iam-app ~= "vueSpec"]' });
 			</script>
 		</xsl:if>
 

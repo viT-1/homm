@@ -1,5 +1,7 @@
 (function() {
-	window.homm_ns.components['magic-book'] = {
+	const _ns = globalThis.homm_ns;
+
+	_ns.components['magic-book'] = {
 		template: '#magic-book',
 		props: ['spells'],
 		// filters deprecated

@@ -1,8 +1,10 @@
 (function() {
+	const _ns = globalThis.homm_ns;
+
 	const spellTitle = 'something';
 	const spellTitleAttName = 'iam-magic-spell-title';
 
-	window.homm_ns.f.injectToVueConfig({
+	_ns.f.injectToVueConfig({
 		computed: {
 			// test magic-spell separate in magic-spell.spec.xml
 			specSpell: function() {
@@ -14,10 +16,11 @@
 			}
 		},
 	});
-	window.homm_ns.f.mount();
-	const elVue = document.querySelector(homm_ns.vues[homm_ns.vues.length - 1].el);
+	_ns.f.mount();
+	
+	const elVue = document.querySelector(_ns.vues[_ns.vues.length - 1].el);
 
-	describe('main/magic-spell template', function () {
+	describe('main > magic-spell template', function () {
 		it('title is rendered with ' + spellTitleAttName + ' attribute and title property', function () {
 			const elTitles = elVue.querySelectorAll('['+spellTitleAttName+']');
 			expect(elTitles.length).toBeGreaterThanOrEqual(1);

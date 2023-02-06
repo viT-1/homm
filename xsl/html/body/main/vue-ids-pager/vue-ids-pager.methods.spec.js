@@ -1,8 +1,10 @@
 (function() {
-	const numIds = [1, 2, 4, 8, 9, 12, 42];
-	const methods = homm_ns.components['vue-ids-pager'].methods;
+	const _ns = globalThis.homm_ns;
 
-	describe('main/vue-ids-pager methods', function () {
+	const numIds = [1, 2, 4, 8, 9, 12, 42];
+	const methods = _ns.components['vue-ids-pager'].methods;
+
+	describe('main > vue-ids-pager methods', function () {
 		it('tell us that pageIndex is (in)valid', function () {
 			const conf = { ids: numIds, limit: 2 };
 			var result = methods.isValidPageIndex(conf, 4);

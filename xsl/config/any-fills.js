@@ -42,9 +42,26 @@
 		});
 	}
 
-	Number.isInteger = Number.isInteger || function(value) {
-		return typeof value === "number" && 
-			   isFinite(value) && 
-			   Math.floor(value) === value;
+	// @see https://cdn.jsdelivr.net/npm/@ungap/global-this@0.4.4/index.js
+	(function (Object) {
+		typeof globalThis !== 'object' && (
+			this ?
+				get() :
+				(Object.defineProperty(Object.prototype, '_T_', {
+					configurable: true,
+					get: get
+				}), _T_)
+		);
+		function get() {
+			var global = this || self;
+			global.globalThis = global;
+			delete Object.prototype._T_;
+		}
+	}(Object));
+
+	Number.isInteger = Number.isInteger || function (value) {
+		return typeof value === "number" &&
+			isFinite(value) &&
+			Math.floor(value) === value;
 	};
 })();

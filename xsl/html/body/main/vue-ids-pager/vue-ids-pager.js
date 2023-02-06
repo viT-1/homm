@@ -1,5 +1,7 @@
 (function() {
-	window.homm_ns.components['vue-ids-pager'] = {
+	const _ns = globalThis.homm_ns;
+	
+	_ns.components['vue-ids-pager'] = {
 		emits: ['input'],
 		props: {
 			ids: {

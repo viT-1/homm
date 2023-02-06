@@ -18,6 +18,9 @@
 		<link rel="shortcut icon" type="image/png" href="{$externals}/jasmine/jasmine_favicon.png"/>
 		<link rel="stylesheet" href="{$externals}/jasmine/jasmine.css"/>
 
+		<script src="{$config}/any-fills.js"></script>
+		<script src="{$externals}/merge.js"></script>
+
 		<script src="{$externals}/jasmine/jasmine.js"></script>
 		<script src="{$externals}/jasmine/jasmine-html.js"></script>
 		<script src="{$externals}/jasmine/boot0.js"></script>
@@ -28,11 +31,9 @@
 				specDone: function(result) { jasmine.currentTest = result; },
 			});
 		</script>
-		<script src="{$config}/any-fills.js"></script>
-		<script src="{$externals}/merge.js"></script>
 
 		<xsl:if test="body/main"><script src="{$externals}/vue.js"></script></xsl:if>
-		<script>window.homm_ns = { components: {}, data: {} };</script>
+		<script>globalThis.homm_ns = { components: {}, data: {} };</script>
 		<xsl:apply-templates select="head/node() | @*"/>
 
 		<style>.jasmine-results{ font-size: 16px; line-height: 20px; }</style>
@@ -54,7 +55,7 @@
 		<xsl:if test="main">
 			<script src="{$spec.mainFolderPath}/main.js"></script>
 			<script>
-				window.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]'});
+				globalThis.homm_ns.f.appendVueConfig({el: '[iam-app ~= "vueSpec"]'});
 			</script>
 		</xsl:if>
 

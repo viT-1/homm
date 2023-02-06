@@ -1,5 +1,7 @@
 (function() {
-	if (!homm_ns.spells) {
+	var _ns = globalThis.homm_ns;
+	
+	if (!_ns.spells) {
 		console.warn("spells.json isn't loaded!");
 		return;
 	}
@@ -8,10 +10,10 @@
 	// See dependencies in index.js/loadLibs(paths)
 	Vue.use(Vuex);
 
-	homm_ns.store = new Vuex.Store({
+	_ns.store = new Vuex.Store({
 		state: {
-			// spells: homm_ns.spells.filter(function(spell){ return spell.level == level; }),
-			storeSpells: homm_ns.spells,
+			// spells: _ns.spells.filter(function(spell){ return spell.level == level; }),
+			storeSpells: _ns.spells,
 		}
 	});
 })();

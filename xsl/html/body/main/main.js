@@ -5,13 +5,22 @@
 		vues: [],
 	}
 
+	const _ns = globalThis.homm_ns;
+
 	// adds mainConfig to properties defined in index.js: imports & spells and store.js: store
-	merge(window.homm_ns, mainConfig);
+	merge(_ns, mainConfig);
 
 	// recursive function to get plain list of components in cssquery (unique) element
-	window.homm_ns.f.getComponentNames = function(cssQuery, reduceArray) {
+	_ns.f.getComponentNames = function(cssQuery, reduceArray) {
 		var elem = document.querySelector(cssQuery);
-		const attType = elem.getAttribute('type');
+		var attType;
+
+		if (elem) {
+			attType = elem.getAttribute('type');
+		} else {
+			console.warn('Element ' + cssQuery + ' is not found!');
+			return;
+		}
 
 		// template convert for querying children dom-nodes
 		if (attType && attType.indexOf('template') > -1) {
@@ -25,46 +34,61 @@
 					reduceArray.push(elemName);
 					
 					// check for templates nesting
-					window.homm_ns.f.getComponentNames('#' + elemName, reduceArray);
+					_ns.f.getComponentNames('#' + elemName, reduceArray);
 				}
 			});
 		}
 	}
 
-	window.homm_ns.f.appendVueConfig = function (vueConfig) {
-		const isAlready = window.homm_ns.vues.filter(function(config) {
+	_ns.f.appendVueConfig = function (vueConfig) {
+		const isAlready = _ns.vues.filter(function(config) {
 			return config.el == vueConfig.el;
 		}).length;
 
 		if (isAlready) {
 			console.warn(vueConfig.el, 'We already have that vueConfig!');
 		} else {
-			window.homm_ns.vues.push(vueConfig);
+			_ns.vues.push(vueConfig);
 		}
 	}
 
-	window.homm_ns.f.injectToVueConfig = function (injectConfig) {
-		const lastVueConfig = window.homm_ns.vues[window.homm_ns.vues.length - 1];
+	_ns.f.injectToVueConfig = function (injectConfig) {
+		const lastVueConfig = _ns.vues[_ns.vues.length - 1];
 		merge(lastVueConfig, injectConfig);
 	}
 
 	// mount once last vueConfig
-	window.homm_ns.f.mount = function () {
-		if (!window.homm_ns.vues || !window.homm_ns.vues.length) {
-			throw Error('window.homm_ns.vues shoud be initiated!');
+	_ns.f.mount = function () {
+		if (!_ns.vues || !_ns.vues.length) {
+			throw Error('_ns.vues shoud be initiated!');
 		}
 
-		var vueConfig = window.homm_ns.vues[window.homm_ns.vues.length - 1];
+		var vueConfig = _ns.vues[_ns.vues.length - 1];
 		// this vue isn't initiated
 		if (!vueConfig.vue) {
-			Object.keys(window.homm_ns.components).forEach(function(key) {
-				Vue.component(key, window.homm_ns.components[key]);
+			Object.keys(_ns.components).forEach(function(key) {
+				// TODO: if not registered yet
+				Vue.component(key, _ns.components[key]);
 			});
 
-			// DOM manipulation only before Vue reserved this element to render function
+			// DOM manipulation with querySelector(vueConfig.el) can be here
+			// only before Vue reserved this element as text for render function
 
 			// Vue.config.silent = true;
 			vueConfig.vue = new Vue(vueConfig);
 		}
+	}
+
+	_ns.f.createMountDiv = function (specId) {
+		const specAttName = 'iam-spec';
+		const elDiv = document.createElement('div');
+		// Should use child, else have problem with div attributes on mounting app
+		elDiv.appendChild(document.createElement('div'));
+		elDiv.setAttribute(specAttName, specId);
+		document.body.insertAdjacentElement('beforeend', elDiv);
+
+		const queryString = '['+ specAttName +' = "' + specId + '"] > div';
+
+		return queryString;
 	}
 })();

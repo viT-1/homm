@@ -1,5 +1,8 @@
 (function () {
-	const vueConfig = homm_ns.vues[homm_ns.vues.length - 1];
+	const _ns = globalThis.homm_ns;
+
+	// TODO: potential error! Should find [iam-app = "vueSpec"] config?
+	const vueConfig = _ns.vues[_ns.vues.length - 1];
 	// copy html template of main[iam-app = "vueSpec"] for initiating Vue in every single test
 	const wrapper = document.querySelector(vueConfig.el);
 
@@ -9,13 +12,13 @@
 		perPage: 3,
 	};
 	// initiating base UX playground
-	window.homm_ns.f.injectToVueConfig({ data: function() { return defaultData; } });
-	window.homm_ns.f.mount();
+	_ns.f.injectToVueConfig({ data: function() { return defaultData; } });
+	_ns.f.mount();
 
-	const methods = homm_ns.components['vue-ids-pager'].methods;
+	const methods = _ns.components['vue-ids-pager'].methods;
 
 	// all tests should be independed (runs in random order)!
-	describe('main/vue-ids-pager template', function () {
+	describe('main > vue-ids-pager template', function () {
 		var config, vm;
 		
 		// base App for every "it"
@@ -26,14 +29,14 @@
 				return merge({}, defaultData);
 			},
 			components: {
-				'vue-ids-pager': homm_ns.components['vue-ids-pager'] // only one!
+				'vue-ids-pager': _ns.components['vue-ids-pager'] // only one!
 			}
 		});
 
 		beforeEach(function() {
 			vm = new App().$mount(
 				// real DOM mounting is not necessary because of using refs
-				// createMountDiv(jasmine.currentTest.description)
+				// _ns.f.createMountDiv(jasmine.currentTest.description)
 			);
 			config = {
 				limit: vm.perPage,
@@ -99,17 +102,4 @@
 			vm.perPage = newLimit;
 		});
 	});
-
-	function createMountDiv(specId) {
-		const specAttName = 'iam-spec';
-		const elDiv = document.createElement('div');
-		// Should use child, else have problem with div attributes on mounting app
-		elDiv.appendChild(document.createElement('div'));
-		elDiv.setAttribute(specAttName, specId);
-		document.body.insertAdjacentElement('beforeend', elDiv);
-
-		const queryString = '['+ specAttName +' = "' + specId + '"] > div';
-
-		return queryString;
-	}
 })();

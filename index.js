@@ -3,13 +3,14 @@
 	// document.addEventListener('DOMContentLoaded', setup);
 	window.addEventListener('load', setup);
 	// TODO: ??? move component list into vues array, needs redefine every component js
-	window.homm_ns = { components: {} };
+	globalThis.homm_ns = { components: {} };
+	var _ns = globalThis.homm_ns;
 
 	function setup() {
 		setAttrsIsOnOff();
 		parseJsons();
-		if (window.depp && window.homm_ns.imports) {
-			deppLoadLibs(window.homm_ns.imports);
+		if (globalThis.depp && _ns.imports) {
+			deppLoadLibs(_ns.imports);
 		} else {
 			console.warn("Externals aren't loaded. Application is failed!");
 		}
@@ -63,14 +64,14 @@
 	function parseJsons() {
 		const scriptImportmap = document.querySelector('#importmap');
 		if (scriptImportmap && scriptImportmap.textContent && scriptImportmap.textContent != '&importmap;') {
-			window.homm_ns.imports = JSON.parse(scriptImportmap.textContent).imports;
+			_ns.imports = JSON.parse(scriptImportmap.textContent).imports;
 		} else {
 			console.warn("importmap.json isn't loaded!");
 		}
 
 		const scriptSpells = document.querySelector('#spells');
 		if (scriptSpells && scriptSpells.textContent && scriptSpells.textContent.indexOf('&spells') < 0) {
-			window.homm_ns.spells = JSON.parse(scriptSpells.textContent).spells;
+			_ns.spells = JSON.parse(scriptSpells.textContent).spells;
 		} else {
 			console.warn("spells.json isn't loaded!");
 		}
@@ -81,9 +82,8 @@
 		const libIds = Object.keys(paths);
 		if (!depp.isDefined(libIds[0])) {
 			depp.define({
-				'any-fills':	[paths['any-fills']],
-				'main':			['#any-fills', '#merge', '#store', '#vue', paths.main],
-				'merge':		['#any-fills', paths.merge],
+				'main':			['#merge', '#store', '#vue', paths.main],
+				'merge':		[paths.merge],
 				'store':		['#vue', '#vuex', paths.store],
 				'vue':			[paths.vue],
 				'vuex':			[paths.vuex],
@@ -98,9 +98,9 @@
 	// Can be called only after 'main' script is loaded
 	function deppRequireApp(vueConfig) {
 		// special configuration for appMain
-		if (window.homm_ns.store) {
+		if (_ns.store) {
 			Object.assign(vueConfig, {
-				store: window.homm_ns.store,
+				store: _ns.store,
 				// data as a function to prevent mutating data properties in components
 				data: function() {
 					return {
@@ -116,20 +116,20 @@
 		}
 
 		// defined in html/body/main/main.js
-		window.homm_ns.f.appendVueConfig(vueConfig);
+		_ns.f.appendVueConfig(vueConfig);
 
 		const compNames = [];
 		// defined in html/body/main/main.js
-		window.homm_ns.f.getComponentNames(vueConfig.el, compNames);
+		_ns.f.getComponentNames(vueConfig.el, compNames);
 
 		deppDefineComponentsFiles(compNames);
 		// can register all components & subcomponents only after requiring src scripts!
-		depp.require(compNames, window.homm_ns.f.mount);
+		depp.require(compNames, _ns.f.mount);
 	}
 
 	function deppDefineComponentsFiles(componentsNames) {
 		const pathSep = '/';
-		var arrMainPath = homm_ns.imports.main.split(pathSep);
+		var arrMainPath = _ns.imports.main.split(pathSep);
 		arrMainPath.pop();
 		const componentsBasePathToMain = arrMainPath.join(pathSep) + pathSep;
 	

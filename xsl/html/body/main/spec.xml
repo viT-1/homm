@@ -18,6 +18,7 @@
 		<script data-component-tmpl="magic-book/magic-book.xml"></script>
 		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
 
+		<!-- <script src="main.spec.js"></script> -->
 		<script src="magic-book/magic-book.spec.js"></script>
 		<script src="magic-spell/magic-spell.spec.js"></script>
 		<script src="vue-ids-pager/vue-ids-pager.methods.spec.js"></script>

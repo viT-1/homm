@@ -1,4 +1,6 @@
 (function() {
+	const _ns = globalThis.homm_ns;
+
 	const spells = [
 		{ id: '1', title: 'one', level: 5 },
 		{ id: '15', title: 'zone', level: 4 },
@@ -6,11 +8,11 @@
 	];
 
 	const spellsQ = spells.length;
-	const component = homm_ns.components['magic-book'];
+	const component = _ns.components['magic-book'];
 
 	// without initApp, because testing only methods
 	// TODO: id methods can be moved to renderless component or mix?
-	describe('main/magic-book methods', function () {
+	describe('main > magic-book methods', function () {
 		it('filteredByLevel is working', function () {
 			const filtered = component.methods.filteredByLevel(spells, 5);
 			expect(filtered.length).toBeLessThanOrEqual(spellsQ);

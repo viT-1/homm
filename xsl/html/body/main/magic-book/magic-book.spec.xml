@@ -4,7 +4,8 @@
 	<head data-relpath-root="../../../../../">
 		<title>HoMM: magic-book</title>
 		<script src="magic-book.js"></script>
-		<!--Test file without vue rendering can be placed in head (instead of body)-->
-		<script src="magic-book.spec.js"></script>
 	</head>
+	<body>
+		<script src="magic-book.spec.js"></script>
+	</body>
 </html>

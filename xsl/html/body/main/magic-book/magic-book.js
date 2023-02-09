@@ -1,18 +1,47 @@
 (function (_ns) {
 	_ns.components['magic-book'] = {
 		template: '#magic-book',
-		props: ['spells'],
+		props: {
+			spells: {
+				type: Array,
+				default: function () { return [] },
+			},
+		},
+		data: function () {
+			return {
+				configFilters: {
+					level: 3,
+				},
+			};
+		},
 		computed: {
-			spellsIds: function () {
-				return _ns.f.getIds(this.spells);
+			// returns keyed methods
+			filters: function () {
+				return {
+					level: this.levelFilter
+				};
+			},
+			allSpellsAfterFiltering: function () {
+				return _ns.f.applyFiltersByConfig(
+					this.spells, this.filters, this.configFilters
+				);
+			},
+			allIdsAfterFiltering: function () {
+				return _ns.f.getIds(this.allSpellsAfterFiltering);
 			},
 		},
 
-		// filters deprecated
+		// filters API deprecated, methods should be used
 		// @see https://v3-migration.vuejs.org/breaking-changes/filters.html
 		methods: {
-			filteredByLevel: function (arrSpells, level) {
-				return arrSpells.filter(function (spell){ return spell.level == level; });
+			levelFilter: function (level) {
+				// closure, additional param for standard Array.filter callback
+				return function(spell) {
+					return spell.level == level;
+				}
+			},
+			getPageSpells: function (arrSpells, ids) {
+				return _ns.f.getSublistByIds(arrSpells, ids);
 			},
 		}
 	};

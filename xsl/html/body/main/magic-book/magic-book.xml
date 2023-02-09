@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
-		<ul iam-spells="">
-			<magic-spell v-for="spell in spells" v-bind="{spell: spell}" />
-		</ul>
-		<vue-ids-pager v-bind="{ ids: spellsIds }">
+		<vue-ids-pager v-bind="{ ids: allIdsAfterFiltering, limit: 6 }">
 			<template v-slot="idsPager">
-				<p>currentIds: {{idsPager.currentIds}}</p>
+				<div fix-vue="">
+					<button
+						iam-magic-book-page-corner="top left"
+						v-on="idsPager.prevEvents"
+						v-bind="{ disabled: !idsPager.canPrevPg }"></button>
+					<button
+						iam-magic-book-page-corner="top right"
+						v-on="idsPager.nextEvents"
+						v-bind="{ disabled: !idsPager.canNextPg }"></button>
+					<ul iam-spells="">
+						<magic-spell
+							v-bind="{spell: spell}"
+							v-for="spell in
+								getPageSpells(allSpellsAfterFiltering, idsPager.currentIds)" />
+					</ul>
+				</div>
 			</template>
 		</vue-ids-pager>
 		<slot name="nav"></slot>	

@@ -153,7 +153,7 @@
 	}
 })(globalThis.homm_ns);
 
-// ids helpers
+// helpers
 (function (_ns) {
 	_ns.f.getIds = function (arrObjWithId) {
 		const arrIds = [];
@@ -169,5 +169,18 @@
 			}
 		});
 		return sublist;
+	}
+
+	// array.filter callbacks config/manager
+	_ns.f.applyFiltersByConfig = function(list, filters, configFilters) {
+		var filtered = list; // initial list
+		// applying all filters, defined in configFilters
+		Object.keys(configFilters).forEach(function (filterKey) {
+			filtered = filtered.filter(
+				filters[filterKey](configFilters[filterKey])
+			);
+		});
+
+		return filtered;
 	}
 })(globalThis.homm_ns);

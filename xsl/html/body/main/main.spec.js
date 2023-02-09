@@ -69,7 +69,7 @@
 		});
 	});
 
-	describe('main functions > ids helpers', function () {
+	describe('main functions > helpers', function () {
 		const someList = [
 			{ id: '1', title: 'one', level: 5 },
 			{ id: '15', title: 'zone', level: 4 },
@@ -100,6 +100,46 @@
 			const sublist = _ns.f.getSublistByIds(someList, filterIds);
 
 			expect(sublist.length).toEqual(expectedIds.length);
+		});
+
+		it('applies filters by filter config correctly', function () {
+			const arr = [
+				{ some: 'one', helps: 'us' },
+				{ some: 'thing', wrong: 'here' },
+				{ some: 'one', wrong: 'there' }
+			];
+
+			// filter functions for item can be complex (not so easy)
+			const filters = {
+				some: function (value) {
+					return function (item) {
+						return item.some == value;
+					};
+				},
+				wrong: function (value) {
+					return function (item) {
+						return item.wrong == value;
+					};
+				}
+			};
+
+			var config = {
+				some: 'one',
+			}
+			var filtered = _ns.f.applyFiltersByConfig(arr, filters, config);
+			expect(filtered.length).toEqual(2);
+
+			config = {
+				wrong: 'here'
+			};
+			filtered = _ns.f.applyFiltersByConfig(arr, filters, config);
+
+			expect(filtered.length).toEqual(1);
+
+			expect(filtered.length).toBeLessThanOrEqual(arr.length);
+			
+			filtered = _ns.f.applyFiltersByConfig(arr, filters, {});
+			expect(filtered.length).toEqual(arr.length);
 		});
 	});
 })(globalThis.homm_ns);

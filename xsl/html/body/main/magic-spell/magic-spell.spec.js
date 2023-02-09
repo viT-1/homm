@@ -6,7 +6,7 @@
 		computed: {
 			// test magic-spell separate in magic-spell.spec.xml
 			specSpell: function () {
-				return { level: 1, title: spellTitle };
+				return { level: 3, title: spellTitle };
 			},
 			// test magic-spell with magic-book context defined in spec.xml
 			computedSpells: function () {

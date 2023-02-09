@@ -1,5 +1,5 @@
 (function (_ns) {
-	const methods = _ns.components['magic-book'].methods;
+	const comp = _ns.components['magic-book'];
 
 	const spells = [
 		{ id: '1', title: 'one', level: 5 },
@@ -11,8 +11,12 @@
 	// without initApp, because testing only methods
 	// TODO: id methods can be moved to renderless component or mix?
 	describe('main > magic-book methods', function () {
-		it('filteredByLevel is working', function () {
-			const filtered = methods.filteredByLevel(spells, 5);
+		it('levelFilter is working', function () {
+			const filters = {
+				level: comp.methods.levelFilter
+			}
+			const filtered = _ns.f.applyFiltersByConfig(spells, filters, { level: 4 });
+
 			expect(filtered.length).toBeLessThanOrEqual(spellsQ);
 		});
 	});

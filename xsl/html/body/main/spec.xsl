@@ -52,8 +52,8 @@
 		<!--vue components templates-->
 		<xsl:apply-templates select="script[@data-component-tmpl]"/>
 
+		<script src="{$spec.mainFolderPath}/main.js"></script>
 		<xsl:if test="main">
-			<script src="{$spec.mainFolderPath}/main.js"></script>
 			<script>
 				globalThis.homm_ns.f.appendVueConfig({ el: '[iam-app ~= "vueSpec"]' });
 			</script>

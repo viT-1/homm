@@ -12,9 +12,7 @@
 	<body>
 		<main>
 			<magic-book v-bind="{ spells: computedSpells }">
-				<magic-spell/>
 			</magic-book>
-			<vue-ids-pager v-slot="pagerOut"><p>Any {{pagerOut.some}}</p></vue-ids-pager>
 		</main>
 		<script data-component-tmpl="magic-book/magic-book.xml"></script>
 		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>

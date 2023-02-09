@@ -1,11 +1,11 @@
-// @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
-(function () {
+globalThis.homm_ns = { components: {} };
+
+(function (_ns) {
+	// @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
 	// document.addEventListener('DOMContentLoaded', setup);
 	window.addEventListener('load', setup);
 	// TODO: ??? move component list into vues array, needs redefine every component js
-	globalThis.homm_ns = { components: {} };
-	var _ns = globalThis.homm_ns;
-
+	
 	function setup() {
 		setAttrsIsOnOff();
 		parseJsons();
@@ -120,7 +120,7 @@
 
 		const compNames = [];
 		// defined in html/body/main/main.js
-		_ns.f.getComponentNames(vueConfig.el, compNames);
+		_ns.f.getComponentNames(globalThis.document, vueConfig.el, compNames);
 
 		deppDefineComponentsFiles(compNames);
 		// can register all components & subcomponents only after requiring src scripts!
@@ -139,12 +139,12 @@
 		componentsNames.forEach(function (name) {
 			const path = componentsBasePathToMain + name + '/' + name;
 			componentsBundles[name] = [path + '.js'];
-			if (useStyles) {
-				// TODO: renderless haven't such file, but trying to load
+
+			if (useStyles && _ns.f.shouldHaveTemplate(name)) {
 				componentsBundles[name].push(path + '.css');
 			}
 		});
 
 		depp.define(componentsBundles);
 	}
-})();
+})(globalThis.homm_ns);

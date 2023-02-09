@@ -1,5 +1,5 @@
-(function () {
-	const _ns = globalThis.homm_ns;
+(function (_ns) {
+	const methods = _ns.components['vue-ids-pager'].methods;
 
 	// TODO: potential error! Should find [iam-app = "vueSpec"] config?
 	const vueConfig = _ns.vues[_ns.vues.length - 1];
@@ -14,8 +14,6 @@
 	// initiating base UX playground
 	_ns.f.injectToVueConfig({ data: function () { return defaultData; } });
 	_ns.f.mount();
-
-	const methods = _ns.components['vue-ids-pager'].methods;
 
 	// all tests should be independed (runs in random order)!
 	describe('main > vue-ids-pager template', function () {
@@ -102,4 +100,4 @@
 			vm.perPage = newLimit;
 		});
 	});
-})();
+})(globalThis.homm_ns);

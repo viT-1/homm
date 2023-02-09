@@ -1,8 +1,6 @@
-(function () {
-	const _ns = globalThis.homm_ns;
-
-	const numIds = [1, 2, 4, 8, 9, 12, 42];
+(function (_ns) {
 	const methods = _ns.components['vue-ids-pager'].methods;
+	const numIds = [1, 2, 4, 8, 9, 12, 42];
 
 	describe('main > vue-ids-pager methods', function () {
 		it('tell us that pageIndex is (in)valid', function () {
@@ -14,18 +12,22 @@
 			result = methods.isValidPageIndex(conf, 3);
 			expect(result).toBeDefined();
 			expect(result).toBeTruthy();
+
+			result = methods.isValidPageIndex({ ids: [], limit: 4 }, 0);
+			expect(result).toBeDefined();
+			expect(result).toBeTruthy();
 		});
 
 		it('warns us invalid page index while trying to set it', function () {
 			const conf = { ids: numIds, limit: 2 };
-			expect(function () {	methods.setPageIndex(conf, 4); }).toThrow();
+			expect(function () { methods.setPageIndex(conf, 4); }).toThrow();
 		});
 
 		it('warns us if any param for getting ids is undefined', function () {
 			const conf = { ids: numIds, limit: 2 };
 			var uConf;
-			expect(function () {	methods.getIdsOnPage(conf); }).toThrow();
-			expect(function () {	methods.getIdsOnPage(uConf, 0); }).toThrow();
+			expect(function () { methods.getIdsOnPage(conf); }).toThrow();
+			expect(function () { methods.getIdsOnPage(uConf, 0); }).toThrow();
 		});
 
 		it('get us right ids on given page number', function () {
@@ -47,6 +49,10 @@
 			expect(methods.getLastPageIndex(conf, 1)).toEqual(1);
 		});
 
+		it('get us last page index even if ids is empty array', function () {
+			expect(methods.getLastPageIndex({ ids: [], limit: 3 })).toEqual(0);
+		});
+
 		it('checks that current index same as last index', function () {
 			var conf = { ids: numIds, limit: 4 };
 			expect(methods.isLastPageIndex(conf, 1)).toBeTruthy();
@@ -58,4 +64,4 @@
 			expect(methods.isLastPageIndex(conf, 0)).toBeFalsy();
 		});
 	});
-})();
+})(globalThis.homm_ns);

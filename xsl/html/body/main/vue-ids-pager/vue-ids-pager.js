@@ -1,6 +1,4 @@
-(function () {
-	const _ns = globalThis.homm_ns;
-	
+(function (_ns) {
 	_ns.components['vue-ids-pager'] = {
 		emits: ['input'],
 		props: {
@@ -70,7 +68,12 @@
 				return retIds;
 			},
 			getLastPageIndex: function (config) {
-				return Math.ceil(config.ids.length / config.limit) - 1;
+				var totalPages = 1;
+				if (config.ids.length > config.limit) {
+					totalPages = Math.ceil(config.ids.length / config.limit);
+				}
+
+				return totalPages - 1;
 			},
 			isLastPageIndex: function (config, pageIndex) {
 				return pageIndex == this.getLastPageIndex(config);
@@ -148,4 +151,4 @@
 			});
 		},
 	};
-})();
+})(globalThis.homm_ns);

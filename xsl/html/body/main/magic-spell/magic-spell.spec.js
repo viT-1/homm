@@ -1,6 +1,4 @@
-(function () {
-	const _ns = globalThis.homm_ns;
-
+(function (_ns) {
 	const spellTitle = 'something';
 	const spellTitleAttName = 'iam-magic-spell-title';
 
@@ -29,5 +27,4 @@
 			expect(elTitle.innerText).toContain(spellTitle);
 		});
 	});
-
-})();
+})(globalThis.homm_ns);

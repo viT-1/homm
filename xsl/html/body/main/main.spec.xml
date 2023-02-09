@@ -6,20 +6,52 @@
 	</head>
 	<body>
 		<main>
-			<my-god></my-god><test-component></test-component>
+			<my-god><oh-my></oh-my></my-god>
+			<test-component>
+				<some-thing></some-thing>
+				<template>
+					<in-template></in-template>
+					<near-in-template></near-in-template>
+				</template>
+			</test-component>
+			<vue-ids-pager>
+				<renderless-child></renderless-child>
+			</vue-ids-pager>
 		</main>
 		<script id="test-component" type="text/x-template">
 			<sup-component><sub-component></sub-component></sup-component>
 		</script>
 		<script id="sub-component" type="text/x-template">
 			<another-one>Text</another-one>
+			<template><expected-too><inner-ex></inner-ex></expected-too></template>
+		</script>
+		<script id="some-thing" type="text/x-template">
+			<vue-list-ids>
+				<template>
+					<div>
+						<magic-spell />
+					</div>
+				</template>
+			</vue-list-ids>
 		</script>
 		<script>
+			// turn off warnings for components without "template" property
+			globalThis.homm_ns.components['sup-component'] = {};
+
 			globalThis.mainSpecXmlNames = [
 				'another-one',
+				'expected-too',
+				'in-template',
+				'near-in-template',
+				'oh-my',
+				'magic-spell',
 				'my-god',
+				'renderless-child',
+				'some-thing',
 				'sub-component',
-				'test-component'
+				'test-component',
+				'vue-list-ids',
+				'vue-ids-pager',
 			];
 		</script>
 		<script src="main.spec.js"></script>

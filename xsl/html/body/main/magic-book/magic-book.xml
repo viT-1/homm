@@ -4,6 +4,11 @@
 		<ul iam-spells="">
 			<magic-spell v-for="spell in spells" v-bind="{spell: spell}" />
 		</ul>
-		<slot name="nav"></slot>
+		<vue-ids-pager v-bind="{ ids: spellsIds }">
+			<template v-slot="idsPager">
+				<p>currentIds: {{idsPager.currentIds}}</p>
+			</template>
+		</vue-ids-pager>
+		<slot name="nav"></slot>	
 	</div>
 </script>

@@ -1,6 +1,4 @@
-(function () {
-	var _ns = globalThis.homm_ns;
-	
+(function (_ns) {
 	if (!_ns.spells) {
 		console.warn("spells.json isn't loaded!");
 		return;
@@ -16,4 +14,4 @@
 			storeSpells: _ns.spells,
 		}
 	});
-})();
+})(globalThis.homm_ns);

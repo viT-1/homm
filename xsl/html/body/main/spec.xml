@@ -5,6 +5,7 @@
 		<title>HoMM: all components</title>
 		<link rel="stylesheet" href="magic-spell/magic-spell.css"/>
 		<script src="magic-spell/magic-spell.js"></script>
+		<link rel="stylesheet" href="magic-book/magic-book.css"/>
 		<script src="magic-book/magic-book.js"></script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>
 	</head>
@@ -18,7 +19,9 @@
 		<script data-component-tmpl="magic-book/magic-book.xml"></script>
 		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
 
+		<!-- For main.spec shoud be specific <main> innerHTML. You can run tests by main.spec.xml -->
 		<!-- <script src="main.spec.js"></script> -->
+
 		<script src="magic-book/magic-book.spec.js"></script>
 		<script src="magic-spell/magic-spell.spec.js"></script>
 		<script src="vue-ids-pager/vue-ids-pager.methods.spec.js"></script>

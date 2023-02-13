@@ -21,7 +21,7 @@
 				</template>
 			</vue-ids-pager>
 		</main>
-		<script src="vue-ids-pager.vue.spec.js"></script>
-		<script src="vue-ids-pager.methods.spec.js"></script>
+		<script src="vue-ids-pager.spec.js"></script>
+		<script src="vue-ids-pager.spec.vue.js"></script>
 	</body>
 </html>

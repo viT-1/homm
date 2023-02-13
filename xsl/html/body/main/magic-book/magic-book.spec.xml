@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+
 <html>
 	<head data-relpath-root="../../../../../">
 		<title>HoMM: magic-book</title>
+		<script src="../vue-ids-pager/vue-ids-pager.js"></script>
+		<script src="../magic-spell/magic-spell.js"></script>
 		<script src="magic-book.js"></script>
 	</head>
 	<body>
+		<main>
+			<magic-book v-bind="{spells: computedSpells, config: configBook }"></magic-book>
+		</main>
+		<script data-component-tmpl="../magic-spell/magic-spell.xml"></script>
+		<script data-component-tmpl="magic-book.xml"></script>
+
 		<script src="magic-book.spec.js"></script>
+		<script src="magic-book.spec.vue.js"></script>
 	</body>
 </html>

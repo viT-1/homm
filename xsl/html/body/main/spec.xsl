@@ -38,7 +38,7 @@
 
 		<style>.jasmine-results{ font-size: 16px; line-height: 20px; }</style>
 		<xsl:if test="contains(head/title/text(), 'HoMM: all')">
-			<style>[iam-app]{ display: none }</style>
+			<style>[iam-app], [iam-spec]{ display: none }</style>
 		</xsl:if>
 	</head>
 	<xsl:apply-templates select="body"/>
@@ -56,6 +56,7 @@
 		<xsl:if test="main">
 			<script>
 				globalThis.homm_ns.f.appendVueConfig({ el: '[iam-app ~= "vueSpec"]' });
+				globalThis.homm_ns.f.registerDeclaredComponents();
 			</script>
 		</xsl:if>
 

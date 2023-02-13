@@ -130,6 +130,23 @@
 		merge(lastVueConfig, injectConfig);
 	}
 
+	_ns.f.registerDeclaredComponents = (function() {
+		var alreadyRegistered = false;
+
+		return function () {
+			if (!alreadyRegistered) {
+				Object.keys(_ns.components).forEach(function (key) {
+					// TODO: if not registered yet (in other scripts)
+					Vue.component(key, _ns.components[key]);
+				});
+				
+				if (Object.keys(_ns.components).length) {
+					alreadyRegistered = true;
+				}
+			}
+		};
+	})();
+
 	// mount once last vueConfig
 	_ns.f.mount = function () {
 		if (!_ns.vues || !_ns.vues.length) {
@@ -139,10 +156,7 @@
 		var vueConfig = _ns.vues[_ns.vues.length - 1];
 		// this vue isn't initiated
 		if (!vueConfig.vue) {
-			Object.keys(_ns.components).forEach(function (key) {
-				// TODO: if not registered yet
-				Vue.component(key, _ns.components[key]);
-			});
+			_ns.f.registerDeclaredComponents();
 
 			// DOM manipulation with querySelector(vueConfig.el) can be here
 			// only before Vue reserved this element as text for render function

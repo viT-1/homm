@@ -8,9 +8,9 @@
 	</head>
 	<body>
 		<main>
-			<ul><magic-spell v-bind="{ spell: specSpell }"/></ul>
+			<magic-spell v-bind="{ spell: specSpell }"/>
 		</main>
 		<script data-component-tmpl="magic-spell.xml"></script>
-		<script src="magic-spell.spec.js"></script>
+		<script src="magic-spell.spec.vue.js"></script>
 	</body>
 </html>

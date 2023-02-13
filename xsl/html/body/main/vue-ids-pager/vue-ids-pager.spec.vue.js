@@ -4,7 +4,8 @@
 	// TODO: potential error! Should find [iam-app = "vueSpec"] config?
 	const vueConfig = _ns.vues[_ns.vues.length - 1];
 	// copy html template of main[iam-app = "vueSpec"] for initiating Vue in every single test
-	const wrapper = document.querySelector(vueConfig.el);
+	// BEFORE mount!!!
+	const rawTemplate = document.querySelector(vueConfig.el + ' > vue-ids-pager');
 
 	const defaultData = {
 		inputIndex: 1,
@@ -16,15 +17,17 @@
 	_ns.f.mount();
 
 	// all tests should be independed (runs in random order)!
-	describe('main > vue-ids-pager template', function () {
+	describe('main > vue-ids-pager Vue template', function () {
 		var config, vm;
-		
+
 		// base App for every "it"
 		const App = Vue.extend({
-			template: wrapper,
+			template: rawTemplate.outerHTML,
 			data: function () {
+				const retData = {};
+				merge(retData, defaultData);
 				// each App should have own state!!!
-				return merge({}, defaultData);
+				return retData;
 			},
 			components: {
 				'vue-ids-pager': _ns.components['vue-ids-pager'] // only one!

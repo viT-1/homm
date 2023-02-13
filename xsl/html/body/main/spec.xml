@@ -11,8 +11,8 @@
 	</head>
 	<body>
 		<main>
-			<magic-book v-bind="{ spells: computedSpells }">
-			</magic-book>
+			<magic-book v-bind="{ spells: computedSpells, config: configBook }" />
+			<magic-spell v-bind="{ spell: specSpell }" />
 		</main>
 		<script data-component-tmpl="magic-book/magic-book.xml"></script>
 		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
@@ -20,8 +20,9 @@
 		<!-- For main.spec shoud be specific <main> innerHTML. You can run tests by main.spec.xml -->
 		<!-- <script src="main.spec.js"></script> -->
 
+		<script src="magic-spell/magic-spell.spec.vue.js"></script>
 		<script src="magic-book/magic-book.spec.js"></script>
-		<script src="magic-spell/magic-spell.spec.js"></script>
-		<script src="vue-ids-pager/vue-ids-pager.methods.spec.js"></script>
+		<script src="magic-book/magic-book.spec.vue.js"></script>
+		<script src="vue-ids-pager/vue-ids-pager.spec.js"></script>
 	</body>
 </html>

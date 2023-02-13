@@ -9,7 +9,6 @@
 	const spellsQ = spells.length;
 
 	// without initApp, because testing only methods
-	// TODO: id methods can be moved to renderless component or mix?
 	describe('main > magic-book methods', function () {
 		it('levelFilter is working', function () {
 			const filters = {

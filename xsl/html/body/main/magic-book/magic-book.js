@@ -27,7 +27,6 @@
 				const retSpells = _ns.f.applyFiltersByConfig(
 					this.spells, this.filters, this.config.filters
 				);
-				console.warn('allSpellsAfterFiltering', this.config.filters, retSpells)
 
 				return retSpells;
 			},

@@ -3,7 +3,10 @@
 	<link rel="icon" href="https://github.com/favicon.ico"/>
 	<link rel="stylesheet" href="xsl/html/body/body.css"/>
 
+	<script src="externals/promise-polyfill.min.js"></script>
 	<script src="xsl/config/any-fills.js"></script>
+	<script src="xsl/config/config.js"></script>
+
 	<script src="externals/depp.min.js"></script>
 	<script src="index.js"></script>
 </head>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="spec.xsl" type="text/xsl"?>
-<html>
+<html use="vue">
 	<head data-relpath-root="../../../../">
 		<title>HoMM: main functions</title>
 	</head>
@@ -35,7 +35,7 @@
 			</vue-list-ids>
 		</script>
 		<script>
-			// turn off warnings for components without "template" property
+			// stubs: turn off warnings for components without "template" property
 			globalThis.homm_ns.components['sup-component'] = {};
 
 			globalThis.mainSpecXmlNames = [

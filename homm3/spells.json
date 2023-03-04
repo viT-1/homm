@@ -3,14 +3,16 @@
 	"id": 1,
 	"level": 1,
 	"title": "Bless",
-	"descr": "Causes the selected friendly unit to inflict maximum damage when it attacks. The Bless spell counters the Curse spell.",
+	"descr": "Causes the selected friendly unit to inflict maximum damage when it attacks. Bless can be removed with Curse spell.",
 	"ru": {
 		"title": "Благословление",
-		"descr": "Увеличивает урон существа до максимального, снимает проклятие."
+		"descr": "Увеличивает урон своего существа до максимального. Можно снять проклятием."
 	},
-	"cost": 5,
 	"formula": "max(@dmg)",
+	"combat": true,
 	"mass": false,
+	"type": ["water", "buff", "dmg", "self"],
+	"cost": 5,
 	"base": {
 		"cost": 4
 	},
@@ -20,8 +22,6 @@
 	"expert": {
 		"mass": true
 	},
-	"type": "phys",
-	"effect": "+",
 	"magic": "water",
 	"artifacts": []
 },{
@@ -31,11 +31,13 @@
 	"descr": "It increases the attack skill of target allied creature for melee attacks.",
 	"ru": {
 		"title": "Жажда крови",
-		"descr": "Увеличивает основной навык атаки существа на 3, не влияет на дистанционную атаку."
+		"descr": "Увеличивает основной навык атаки своего существа на 3, не влияет на дистанционную атаку."
 	},
-	"cost": 5,
 	"formula": "@At+3",
+	"combat": true,
 	"mass": false,
+	"type": ["fire", "buff", "dmg", "self"],
+	"cost": 5,
 	"base": {
 		"cost": 4
 	},
@@ -45,9 +47,6 @@
 	"expert": {
 		"mass": true
 	},
-	"type": "phys",
-	"effect": "+",
-	"magic": "fire",
 	"artifacts": []
 },{
 	"id": 3,
@@ -58,9 +57,11 @@
 		"title": "Лечение",
 		"descr": "Снимает действие всех негативных заклинаний со своего существа и восстанавливает некоторое количество очков жизни (не больше максимума)."
 	},
-	"cost": 6,
 	"formula": "@SP*5+10",
+	"combat": true,
 	"mass": false,
+	"type": ["water", "buff", "hp", "self"],
+	"cost": 6,
 	"base": {
 		"cost": 5
 	},
@@ -71,22 +72,21 @@
 		"formula": "@SP*5+30",
 		"mass": true
 	},
-	"type": "phys",
-	"effect": "+",
-	"magic": "water",
 	"artifacts": []
 },{
 	"id": 4,
 	"level": 1,
 	"title": "Curse",
-	"descr": "Causes the selected creature to inflict minimal damage.",
+	"descr": "Causes the selected creature to inflict minimal damage. Curse can be removed with Bless spell.",
 	"ru": {
 		"title": "Проклятие",
-		"descr": "Вражеское существо наносит минимальный урон, снимает благословление."
+		"descr": "Вражеское существо наносит минимальный урон, снимается благословлением."
 	},
-	"cost": 6,
 	"formula": "min(@dmg)",
+	"combat": true,
 	"mass": false,
+	"type": ["fire", "debuff", "dmg", "enemy"],
+	"cost": 6,
 	"base": {
 		"cost": 5
 	},
@@ -96,10 +96,1701 @@
 	"expert": {
 		"mass": true
 	},
-	"type": "phys",
-	"effect": "-",
-	"magic": "fire",
 	"artifacts": []
 
+},{
+	"id": 5,
+	"level": 1,
+	"title": "Dispel Magic",
+	"descr": "Removes all spell effects (except Disruption Ray) of target allied creature.",
+	"ru": {
+		"title": "Снятие заклинаний",
+		"descr": "Снимает все заклинания (кроме Разрушающего луча) со своего существа."
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "self", "enemy"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"descr": "Removes all spells of target any creature, except Disruption Ray.",
+		"ru": {
+			"descr": "Снимает все заклинания (кроме Разрушающего луча) с любого выбранного существа."
+		}
+	},
+	"expert": {
+		"descr": "Removes all spell effects (except Disruption Ray) from all units on the battlefield. Also removes any handmade obstacles.",
+		"ru": {
+			"descr": "Снимает все заклинания (кроме Разрушающего луча) со всех существ на поле боя и убирает все наколдованные преграды."
+		},
+		"mass": true
+	},
+	"artifacts": []
+},{
+	"id": 6,
+	"level": 1,
+	"title": "Haste",
+	"descr": "It increases speed of target allied creature stack. Haste can be removed with Slow spell.",
+	"ru": {
+		"title": "Ускорение",
+		"descr": "Увеличивает скорость выбранного существа своей армии. Эффект ускорения отменяется замедлением."
+	},
+	"formula": "@spd + 3",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "move", "self"],
+	"cost": 6,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "@spd + 5"
+	},
+	"expert": {
+		"mass": true
+	},
+	"artifacts": []
+},{
+	"id": 7,
+	"level": 1,
+	"title": "Magic Arrow",
+	"descr": "Causes a magic arrow to strike the selected target.",
+	"ru": {
+		"title": "Магическая стрела",
+		"descr": "Наносит урон выбранному вражескому отряду."
+	},
+	"formula": "@SP*10 + 10",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "earth", "fire", "water", "direct", "enemy"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@SP*10 + 20"
+	},
+	"expert": {
+		"formula": "@SP*10 + 30"
+	},
+	"artifacts": []
+},{
+	"id": 8,
+	"level": 1,
+	"title": "Shield",
+	"descr": "Reduces melee damage done to target allied stack.",
+	"ru": {
+		"title": "Щит",
+		"descr": "Снижает рукопашный урон, наносимый выбранному союзному существу."
+	},
+	"formula": "@dmg*0.85",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "buff", "def", "self"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@dmg*0.7"
+	},
+	"expert": {
+		"mass": true
+	},
+	"artifacts": []
+},{
+	"id": 9,
+	"level": 1,
+	"title": "Slow",
+	"descr": "Reduces the speed of target enemy stack. Slow can be removed with Haste spell.",
+	"ru": {
+		"title": "Замедление",
+		"descr": "Снижает скорость вражеского отряда. Замедление можно нейтрализовать ускорением."
+	},
+	"formula": "@mv*0.75",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "debuff", "move", "enemy"],
+	"cost": 6,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "@mv*0.5"
+	},
+	"expert": {
+		"mass": true
+	},
+	"artifacts": []
+},{
+	"id": 10,
+	"level": 1,
+	"title": "Stoneskin",
+	"descr": "Increases target, allied troop's defense.",
+	"ru": {
+		"title": "Камненная кожа",
+		"descr": "Увеличивает защиту выбранного существа."
+	},
+	"formula": "@Df+3",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "buff", "def", "self"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@Df+6"
+	},
+	"expert": {
+		"mass": true
+	},
+	"artifacts": []
+},{
+	"id": 11,
+	"level": 1,
+	"title": "View Earth",
+	"descr": "Displays the location of all loose resources on the view world screen.",
+	"ru": {
+		"title": "Просмотр земли",
+		"descr": "Показывает расположение всех ресурсов."
+	},
+	"combat": false,
+	"type": ["earth", "view"],
+	"cost": 2,
+	"base": {
+		"cost": 1
+	},
+	"advanced": {
+		"descr": "Displays the location of all mines and loose resources on the view world screen.",
+		"ru": {
+			"descr": "Показывает расположение всех ресурсов и шахт."
+		}
+	},
+	"expert": {
+		"mass": true,
+		"descr": "Displays the entire terrain, all mines and loose resources on the view world screen.",
+		"ru": {
+			"descr": "Показывает расположение всех ресурсов, шахт и всей местности с дорогами."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 12,
+	"level": 2,
+	"title": "Precision",
+	"descr": "Increases the damage dealt by the selected unit during a ranged attack.",
+	"ru": {
+		"title": "Точность",
+		"descr": "Увеличивает урон, наносимый выбранным отрядом при дальней атаке."
+	},
+	"formula": "@At+3",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "dmg", "self"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"formula": "@At+6"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@At+6"
+	},
+	"artifacts": []
+},{
+	"id": 13,
+	"level": 2,
+	"title": "Blind",
+	"descr": "Blinds the selected enemy unit so that it cannot act until attacked (by spell or unit), dispelled or effect wears off.",
+	"ru": {
+		"title": "Ослепление",
+		"descr": "Делает ослеплённый отряд неактивным. Ослепление снимается, если отряд получает урон. Если существо атаковать (другим существом или магией), то оно (до экспертного владения) нанесёт ответный урон."
+	},
+	"formula": "@dmg*0.5",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "debuff", "move", "enemy", "mind"],
+	"cost": 10,
+	"base": {
+		"cost": 8
+	},
+	"advanced": {
+		"formula": "@dmg*0.25"
+	},
+	"expert": {
+		"formula": "@dmg*0"
+	},
+	"artifacts": []
+},{
+	"id": 14,
+	"level": 2,
+	"title": "Ice Bolt",
+	"descr": "Inflicts cold damage to a single enemy creature.",
+	"ru": {
+		"title": "Ледяная молния",
+		"descr": "Наносит удар льдом выбранному отряду."
+	},
+	"formula": "@SP*20 + 10",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "direct", "enemy"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"formula": "@SP*20 + 20"
+	},
+	"expert": {
+		"formula": "@SP*20 + 50"
+	},
+	"artifacts": []
+},{
+	"id": 15,
+	"level": 2,
+	"title": "Death Ripple",
+	"descr": "Damages all living(non-undead) in the battle.",
+	"ru": {
+		"title": "Дрожь смерти",
+		"descr": "Наносит урон всем отрядам живых воинов в сражении."
+	},
+	"formula": "@SP*5 + 10",
+	"combat": true,
+	"mass": true,
+	"type": ["earth", "area", "direct", "self", "enemy"],
+	"cost": 10,
+	"base": {
+		"cost": 8
+	},
+	"advanced": {
+		"formula": "@SP*5 + 20"
+	},
+	"expert": {
+		"formula": "@SP*5 + 30"
+	},
+	"artifacts": []
+},{
+	"id": 16,
+	"level": 2,
+	"title": "Disrupting Ray",
+	"descr": "Reduces Defense of target. A creature can be affected multiple times by this spell and can not be dispelled.",
+	"ru": {
+		"title": "Разрушающий луч",
+		"descr": "Понижает защиту выбранного отряда противника. Может быть наложено неограниченное количество раз на один и тот же отряд. Эффект ничем не отменяется и длится до завершения битвы."
+	},
+	"formula": "@Df - 3",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "debuff", "def", "enemy"],
+	"cost": 10,
+	"base": {
+		"cost": 8
+	},
+	"advanced": {
+		"formula": "@Df - 4"
+	},
+	"expert": {
+		"formula": "@Df - 5"
+	},
+	"artifacts": []
+},{
+	"id": 17,
+	"level": 4,
+	"title": "Slayer",
+	"descr": "Target allied troop's attack rating is increased against behemoths, dragons, hydras and firebirds.",
+	"ru": {
+		"title": "Палач",
+		"descr": "Увеличивает показатель атаки при нападении на драконов, чудищ, гидр и огненных птиц."
+	},
+	"formula": "@At+8",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "buff", "dmg", "self"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"descr": "Target allied troop's attack rating is increased against behemoths, dragons, hydras, firebirds, angels and devils.",
+		"ru": {
+			"descr": "Увеличивает показатель атаки при нападении на драконов, чудищ, гидр, огненных птиц, ангелов и дьяволов."
+		}
+	},
+	"expert": {
+		"descr": "Target allied troop's attack rating is increased against behemoths, dragons, hydras, firebirds, angels, devils and giants/titans.",
+		"ru": {
+			"descr": "Увеличивает показатель атаки при нападении на драконов, чудищ, гидр, огненных птиц, ангелов, дьяволов, а также на гигантов и титанов."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 18,
+	"level": 2,
+	"title": "Remove Obstacle",
+	"descr": "Removes any non-magic obstacle of the caster's choice from the battlefield. Integrated obstacles, such as cliffs are not affected.",
+	"ru": {
+		"title": "Устранение преград",
+		"descr": "Убирает любое (не привнесённое игроком) накладное препятствие на поле боя."
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "move", "enemy", "self"],
+	"cost": 7,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"descr": "Removes any non-magic obstacle or Fire Wall of the caster's choice from the battlefield. Integrated obstacles, such as cliffs are not affected.",
+		"ru": {
+			"descr": "Убирает любое накладное немагическое препятствие на поле боя и Огненную стену."
+		}
+	},
+	"expert": {
+		"mass": true,
+		"descr": "Removes any non-magic or magical obstacle of the caster's choice from the battlefield. Integrated obstacles, such as cliffs are not affected.",
+		"ru": {
+			"descr": "Убирает любое накладное препятствие на поле боя, в том числе ров из мин."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 19,
+	"level": 2,
+	"title": "Lighting Bolt",
+	"descr": "Causes a bolt of lightning to strike the selected enemy unit.",
+	"ru": {
+		"title": "Удар молнии",
+		"descr": "Наносит урон молнией выбранному вражескому отряду."
+	},
+	"formula": "@SP*25+10",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "direct", "enemy"],
+	"cost": 10,
+	"base": {
+		"cost": 8
+	},
+	"advanced": {
+		"formula": "@SP*25+20"
+	},
+	"expert": {
+		"formula": "@SP*25+50"
+	},
+	"artifacts": []
+},{
+	"id": 20,
+	"level": 2,
+	"title": "Scuttle Boat",
+	"descr": "Spell has a chance of destroying a boat, unless occupied.",
+	"ru": {
+		"title": "Затопление корабля",
+		"descr": "Заклинание позволяющее с определённой вероятностью разрушить пустой корабль в пределах видимости (8-9 клеток)."
+	},
+	"formula": "50%",
+	"combat": false,
+	"type": ["water", "move"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"formula": "75%"
+	},
+	"expert": {
+		"formula": "100%"
+	},
+	"artifacts": []
+},{
+	"id": 21,
+	"level": 1,
+	"title": "Summon Boat",
+	"descr": "Summons one of your hero's unoccupied boats to their current location. If none of those boats are available, then one of your other heroes' boats is summoned.",
+	"ru": {
+		"title": "Вызов корабля",
+		"descr": "Заклинание позволяющее с определённой вероятностью вызвать пустой корабль из перевозивших героев игрока, либо купленный в верфи."
+	},
+	"formula": "50%",
+	"combat": false,
+	"type": ["water", "move"],
+	"cost": 8,
+	"base": {
+		"cost": 7
+	},
+	"advanced": {
+		"formula": "75%"
+	},
+	"expert": {
+		"formula": "100%"
+	},
+	"artifacts": []
+},{
+	"id": 22,
+	"level": 2,
+	"title": "Disguise",
+	"descr": "All of the hero's creature troops are displayed as if they were composed of the most powerful creatures in the hero's army. Troop population numbers are represented normally.",
+	"ru": {
+		"title": "Маскировка",
+		"descr": "Дает ложную информацию врагу, пытающемуся увидеть вашего героя. Для вражеского героя все отряды вашей армии выглядят как самый мощный отряд из группы. При этом показывается исходное количественное значение каждого отряда."
+	},
+	"combat": false,
+	"type": ["air", "view", "hero"],
+	"cost": 4,
+	"base": {
+		"cost": 2
+	},
+	"advanced": {
+		"descr": "All of the hero's creature troops are displayed as if they were composed of the most powerful creatures in the hero's army. Troop population numbers are represented as 0.",
+		"ru": {
+			"descr": "Для вражеского героя все отряды вашей армии выглядят как самый мощный отряд из группы. При этом количественное значение каждого отряда отображается как 0."
+		}
+	},
+	"expert": {
+		"descr": "All of the hero's creature troops are displayed as if they were composed of the most powerful creature in hero's longest owned town. Troop population numbers are represented as 0.",
+		"ru": {
+			"descr": "Для вражеского героя все отряды вашей армии выглядят как самый мощный отряд, принадлежащий самому старому вашему замку. При этом количественное значение каждого отряда отображается как 0."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 23,
+	"level": 2,
+	"title": "Visions",
+	"descr": "Displays number of monsters in a wandering monster troop and whether or not the troop will offer to join the casting hero's army with vision range of 3 squares minimum.",
+	"ru": {
+		"title": "Видения",
+		"descr": "Показывает настрой и количество юнитов в отряде на расстоянии (минимум 3 клетки)."
+	},
+	"formula": "@SP*1",
+	"combat": false,
+	"type": ["air", "earth", "fire", "water", "view"],
+	"cost": 4,
+	"base": {
+		"cost": 2
+	},
+	"advanced": {
+		"formula": "@SP*2",
+		"descr": "Displays number of monsters in a wandering monster troop and whether or not the troop will offer to join the casting hero's army with vision range of 3 squares minimum. Also enemy hero's primary skill stats, and the composition and quantity of the hero's army can be viewed.",
+		"ru": {
+			"descr": "Показывает настрой и количество юнитов в отряде на расстоянии (минимум 3 клетки), будь то юниты на карте, либо вражеский герой. Также показывает первичные навыки вражеского героя."
+		}
+	},
+	"expert": {
+		"formula": "@SP*3",
+		"descr": "Displays number of monsters in a wandering monster troop and whether or not the troop will offer to join the casting hero's army with vision range of 3 squares minimum. Also enemy hero's primary skill stats, and the composition and quantity of the hero's/town army can be viewed.",
+		"ru": {
+			"descr": "Показывает настрой и количество юнитов в отряде на расстоянии (минимум 3 клетки), будь то юниты на карте, вражеский герой или замок. Также показывает первичные навыки вражеского героя."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 24,
+	"level": 3,
+	"title": "Animate Dead",
+	"descr": "Reanimates fixed health points worth of killed undead creatures in target, allied troop.",
+	"ru": {
+		"title": "Поднятие мертвецов",
+		"descr": "Реанимирует нежить в целевом отряде, суммарным здоровьем на фиксированную величину."
+	},
+	"formula": "@SP*50+30",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "hp", "self"],
+	"cost": 15,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@SP*50+60"
+	},
+	"expert": {
+		"formula": "@SP*50+160"
+	},
+	"artifacts": []
+},{
+	"id": 25,
+	"level": 3,
+	"title": "Anti-Magic",
+	"descr": "Target, allied troop can only be affected up to a certain level, except Dispell.",
+	"ru": {
+		"title": "Антимагия",
+		"descr": "Защищает целевой отряд от заклинаний до определённого уровня (включительно), кроме Снятия Заклинаний."
+	},
+	"formula": [1, 2, 3],
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "buff", "self"],
+	"cost": 15,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": [1, 2, 3, 4]
+	},
+	"expert": {
+		"descr": "Target, allied troop is immune to spell effects, except Dispell.",
+		"ru": {
+			"descr": "Защищает целевой отряд от всех заклинаний, кроме Снятия Заклинаний."
+		},
+		"formula": [1, 2, 3, 4, 5]
+	},
+	"artifacts": []
+},{
+	"id": 26,
+	"level": 3,
+	"title": "Cold Ring",
+	"descr": "Deals damage to an area with a diameter of three cells, except for the central",
+	"ru": {
+		"title": "Кольцо холода",
+		"descr": "Наносит урон на площадь диаметром в три клетки, кроме центральной."
+	},
+	"formula": "@SP*10+15",
+	"combat": true,
+	"mass": true,
+	"type": ["water", "instant", "area", "enemy", "self"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "@SP*10+30"
+	},
+	"expert": {
+		"formula": "@SP*10+60"
+	},
+	"artifacts": []
+},{
+	"id": 27,
+	"level": 3,
+	"title": "Force field",
+	"descr": "Places an obstacle on the battlefield at the specified point, blocking the passage. Duration: two rounds.",
+	"ru": {
+		"title": "Силовое поле",
+		"descr": "Размещает на поле боя в указанной точке препятствие определённого размера, блокирующее проход в течении двух ходов битвы."
+	},
+	"formula": "2",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "area", "move", "self", "enemy"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "3"
+	},
+	"expert": {
+		"formula": "3"
+	},
+	"artifacts": []
+},{
+	"id": 28,
+	"level": 3,
+	"title": "Earthquake",
+	"descr": "Does one point of damage to some random castle walls during siege combat.",
+	"ru": {
+		"title": "Землетрясение",
+		"descr": "Случайным образом повреждает несколько фрагментов стены замка."
+	},
+	"formula": "2",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "move", "self", "enemy"],
+	"cost": 20,
+	"base": {
+		"cost": 17
+	},
+	"advanced": {
+		"formula": "3"
+	},
+	"expert": {
+		"formula": "4"
+	},
+	"artifacts": []
+
+},{
+	"id": 29,
+	"level": 3,
+	"title": "Fireball",
+	"descr": "Deals damage to an area with a diameter of three cells",
+	"ru": {
+		"title": "Огненный шар",
+		"descr": "Наносит урон на площадь диаметром в три клетки."
+	},
+	"formula": "@SP*10+15",
+	"combat": true,
+	"mass": true,
+	"type": ["fire", "area", "instant", "self", "enemy"],
+	"cost": 15,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@SP*10+30"
+	},
+	"expert": {
+		"formula": "@SP*10+60"
+	},
+	"artifacts": []
+},{
+	"id": 30,
+	"level": 3,
+	"title": "Destroy Undead",
+	"descr": "All undead creature troops receive some damage",
+	"ru": {
+		"title": "Уничтожить нечисть",
+		"descr": "Все отряды нежити на поле боя получают урон."
+	},
+	"formula": "@SP*10+10",
+	"combat": true,
+	"mass": true,
+	"type": ["air", "area", "instant", "self", "enemy"],
+	"cost": 15,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@SP*10+20"
+	},
+	"expert": {
+		"formula": "@SP*10+50"
+	},
+	"artifacts": []
+},{
+	"id": 31,
+	"level": 2,
+	"title": "Fortune",
+	"descr": "Increases the luck of the selected unit.",
+	"ru": {
+		"title": "Удача",
+		"descr": "Увеличивает удачу выбранного отряда."
+	},
+	"formula": "@luck+1",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "dmg", "self"],
+	"cost": 7,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "@luck+2"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@luck+2"
+	},
+	"artifacts": []
+},{
+	"id": 32,
+	"level": 3,
+	"title": "Misfortune",
+	"descr": "Decreases the luck of the selected unit.",
+	"ru": {
+		"title": "Неудача",
+		"descr": "Снижает удачу выбранного отряда."
+	},
+	"formula": "@luck-1",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "debuff", "dmg", "enemy"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "@luck-2"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@luck-2"
+	},
+	"artifacts": []
+},{
+	"id": 33,
+	"level": 3,
+	"title": "Mirth",
+	"descr": "Increases the morale of the selected unit.",
+	"ru": {
+		"title": "Радость",
+		"descr": "Увеличивает мораль выбранного отряда."
+	},
+	"formula": "@morale+1",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "buff", "move", "self"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "@morale+2"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@morale+2"
+	},
+	"artifacts": []
+},{
+	"id": 34,
+	"level": 4,
+	"title": "Sorrow",
+	"descr": "Decreases the morale of the selected unit.",
+	"ru": {
+		"title": "Печаль",
+		"descr": "Снижает мораль выбранного отряда."
+	},
+	"formula": "@morale-1",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "debuff", "move", "enemy"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@morale-2"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@morale-2"
+	},
+	"artifacts": []
+},{
+	"id": 35,
+	"level": 2,
+	"title": "Weakness",
+	"descr": "It reduces the attack of target enemy stack.",
+	"ru": {
+		"title": "Слабость",
+		"descr": "Снижает уровень прямого урона, наносимого выбранным отрядом противника."
+	},
+	"formula": "@At-3",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "debuff", "dmg", "enemy"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"formula": "@At-6"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@At-6"
+	},
+	"artifacts": []
+},{
+	"id": 36,
+	"level": 3,
+	"title": "Forgetfullness",
+	"descr": "Half of the creatures in target, enemy troop, with ranged attack forget to shoot and how to use melee attack.",
+	"ru": {
+		"title": "Забывчивость",
+		"descr": "Половина выбранных стрелков не наносит урона как при дальней атаке, так и при прямой!"
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "debuff", "dmg", "enemy", "mind"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"descr": "Causes target enemy stack to forget to use their ranged attack. Half of them forget how to use melee attack.",
+		"ru": {
+			"descr": "Выбранные стрелки не стреляют. Половина из них не может нанести даже прямого урона!"
+		}
+	},
+	"expert": {
+		"descr": "Causes all enemy stacks to forget to use their ranged attack. Half of each of them forget how to use melee attack.",
+		"ru": {
+			"descr": "Все вражеские стрелки не наносят урона с дистанции. Прямой урон может наносить только половина каждого стека."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 37,
+	"level": 3,
+	"title": "Teleport",
+	"descr": "Target allied troop instantly moves to an unoccupied target hex. Troop cannot teleport over walls or moats.",
+	"ru": {
+		"title": "Телепорт",
+		"descr": "Перемещает дружественный отряд в любую точку поля боя, но без возможности переместить за вражеские стены и ров."
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "move", "self"],
+	"cost": 15,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"descr": "Causes target enemy stack to forget to use their ranged attack. Half of them forget how to use melee attack.",
+		"ru": {
+			"descr": "Target allied troop instantly moves to an unoccupied target hex. Troop cannot teleport over walls."
+		}
+	},
+	"expert": {
+		"descr": "Target allied troop instantly moves to an unoccupied target hex.",
+		"ru": {
+			"descr": "Перемещает дружественный отряд в любую точку поля боя."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 38,
+	"level": 1,
+	"title": "View Air",
+	"descr": "Displays the location of all artifacts on the view world screen.",
+	"ru": {
+		"title": "Просмотр воздуха",
+		"descr": "Показывает расположение всех артефактов."
+	},
+	"combat": false,
+	"type": ["air", "view"],
+	"cost": 2,
+	"base": {
+		"cost": 1
+	},
+	"advanced": {
+		"descr": "Displays the location of all artifacts and heroes on the view world screen.",
+		"ru": {
+			"descr": "Показывает расположение всех артефактов и героев."
+		}
+	},
+	"expert": {
+		"mass": true,
+		"descr": "Displays the location of all artifacts, heroes and towns.",
+		"ru": {
+			"descr": "Показывает расположение всех артефактов, героев и городов."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 39,
+	"level": 3,
+	"title": "Air Shield",
+	"descr": "It reduces the amount of damage allied troops receive from enemy's ranged attacks.",
+	"ru": {
+		"title": "Воздушный щит",
+		"descr": "Защищает отряд, уменьшая урон, наносимый стрелками."
+	},
+	"formula": "@dmg*0.75",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "def", "self"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "@dmg*0.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@dmg*0.5"
+	},
+	"artifacts": []
+},{
+	"id": 40,
+	"level": 4,
+	"title": "Berserk",
+	"descr": "Target attacks nearest troop. Berserk is applied to a certain area diameter of the battlefield.",
+	"ru": {
+		"title": "Берсерк",
+		"descr": "Отряд, на который наложено заклинание Берсерк, будет случайным образом атаковать ближайшее к себе подразделение, независимо от того вражеское оно или союзное. Берсерк накладывается на площадь определённого диаметра."
+	},
+	"formula": "1",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "area", "debuff", "dmg", "self", "enemy"],
+	"cost": 20,
+	"base": {
+		"cost": 16
+	},
+	"advanced": {
+		"mass": true,
+		"formula": "3"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "5"
+	},
+	"artifacts": []
+},{
+	"id": 41,
+	"level": 4,
+	"title": "Chain Lighting",
+	"descr": "Strikes creature stacks causing full damage for the initial target, and halving for each target after that. The closest creature stack to the initial target becomes the second target of the spell whether it is a friend or a foe, and this method repeats itself for all the spell's targets.",
+	"descr-ext": "Bolt strikes four troops.",
+	"ru": {
+		"title": "Цепная молния",
+		"descr": "В выбранный отряд бьёт молния, которая затем бьёт в ближайший отряд, нанося урона вполовину меньше, затем в следующий отряд, уменьшая свой урон ещё в 2 раза.",
+		"descr-ext": "Молния поражает четыре отряда."
+	},
+	"formula": "@SP*40+25",
+	"combat": true,
+	"mass": true,
+	"type": ["air", "area", "instant", "self", "enemy"],
+	"cost": 24,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*40+50"
+	},
+	"expert": {
+		"formula": "@SP*40+100",
+		"descr-ext": "Bolt strikes five troops.",
+		"ru": {
+			"descr-ext": "Молния поражает пять отрядов."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 42,
+	"level": 4,
+	"title": "Fire Shield",
+	"descr": "Target allied stack gains a shield of fire, that damages all units trying to attack it in melee.",
+	"ru": {
+		"title": "Огненный щит",
+		"descr": "Отряд, на который наложено заклинание, возвращает часть урона атакующему в ближнем бою."
+	},
+	"formula": "@dmg*0.2",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "buff", "dmg", "self"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@dmg*0.25"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@dmg*0.3"
+	},
+	"artifacts": []
+},{
+	"id": 43,
+	"level": 4,
+	"title": "Inferno",
+	"descr": " It creates massive flames, that covers the target hex and two hexes around it causing damage to all creatures within range.",
+	"ru": {
+		"title": "Инферно",
+		"descr": "Заклинание поражает огнём площадь диаметром в пять клеток."
+	},
+	"formula": "@SP*10+20",
+	"combat": true,
+	"mass": true,
+	"type": ["fire", "area", "instant", "self", "enemy"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@SP*10+40"
+	},
+	"expert": {
+		"formula": "@SP*10+80"
+	},
+	"artifacts": []
+},{
+	"id": 44,
+	"level": 2,
+	"title": "Frenzy",
+	"descr": "One friendly unit's attack rating is increased by troop's defense rating, and its defense rating is reduced to zero.",
+	"ru": {
+		"title": "Бешенство",
+		"descr": "Атака выбранного существа увеличивается за счёт защиты. Защита отряда становится равной нулю."
+	},
+	"formula": "@At+@Df",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "buff", "dmg", "mind", "self"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@At+@Df*1.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@At+@Df*2"
+	},
+	"artifacts": []
+	
+},{
+	"id": 45,
+	"level": 2,
+	"title": "Quicksand",
+	"descr": "The spell places quicksand pits randomly in combat field hexes. They are invisible to enemy hero, unless the hero has a creature fighting on native terrain. A creature stack that tries to move through a hex with quicksand pit is halted and cannot act until next round. Once a pit is stepped on, it is revealed for all to see.",
+	"descr-ext": "Quicksand pits are placed in 4 random hexes.",
+	"ru": {
+		"title": "Зыбучие пески",
+		"descr": "Случайным образом размещает на поле битвы участки зыбучего песка, видимые только тому, кто направил заклинание, а также существам, для которых данный тип местности является «родным». Если отряд попал на зыбучий песок, его ход кончается, и участок с зыбучим песком становится видимым для всех."
+	},
+	"combat": true,
+	"mass": true,
+	"type": ["earth", "area", "move", "enemy"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"descr-ext": "Quicksand pits are placed in 6 random hexes."
+	},
+	"expert": {
+		"descr-ext": "Quicksand pits are placed in 8 random hexes."
+	},
+	"artifacts": []
+},{
+	"id": 46,
+	"level": 2,
+	"title": "Fire Wall",
+	"descr": "A wall of fire is produced at target hex. A troop passing through these hexes takes some damage. Flying creatures only take damage if they land on these squares.",
+	"descr-ext": "Fire Wall has 2 hex wide.",
+	"ru": {
+		"title": "Стена огня",
+		"descr": "Размещает на поле боя огненную стену. Любые существа, проходящие через неё, получают урон. Летающие существа получают урон, только если садятся на эти клетки.",
+		"descr-ext": "Стена занимает две клетки."
+	},
+	"formula": "@SP*10+10",
+	"combat": true,
+	"mass": true,
+	"type": ["fire", "area", "enemy", "self"],
+	"cost": 8,
+	"base": {
+		"cost": 6
+	},
+	"advanced": {
+		"formula": "@SP*10+20",
+		"descr-ext": "Fire Wall has 3 hex wide.",
+		"ru": {
+			"descr-ext": "Стена занимает три клетки."
+		}
+	},
+	"expert": {
+		"formula": "@SP*10+50",
+		"descr-ext": "Fire Wall has 3 hex wide.",
+		"ru": {
+			"descr-ext": "Стена занимает три клетки."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 47,
+	"level": 3,
+	"title": "Land Mine",
+	"descr": "Produces a number of land mines at random locations. All friendly troops can cross the mines safely. All enemy troops, except those immune, will take damage from the mines, but this spell cannot be cast if the enemy started the battle with at least one unit fighting on its Native Terrain which is not immune to the effects of the spell. The Tower garrison land mines will do damage to any enemy troop not immune to the effects of this spell, even Tower troops native to snow.",
+	"ru": {
+		"title": "Мины",
+		"descr": "Случайным образом размещает на поле боя участки с минами, которые видны только заклинателю и существам, для которых эта местность является родной. Любой отряд, наступивший на мину, получает урон."
+	},
+	"formula": "@SP*10+25",
+	"combat": true,
+	"mass": true,
+	"type": ["fire", "area", "enemy", "self"],
+	"cost": 18,
+	"base": {
+		"cost": 15
+	},
+	"advanced": {
+		"formula": "@SP*10+50"
+	},
+	"expert": {
+		"formula": "@SP*10+100"
+	},
+	"artifacts": []
+},{
+	"id": 48,
+	"level": 4,
+	"title": "Meteor Shower",
+	"descr": "Deals damage to an area with a diameter of three cells",
+	"ru": {
+		"title": "Метеоритный дождь",
+		"descr": "Наносит урон на площадь диаметром в три клетки."
+	},
+	"formula": "@SP*25+25",
+	"combat": true,
+	"mass": true,
+	"type": ["earth", "instant", "area", "self", "enemy"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"formula": "@SP*25+50"
+	},
+	"expert": {
+		"formula": "@SP*25+100"
+	},
+	"artifacts": []
+},{
+	"id": 49,
+	"level": 4,
+	"title": "Ressurection",
+	"descr": "It resurrects dead creatures in target allied stack. If your Spell Power and Earth Magic secondary skill level doesn't allow you to resurrect a creature whose health points limit is too high, it cannot be resurrected.",
+	"descr-ext": "Restored to life only for the duration of the current battle.",
+	"ru": {
+		"title": "Воскрешение",
+		"descr": "Воскрешает некоторое количество воинов в выбранном отряде. К мертвецам данное заклинание не применимо. Если нет достаточного уровня навыка, чтобы восстановить целое количество очков жизни, то в воскрешении может быть отказано.",
+		"descr-ext": "Воскрешаемые воины после битвы будут вновь утеряны."
+	},
+	"formula": "@SP*50+40",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "hp", "self"],
+	"cost": 20,
+	"base": {
+		"cost": 16
+	},
+	"advanced": {
+		"formula": "@SP*50+80",
+		"descr-ext": "",
+		"ru": {
+			"descr-ext": ""
+		}
+	},
+	"expert": {
+		"formula": "@SP*50+160",
+		"descr-ext": "",
+		"ru": {
+			"descr-ext": ""
+		}
+	},
+	"artifacts": []
+},{
+	"id": 50,
+	"level": 2,
+	"title": "Protection from Air",
+	"descr": "It reduces damage from air spells for target allied troop.",
+	"ru": {
+		"title": "Защита от Воздуха",
+		"descr": "Уменьшает урон, наносимый заклинаниями школы Воздуха."
+	},
+	"formula": "@mdmg*0.3",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "def", "self"],
+	"cost": 7,
+	"base": {
+		"cost": 5
+	},
+	"advanced": {
+		"formula": "@mdmg*0.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@mdmg*0.5"
+	},
+	"artifacts": []
+	
+},{
+	"id": 51,
+	"level": 3,
+	"title": "Protection from Earth",
+	"descr": "It reduces damage from earth spells for target allied troop.",
+	"ru": {
+		"title": "Защита от Земли",
+		"descr": "Уменьшает урон, наносимый заклинаниями школы Земли."
+	},
+	"formula": "@mdmg*0.3",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "buff", "def", "self"],
+	"cost": 12,
+	"base": {
+		"cost": 9
+	},
+	"advanced": {
+		"formula": "@mdmg*0.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@mdmg*0.5"
+	},
+	"artifacts": []
+	
+},{
+	"id": 52,
+	"level": 1,
+	"title": "Protection from Fire",
+	"descr": "It reduces damage from fire spells for target allied troop.",
+	"ru": {
+		"title": "Защита от Огня",
+		"descr": "Уменьшает урон, наносимый заклинаниями школы Огня."
+	},
+	"formula": "@mdmg*0.3",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "buff", "def", "self"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@mdmg*0.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@mdmg*0.5"
+	},
+	"artifacts": []
+	
+},{
+	"id": 53,
+	"level": 1,
+	"title": "Protection from Water",
+	"descr": "It reduces damage from water spells for target allied troop.",
+	"ru": {
+		"title": "Защита от Воды",
+		"descr": "Уменьшает урон, наносимый заклинаниями школы Воды."
+	},
+	"formula": "@mdmg*0.3",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "buff", "def", "self"],
+	"cost": 5,
+	"base": {
+		"cost": 4
+	},
+	"advanced": {
+		"formula": "@mdmg*0.5"
+	},
+	"expert": {
+		"mass": true,
+		"formula": "@mdmg*0.5"
+	},
+	"artifacts": []
+},{
+	"id": 54,
+	"level": 4,
+	"title": "Town Portal",
+	"descr": "It teleports the casting hero to the nearest allied town.",
+	"ru": {
+		"title": "Городской портал",
+		"descr": "Перемещает героя в ближайший свой не занятый героем город."
+	},
+	"combat": false,
+	"type": ["earth", "move", "hero"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"descr": "It teleports the casting hero to any allied town."
+	},
+	"expert": {
+		"descr": "Перемещает героя в любой свой не занятый героем город."
+	},
+	"artifacts": []
+},{
+	"id": 55,
+	"level": 4,
+	"title": "Counterstrike",
+	"descr": "Target, allied troop can retaliate against one additional attack per round.",
+	"ru": {
+		"title": "Ответный удар",
+		"descr": "Выбранный дружественный отряд отвечает и на второй удар."
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "dmg", "self"],
+	"cost": 24,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"descr": "Target, allied troop can retaliate against two additional attacks per round.",
+		"ru": {
+			"descr": "Выбранный дружественный отряд отвечает на три удара."
+		}
+	},
+	"expert": {
+		"mass": true,
+		"descr": "All allied troops can retaliate against two additional attacks per round.",
+		"ru": {
+			"descr": "Все свои отряды отвечают трижды."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 56,
+	"level": 4,
+	"title": "Armageddon",
+	"descr": "It damages all creatures on the battlefield, including the caster's own troops. However, a few creatures can resist the spell due to their spell immunities.",
+	"ru": {
+		"title": "Армагедон",
+		"descr": "Наносит мгновенный урон всем отрядам и машинам."
+	},
+	"formula": "@SP*50+30",
+	"combat": true,
+	"mass": true,
+	"type": ["fire", "instant", "area", "enemy", "self"],
+	"cost": 24,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*50+60"
+	},
+	"expert": {
+		"formula": "@SP*50+120"
+	},
+	"artifacts": []
+},{
+	"id": 57,
+	"level": 5,
+	"title": "Dimension Door",
+	"descr": "Teleports hero to a selected (unoccupied and visible) location on the adventure map.",
+	"descr-ext": "The spell may be cast twice per day and reduces the hero's movement by three tiles for each casting.",
+	"ru": {
+		"title": "Дверь измерений",
+		"descr": "Переносит героя на незанятую клетку в пределах восьми клеток вокруг. Каждое использование тратит очки хода.",
+		"descr-ext": "За один день можно использовать это заклинание дважды."
+	},
+	"combat": false,
+	"type": ["air", "move", "hero"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"descr-ext": "The spell may be cast three times per day and reduces the hero's movement by three tiles for each casting.",
+		"ru": {
+			"descr": "За один день можно использовать это заклинание трижды."
+		}
+	},
+	"expert": {
+		"descr-ext": "The spell may be cast three times per day and reduces the hero's movement by two tiles for each casting.",
+		"ru": {
+			"descr": "За один день можно использовать это заклинание трижды."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 58,
+	"level": 3,
+	"title": "Hypnotize",
+	"descr": "It puts an enemy with sum health less than some points under the spellcasters control, and are therefore counted as an allied unit.",
+	"ru": {
+		"title": "Гипноз",
+		"descr": "Позволяет управлять вражеским отрядом, если суммарное его здоровье меньше порогового значения."
+	},
+	"formula": "@SP*25+10",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "move", "dmg", "enemy"],
+	"cost": 18,
+	"base": {
+		"cost": 15
+	},
+	"advanced": {
+		"formula": "@SP*25+20"
+	},
+	"expert": {
+		"formula": "@SP*25+50"
+	},
+	"artifacts": []
+},{
+	"id": 59,
+	"level": 4,
+	"title": "Clone",
+	"descr": "Creates a duplicate of target, allied troop of some level. The duplicate can attack but is dispelled if it receives any damage. Maximum troop level:",
+	"descr-ext": "5",
+	"ru": {
+		"title": "Фантом",
+		"descr": "На время битвы дублирует союзный отряд, до определённого уровня существа. Клон может атаковать, но исчезает, когда получает урон. Максимальный уровень существ, к которым возможно применить заклинание:",
+		"descr-ext": "5"
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "dmg", "self", "summon"],
+	"cost": 24,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"descr-ext": "6",
+		"ru": {
+			"descr-ext": "6"
+		}
+	},
+	"expert": {
+		"descr-ext": "7",
+		"ru": {
+			"descr-ext": "7"
+		}
+	},
+	"artifacts": []
+},{
+	"id": 60,
+	"level": 4,
+	"title": "Prayer",
+	"descr": "Increases the Speed, Attack and Defense stats of a target, allied stack.",
+	"descr-ext": "Increased by 2.",
+	"ru": {
+		"title": "Молитва",
+		"descr": "Увеличивает атаку, защиту и скорость выбранного подразделения.",
+		"descr-ext": "Параметры увеличиваются на 2."
+	},
+	"combat": true,
+	"mass": false,
+	"type": ["water", "buff", "dmg", "self", "move", "def"],
+	"cost": 16,
+	"base": {
+		"cost": 12
+	},
+	"advanced": {
+		"descr-ext": "Increased by 4.",
+		"ru": {
+			"descr-ext": "Параметры увеличиваются на 4."
+		}
+	},
+	"expert": {
+		"mass": true,
+		"descr-ext": "Increased by 4.",
+		"ru": {
+			"descr-ext": "Параметры увеличиваются на 4."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 61,
+	"level": 5,
+	"title": "Summon Air Elemental",
+	"descr": "It summons a stack of Air Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
+	"ru": {
+		"title": "Призыв воздуха",
+		"descr": "Позволяет призвать определённое количество Элементалей Воздуха. Во время действия заклинания нельзя призвать других элементалей."
+	},
+	"formula": "@SP*2",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "summon", "dmg", "self", "hp"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*3"
+	},
+	"expert": {
+		"formula": "@SP*4"
+	},
+	"artifacts": []
+},{
+	"id": 62,
+	"level": 5,
+	"title": "Summon Earth Elemental",
+	"descr": "It summons a stack of Earth Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
+	"ru": {
+		"title": "Призыв земли",
+		"descr": "Позволяет призвать определённое количество Элементалей Земли. Во время действия заклинания нельзя призвать других элементалей."
+	},
+	"formula": "@SP*2",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "summon", "dmg", "self", "hp"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*3"
+	},
+	"expert": {
+		"formula": "@SP*4"
+	},
+	"artifacts": []
+},{
+	"id": 63,
+	"level": 5,
+	"title": "Summon Fire Elemental",
+	"descr": "It summons a stack of Fire Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
+	"ru": {
+		"title": "Призыв огня",
+		"descr": "Позволяет призвать определённое количество Элементалей Огня. Во время действия заклинания нельзя призвать других элементалей."
+	},
+	"formula": "@SP*2",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "summon", "dmg", "self", "hp"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*3"
+	},
+	"expert": {
+		"formula": "@SP*4"
+	},
+	"artifacts": []
+},{
+	"id": 64,
+	"level": 5,
+	"title": "Summon Water Elemental",
+	"descr": "It summons a stack of Water Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
+	"ru": {
+		"title": "Призыв воды",
+		"descr": "Позволяет призвать определённое количество Элементалей Воды. Во время действия заклинания нельзя призвать других элементалей."
+	},
+	"formula": "@SP*2",
+	"combat": true,
+	"mass": false,
+	"type": ["water", "summon", "dmg", "self", "hp"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "@SP*3"
+	},
+	"expert": {
+		"formula": "@SP*4"
+	},
+	"artifacts": []
+},{
+	"id": 65,
+	"level": 4,
+	"title": "Water Walk",
+	"descr": "It enables hero to move over water as if it were land, provided that he ends his turn on land. Movement cost is increased when moving over water.",
+	"descr-ext": "The casting hero may follow a movement path across water with 40% penalty.",
+	"ru": {
+		"title": "Хождение по воде",
+		"descr": "Позволяет герою передвигаться по воде, но оканчиваться передвижение должно обязательно на суше. Используются очки хода героя.",
+		"descr-ext": "Штраф на передвижение героя по воде составляет 40% от движения по суше."
+	},
+	"combat": false,
+	"type": ["water", "move", "hero"],
+	"cost": 12,
+	"base": {
+		"cost": 8
+	},
+	"advanced": {
+		"descr-ext": "The casting hero may follow a movement path across water with 20% penalty.",
+		"ru": {
+			"descr-ext": "Штраф на передвижение героя по воде составляет 20% от движения по суше."
+		}
+	},
+	"expert": {
+		"descr-ext": "The casting hero may follow a movement path across water with 0% penalty.",
+		"ru": {
+			"descr-ext": "Штраф на передвижение героя по воде отсутствует."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 66,
+	"level": 5,
+	"title": "Fly",
+	"descr": "It allows casting hero to fly over terrain (except rock) obstacles to an unoccupied map location. When flying over terrain that has its own penalty for the hero, the lesser of the penalties is applied. Cannot be used by a hero on a boat.",
+	"descr-ext": "Allows the casting hero to move over water and any obstacles on the map with 40% penalty.",
+	"ru": {
+		"title": "Полёт",
+		"descr": "Позволяет герою перелетать через препятствия.",
+		"descr-ext": "Преодолеваемое расстояние может составлять до 60% от нормального движения."
+	},
+	"combat": false,
+	"type": ["air", "move", "hero"],
+	"cost": 20,
+	"base": {
+		"cost": 15
+	},
+	"advanced": {
+		"descr-ext": "Allows the casting hero to move over water and any obstacles on the map with 20% penalty.",
+		"ru": {
+			"descr-ext": "Преодолеваемое расстояние может составлять до 20% от нормального движения."
+		}
+	},
+	"expert": {
+		"descr-ext": "Allows the casting hero to move over water and any obstacles on the map with 0% penalty.",
+		"ru": {
+			"descr-ext": "Штраф на передвижение героя отсутствует."
+		}
+	},
+	"artifacts": []
+},{
+	"id": 67,
+	"level": 5,
+	"title": "Sacrifice",
+	"descr": "The spell destroys (sacrifices) the target living troop in order to resurrect creatures of another stack back to life. The other stack must be receptive to the Resurrection spell. A sacrificed stack leaves an empty hex on the battlefield without anything to be resurrected or summoned as Demons.",
+	"ru": {
+		"title": "Жертва",
+		"descr": "Приносит в жертву дружественный отряд существ, чтобы воскресить погибшее подразделение. Количество воскрешенных существ зависит от силы заклинания героя и здоровья жертвуемого отряда. Подсчитывается суммарное здоровье."
+	},
+	"formula": "(@SP+@hp+3)*@n",
+	"combat": true,
+	"mass": false,
+	"type": ["fire", "hp", "self"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "(@SP+@hp+6)*@n"
+	},
+	"expert": {
+		"formula": "(@SP+@hp+10)*@n"
+	},
+	"artifacts": []
+},{
+	"id": 68,
+	"level": 5,
+	"title": "Magic Mirror",
+	"descr": "It causes enemy spells cast on target allied troop to have a chance to be redirected to a random enemy troop. In addition to its main effect, Magic Mirror also makes its target immune to Hypnotize spell (the original owner of the already hypnotized creature still can cast Magic Mirror on it but Hypnotize effect won't be removed).",
+	"ru": {
+		"title": "Магическое зеркало",
+		"descr": "С определённой вероятностью отражает враждебные заклинания в направлении случайно выбранного отряда врага. Также позволяет защитить отряд от воздействия гипноза."
+	},
+	"formula": "20%",
+	"combat": true,
+	"mass": false,
+	"type": ["air", "buff", "self"],
+	"cost": 25,
+	"base": {
+		"cost": 20
+	},
+	"advanced": {
+		"formula": "30%"
+	},
+	"expert": {
+		"formula": "40%"
+	},
+	"artifacts": []
+},{
+	"id": 69,
+	"level": 5,
+	"title": "Implosion",
+	"descr": "It is the most destructive spell for a single creature stack.",
+	"ru": {
+		"title": "Взрыв",
+		"descr": "Наносит огромный урон выбранному вражескому отряду."
+	},
+	"formula": "@SP*75+100",
+	"combat": true,
+	"mass": false,
+	"type": ["earth", "direct", "enemy"],
+	"cost": 30,
+	"base": {
+		"cost": 25
+	},
+	"advanced": {
+		"formula": "@SP*75+200"
+	},
+	"expert": {
+		"formula": "@SP*75+300"
+	},
+	"artifacts": []
 }
 ]}

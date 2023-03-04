@@ -12,8 +12,8 @@
 
 		<xsl:variable name="spells">
 			<xsl:choose>
-				<xsl:when test="starts-with($head.title-data-xml, '3')"><xsl:value-of select="$index.spells-homm2"/></xsl:when>
-				<xsl:otherwise><xsl:value-of select="$index.spells-homm3"/></xsl:otherwise>
+				<xsl:when test="starts-with($head.title-data-xml, '3')"><xsl:value-of select="$index.spells-homm3"/></xsl:when>
+				<xsl:otherwise><xsl:value-of select="$index.spells-homm2"/></xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		<script id="spells" type="application/json"><xsl:value-of select="$spells"/></script>

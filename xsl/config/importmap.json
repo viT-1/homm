@@ -1,9 +1,11 @@
 {
 	"imports": {
 		"main": "xsl/html/body/main/main.js",
-		"store": "xsl/html/body/main/store.js",
+		"router": "xsl/html/body/main/router/index.router.js",
+		"store": "xsl/html/body/main/store/index.store.js",
 		"merge": "externals/merge.js",
 		"vue": "externals/vue.min.js",
-		"vuex": "externals/vuex.min.js"
+		"vuex": "externals/vuex.min.js",
+		"vue-router": "externals/vue-router.min.js"
 	}
 }

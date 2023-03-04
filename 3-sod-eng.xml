@@ -7,26 +7,25 @@
 	</head>
 	<body>
 		<main>
-			<magic-book>
-				<nav data-xml="3-sod-eng">
-					<menu role="navigation" iam-filter="main">
-						<a href="#/battle/" title="Battle spells">Battle</a>
-						<a href="#/adv-map/" title="Spells for adventure map">For map</a>
-						<a href="#/earth/" title="Spells in the School of Earth Magic">Earth Magic</a>
-						<a href="#/air/" title="Spells in the School of Air Magic">Air Magic</a>
-						<a href="#/fire/" title="Spells in the School of Fire Magic">Fire Magic</a>
-						<a href="#/water/" title="Spells in the School of Water Magic">Water Magic</a>
-					</menu>
-					<menu role="navigation" iam-filter="additional">
-						<a href="#/mind/" title="Battle mind spells">Mind</a>
-						<a href="#/movement/" title="Movement spells">Movement</a>
-						<a href="#/magic-dmg/" title="Battle damage spells">Magic damage</a>
-						<a href="#/creature-dmg/" title="Creature damage modificators">Physical modificators</a>
-						<a href="#/summon/" title="Spells that add creatures to battle">Summon</a>
-						<a href="#/creature-spec/" title="Creature specific spells">Specific</a>
-					</menu>
-				</nav>
-			</magic-book>
+			<magic-book></magic-book>
+			<nav data-xml="3-sod-eng">
+				<menu role="navigation" iam-filter="main">
+					<a href="#/battle/" title="Battle spells">Battle</a>
+					<a href="#/adv-map/" title="Spells for adventure map">For map</a>
+					<a href="#/earth/" title="Spells in the School of Earth Magic">Earth Magic</a>
+					<a href="#/air/" title="Spells in the School of Air Magic">Air Magic</a>
+					<a href="#/fire/" title="Spells in the School of Fire Magic">Fire Magic</a>
+					<a href="#/water/" title="Spells in the School of Water Magic">Water Magic</a>
+				</menu>
+				<menu role="navigation" iam-filter="additional">
+					<a href="#/mind/" title="Battle mind spells">Mind</a>
+					<a href="#/movement/" title="Movement spells">Movement</a>
+					<a href="#/magic-dmg/" title="Battle damage spells">Magic damage</a>
+					<a href="#/creature-dmg/" title="Creature damage modificators">Physical modificators</a>
+					<a href="#/summon/" title="Spells that add creatures to battle">Summon</a>
+					<a href="#/creature-spec/" title="Creature specific spells">Specific</a>
+				</menu>
+			</nav>
 		</main>
 		<hr class="css-naked-day" />
 	</body>

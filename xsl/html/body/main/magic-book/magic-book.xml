@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
-		<vue-ids-pager v-bind="{ ids: allIdsAfterFiltering, limit: 6 }">
+		<vue-ids-pager v-bind="{ ids: ids }">
 			<template v-slot="idsPager">
 				<div fix-vue="">
 					<button
@@ -15,12 +15,28 @@
 					<ul iam-spells="">
 						<magic-spell
 							v-bind="{spell: spell}"
-							v-for="spell in
-								getPageSpells(allSpellsAfterFiltering, idsPager.currentIds)" />
+							v-for="spell in getSpellsOnActivePage(idsPager.currentIds)" />
 					</ul>
 				</div>
 			</template>
 		</vue-ids-pager>
-		<slot name="nav"></slot>	
+		<nav data-xml="xsl/html/body/main/magic-book/magic-book">
+			<menu role="navigation" iam-filter="main">
+				<router-link iam-magic-book-mark="combat"
+					v-bind="getRouteTo({ combat: true })">Combat spells</router-link>
+				<router-link iam-magic-book-mark="map"
+					v-bind="getRouteTo({ combat: false })">Non combat spells</router-link>
+				<router-link iam-magic-book-mark="air"
+					v-bind="getRouteTo({ type: 'air' })">Air spells</router-link>
+				<router-link iam-magic-book-mark="earth"
+					v-bind="getRouteTo({ type: 'earth' })">Earth spells</router-link>
+				<router-link iam-magic-book-mark="fire"
+					v-bind="getRouteTo({ type: 'fire' })">Fire spells</router-link>
+				<router-link iam-magic-book-mark="water"
+					v-bind="getRouteTo({ type: 'water' })">Water spells</router-link>
+				<router-link iam-magic-book-mark="all"
+					v-bind="getRouteTo({ type: 'all' })">All spells</router-link>
+			</menu>
+		</nav>
 	</div>
 </script>

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="spec.xsl" type="text/xsl"?>
-<html>
+<html use="vue">
 	<head data-relpath-root="../../../../">
 		<title>HoMM: all components</title>
 		<link rel="stylesheet" href="magic-spell/magic-spell.css"/>
 		<script src="magic-spell/magic-spell.js"></script>
 		<link rel="stylesheet" href="magic-book/magic-book.css"/>
 		<script src="magic-book/magic-book.js"></script>
+		<script>
+			// vue-router mock
+			globalThis.homm_ns.components['magic-book'].methods.getRouteTo = function () {};
+			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
+		</script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>
 	</head>
 	<body>
@@ -21,7 +26,6 @@
 		<!-- <script src="main.spec.js"></script> -->
 
 		<script src="magic-spell/magic-spell.spec.vue.js"></script>
-		<script src="magic-book/magic-book.spec.js"></script>
 		<script src="magic-book/magic-book.spec.vue.js"></script>
 		<script src="vue-ids-pager/vue-ids-pager.spec.js"></script>
 	</body>

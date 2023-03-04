@@ -14,12 +14,14 @@
 	<xsl:variable name="externals" select="concat(head/@data-relpath-root, 'externals')"/>
 	<xsl:variable name="config" select="concat(head/@data-relpath-root, 'xsl/config')"/>
 	<html>
+		<xsl:apply-templates select="@*"/>
 	<head>
 		<link rel="shortcut icon" type="image/png" href="{$externals}/jasmine/jasmine_favicon.png"/>
 		<link rel="stylesheet" href="{$externals}/jasmine/jasmine.css"/>
 
+		<script src="{$externals}/promise-polyfill.min.js"></script>
 		<script src="{$config}/any-fills.js"></script>
-		<script src="{$externals}/merge.js"></script>
+		<script src="{$config}/config.js"></script>
 
 		<script src="{$externals}/jasmine/jasmine.js"></script>
 		<script src="{$externals}/jasmine/jasmine-html.js"></script>
@@ -32,9 +34,10 @@
 			});
 		</script>
 
-		<xsl:if test="body/main"><script src="{$externals}/vue.js"></script></xsl:if>
-		<script>globalThis.homm_ns = { components: {}, data: {} };</script>
-		<xsl:apply-templates select="head/node() | @*"/>
+		<xsl:if test="contains(@use, 'vue')"><script src="{$externals}/vue.js"></script></xsl:if>
+		<xsl:if test="contains(@use, 'vuex')"><script src="{$externals}/vuex.js"></script></xsl:if>
+		<script src="{$spec.mainFolderPath}/main.js"></script>
+		<xsl:apply-templates select="head/node()"/>
 
 		<style>.jasmine-results{ font-size: 16px; line-height: 20px; }</style>
 		<xsl:if test="contains(head/title/text(), 'HoMM: all')">
@@ -52,7 +55,6 @@
 		<!--vue components templates-->
 		<xsl:apply-templates select="script[@data-component-tmpl]"/>
 
-		<script src="{$spec.mainFolderPath}/main.js"></script>
 		<xsl:if test="main">
 			<script>
 				globalThis.homm_ns.f.appendVueConfig({ el: '[iam-app ~= "vueSpec"]' });

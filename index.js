@@ -1,5 +1,3 @@
-globalThis.homm_ns = { components: {} };
-
 (function (_ns) {
 	// @see https://gist.github.com/jakub-g/5286483ff5f29e8fdd9f#domcontentloaded-vs-load
 	// document.addEventListener('DOMContentLoaded', setup);
@@ -10,7 +8,28 @@ globalThis.homm_ns = { components: {} };
 		setAttrsIsOnOff();
 		parseJsons();
 		if (globalThis.depp && _ns.imports) {
-			deppLoadLibs(_ns.imports);
+			const paths = _ns.imports;
+
+			deppLoadScripts({
+				// app
+				main:	['#vue', paths.main],
+				store:	['#vue', '#vuex', '#main', paths.store],
+
+				// externals
+				'vue':			[paths['vue']],
+				'vuex':			[paths['vuex']],
+				'vue-router': 	[paths['vue-router']],
+			}, function () {
+				_ns.f.setGlobalStore();
+				// storeModules are independed from creating new Vuex.Store, they are configs only!
+				deppLoadScripts({
+					'store/spells': ['xsl/html/body/main/store/spells.store.js'],
+					'store/magic-book': ['xsl/html/body/main/magic-book/magic-book.store.js']
+				}, function() {
+					_ns.f.registerDeclaredStoreModules(_ns.store);
+					deppRequireApp({ el: '[iam-app ~= "vueMain"]' });
+				});
+			});
 		} else {
 			console.warn("Externals aren't loaded. Application is failed!");
 		}
@@ -68,63 +87,61 @@ globalThis.homm_ns = { components: {} };
 		} else {
 			console.warn("importmap.json isn't loaded!");
 		}
-
-		const scriptSpells = document.querySelector('#spells');
-		if (scriptSpells && scriptSpells.textContent && scriptSpells.textContent.indexOf('&spells') < 0) {
-			_ns.spells = JSON.parse(scriptSpells.textContent).spells;
-		} else {
-			console.warn("spells.json isn't loaded!");
-		}
 	}
 
-	// map of externals dependencies
-	function deppLoadLibs(paths) {
-		const libIds = Object.keys(paths);
-		if (!depp.isDefined(libIds[0])) {
-			depp.define({
-				'main':			['#merge', '#store', '#vue', paths.main],
-				'merge':		[paths.merge],
-				'store':		['#vue', '#vuex', paths.store],
-				'vue':			[paths.vue],
-				'vuex':			[paths.vuex],
-			});
+	function deppLoadScripts(deps, afterLoading) {
+		const depKeys = Object.keys(deps);
+		if (!depp.isDefined(depKeys[0])) {
+			depp.define(deps);
 		}
 
-		depp.require(libIds, function () {
-			deppRequireApp({ el: '[iam-app ~= "vueMain"]' });
-		});
+		depp.require(depKeys, afterLoading);
 	}
 
 	// Can be called only after 'main' script is loaded
 	function deppRequireApp(vueConfig) {
+		const computed = merge({
+			some: function () {
+				return this.computedSpells.length;
+			}
+		}, Vuex.mapGetters({
+			computedSpells: 'spells/all'
+		}));
+
 		// special configuration for appMain
-		if (_ns.store) {
-			Object.assign(vueConfig, {
-				store: _ns.store,
-				// data as a function to prevent mutating data properties in components
-				data: function () {
-					return {
-						some: this.$store.state.storeSpells.length,
-					}
-				},
-				computed: {
-					computedSpells: function () {
-						return this.$store.state.storeSpells;
-					}
-				}
-			});
-		}
+		Object.assign(vueConfig, {
+			store: _ns.store,
+			computed: computed,
+		});
 
 		// defined in html/body/main/main.js
 		_ns.f.appendVueConfig(vueConfig);
 
-		const compNames = [];
+		var compNames = [];
 		// defined in html/body/main/main.js
 		_ns.f.getComponentNames(globalThis.document, vueConfig.el, compNames);
+		if (compNames.indexOf('router-view') > -1) {
+			compNames = compNames.concat(_ns.routerViews);
+			_ns.routerViews.forEach(function (viewComponent) {
+				// searching in router view templates
+				_ns.f.getComponentNames(globalThis.document, '#' + viewComponent, compNames);
+			});
+		}
+
+		compNames = compNames.filter(function (name) {
+			return _ns.nativeComponents.indexOf(name) == -1;
+		});
 
 		deppDefineComponentsFiles(compNames);
+
 		// can register all components & subcomponents only after requiring src scripts!
-		depp.require(compNames, _ns.f.mount);
+		// TODO: require components & storeModules at once!
+		depp.require(compNames, function() {
+			// depp.done('components are ready');
+			deppLoadScripts({
+				router: ['#vue-router', '#main', _ns.imports.router],
+			}, _ns.f.mount);
+		});
 	}
 
 	function deppDefineComponentsFiles(componentsNames) {

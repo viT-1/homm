@@ -1,16 +1,9 @@
-// loaded by loadjs after vue loaded
-(function (_ns) {
-	const mainConfig = {
-		f: {}, // common functions fo vueMain and vueSpec
-		vues: [],
-	}
-
-	// adds mainConfig to properties defined in index.js: imports & spells and store.js: store
-	merge(_ns, mainConfig);
-})(globalThis.homm_ns);
-
 // functions for work with XHTML
 (function (_ns) {
+	if (!_ns.f) {
+		_ns.f = {};
+	}
+	
 	// recursive function to get plain list of components in cssquery (unique) element
 	_ns.f.getComponentNames = function (queryContext, cssQuery, reduceArray) {
 		const elem = queryContext.querySelector(cssQuery);
@@ -85,12 +78,13 @@
 		if (_ns.components) {
 			const componentDeclaration = _ns.components[componentName];
 
-			// component is already registered (spec context)
-			if (componentDeclaration && !componentDeclaration.template) {
+			if (false
+				// component is already registered (spec context)
+				|| (componentDeclaration && !componentDeclaration.template)
+				// but can be run before component registering!
+				|| (_ns.nativeComponents.indexOf(componentName) > -1)
+				|| (_ns.renderless.indexOf(componentName) > -1)) {
 				should = false;
-			} else {
-				const listOfRenderless = ['vue-ids-pager'];
-				should = listOfRenderless.indexOf(componentName) == -1;
 			}
 		}
 
@@ -113,6 +107,7 @@
 
 // functions for work with Vue
 (function (_ns) {
+	_ns.vues = [];
 	_ns.f.appendVueConfig = function (vueConfig) {
 		const isAlready = _ns.vues.filter(function (config) {
 			return config.el == vueConfig.el;

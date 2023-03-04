@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+<html use="vuex">
+	<head data-relpath-root="../../../../../">
+		<title>HoMM: magic-book store module</title>
+		<script src="../store/index.store.js"></script>
+		<script src="../store/spells.store.js"></script><!-- magic book store has dependency with spells store -->
+		<script src="magic-book.store.js"></script>
+		<script src="magic-book.store.spec.js"></script>
+	</head>
+</html>

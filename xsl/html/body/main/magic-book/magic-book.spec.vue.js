@@ -46,7 +46,7 @@
 		}
 	}];
 
-	describe('main > magic-book Vue template (filtering)', function () {
+	describe('main > magic-book Vue template', function () {
 		function setupIt (config) {
 			// all subcomponents registered globally
 			const setup = {
@@ -71,36 +71,19 @@
 			};
 
 			const App = Vue.extend(setup);
-			const vm = new App().$mount(
-				_ns.f.createMountDiv(jasmine.currentTest.description)
-			);
+			const cssQuery = _ns.f.createMountDiv(jasmine.currentTest.description);
+			const vm = new App().$mount(cssQuery);
 
-			return vm;
+			return { vm: vm, query: cssQuery };
 		}
 
-		it('show us all spells by default', function () {
-			const vm = setupIt({ computed: { spells: predefinedSpells } });
-			const magicSpells = vm.$el.querySelectorAll('li');
+		it('show us all spells from props', function () {
+			const setup = setupIt({ computed: { spells: predefinedSpells } });
+			const vm = setup.vm;
+			const magicSpells = document.querySelectorAll(setup.query + ' li');
 
 			expect(magicSpells.length).toEqual(predefinedSpells.length);
 			expect(magicSpells.length).toEqual(vm.computedSpells.length);
-		});
-
-		it('show us less spells with filtering by spell level', function () {
-			const config = { filters: { level: 1 } };
-			// app
-			const vm = setupIt({ data: { configBook: config } });
-			const magicSpells = vm.$el.querySelectorAll('li');
-
-			expect(magicSpells.length).toBeLessThan(predefinedSpells.length);
-		});
-
-		it('show us less spells with filtering by basic wisdom', function () {
-			const config = { filters: { wisdom: 1 } };
-			const vm = setupIt({ data: { configBook: config } });
-
-			const magicSpells = vm.$el.querySelectorAll('li');
-			expect(magicSpells.length).toEqual(4);
 		});
 	});
 

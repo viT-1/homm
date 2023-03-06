@@ -1,4 +1,5 @@
 Pet project to make Vue SPA without NodeJS bundlers, but XSLT "bundling" and JohnnyDepp dependencies library.
+Just download ZIP, extract in on your drive and click on [index.html](https://viT-1.github.io/homm/), and it's ready!
 
 ## Browsers support
 These browsers can display XML-translation with local files:
@@ -44,6 +45,19 @@ Solved with custom namespace:
 
 The code still use deprecated `this.$scopedSlots` for renderless component.
 Without Vue3 but with Composition API Vue2, can we get rid of the obsolete?
+
+## Vuex
+Vuex store consists of modules:
+- [spells](https://github.com/viT-1/homm/blob/main/xsl/html/body/main/store/spells.store.js) (by reading json included into DOM)
+- [magic-book state](https://github.com/viT-1/homm/blob/main/xsl/html/body/main/magic-book/magic-book.store.js) of filtering
+
+[Root store](https://github.com/viT-1/homm/blob/main/xsl/html/body/main/store/index.store.js) saved to `homm.store`.
+
+## Vue-router
+[Used](https://github.com/viT-1/homm/blob/main/xsl/html/body/main/router/index.router.js) in history mode, without hash, but query.
+
+## i18n
+Hard-coded internationalization by html@lang attribute and additional [i18n.xsl](https://github.com/viT-1/homm/blob/main/xsl/config/i18n.xsl). Vue code should be as simple as possible, without additional code about i18n!
 
 ## Linting
 This project isn't using NodeJS, that's why isn't linted.

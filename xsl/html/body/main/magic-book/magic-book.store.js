@@ -1,4 +1,4 @@
-// Хранит состояние фильтрации заклинаний. Пэйджинг работает без vuex
+// Stores the spell filtering state. Paging works without vuex
 (function (_ns) {
 	const defaultFilterConfig = {
 		combat: true, // TODO: default/reSet filter should be { combat: true }

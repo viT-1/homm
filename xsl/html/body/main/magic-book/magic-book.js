@@ -8,6 +8,10 @@
 			},
 		},
 		computed: {
+			// if filtered by school magic, than -2 spells for caption place
+			perPage: function () {
+				return this.$route.query.type === 'all' ? 12 : 10;
+			},
 			ids: function () {
 				return _ns.f.getIds(this.spells);
 			},

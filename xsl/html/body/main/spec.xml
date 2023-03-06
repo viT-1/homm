@@ -10,6 +10,7 @@
 		<script>
 			// vue-router mock
 			globalThis.homm_ns.components['magic-book'].methods.getRouteTo = function () {};
+			globalThis.homm_ns.components['magic-book'].computed.perPage = function () { return 10; }
 			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
 		</script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>

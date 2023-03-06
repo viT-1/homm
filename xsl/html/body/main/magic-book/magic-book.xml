@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
-		<vue-ids-pager v-bind="{ ids: ids }">
+		<vue-ids-pager v-bind="{ ids: ids, limit: perPage }">
 			<template v-slot="idsPager">
 				<div fix-vue="">
 					<button
@@ -22,20 +22,20 @@
 		</vue-ids-pager>
 		<nav data-xml="xsl/html/body/main/magic-book/magic-book">
 			<menu role="navigation" iam-filter="main">
-				<router-link iam-magic-book-mark="combat"
-					v-bind="getRouteTo({ combat: true })">Combat spells</router-link>
-				<router-link iam-magic-book-mark="map"
-					v-bind="getRouteTo({ combat: false })">Non combat spells</router-link>
-				<router-link iam-magic-book-mark="air"
-					v-bind="getRouteTo({ type: 'air' })">Air spells</router-link>
-				<router-link iam-magic-book-mark="earth"
-					v-bind="getRouteTo({ type: 'earth' })">Earth spells</router-link>
-				<router-link iam-magic-book-mark="fire"
-					v-bind="getRouteTo({ type: 'fire' })">Fire spells</router-link>
-				<router-link iam-magic-book-mark="water"
-					v-bind="getRouteTo({ type: 'water' })">Water spells</router-link>
-				<router-link iam-magic-book-mark="all"
-					v-bind="getRouteTo({ type: 'all' })">All spells</router-link>
+				<router-link iam-magic-book-mark="combat" v-bind="getRouteTo({ combat: true })">
+					<span iam-magic-book-mark-title="combat">Combat spells</span></router-link>
+				<router-link iam-magic-book-mark="map" v-bind="getRouteTo({ combat: false })">
+					<span iam-magic-book-mark-title="map">Non combat spells</span></router-link>
+				<router-link iam-magic-book-mark="air" v-bind="getRouteTo({ type: 'air' })">
+					<span iam-magic-book-mark-title="air">Air spells</span></router-link>
+				<router-link iam-magic-book-mark="earth" v-bind="getRouteTo({ type: 'earth' })">
+					<span iam-magic-book-mark-title="earth">Earth spells</span></router-link>
+				<router-link iam-magic-book-mark="fire" v-bind="getRouteTo({ type: 'fire' })">
+					<span iam-magic-book-mark-title="fire">Fire spells</span></router-link>
+				<router-link iam-magic-book-mark="water" v-bind="getRouteTo({ type: 'water' })">
+					<span iam-magic-book-mark-title="water">Water spells</span></router-link>
+				<router-link iam-magic-book-mark="all" v-bind="getRouteTo({ type: 'all' })">
+					<span iam-magic-book-mark-title="all">All spells</span></router-link>
 			</menu>
 		</nav>
 	</div>

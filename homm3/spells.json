@@ -651,7 +651,7 @@
 	"formula": "@SP*10+15",
 	"combat": true,
 	"mass": true,
-	"type": ["water", "instant", "area", "enemy", "self"],
+	"type": ["water", "instant", "direct", "area", "enemy", "self"],
 	"cost": 12,
 	"base": {
 		"cost": 9
@@ -724,7 +724,7 @@
 	"formula": "@SP*10+15",
 	"combat": true,
 	"mass": true,
-	"type": ["fire", "area", "instant", "self", "enemy"],
+	"type": ["fire", "area", "direct", "self", "enemy"],
 	"cost": 15,
 	"base": {
 		"cost": 12
@@ -748,7 +748,7 @@
 	"formula": "@SP*10+10",
 	"combat": true,
 	"mass": true,
-	"type": ["air", "area", "instant", "self", "enemy"],
+	"type": ["air", "area", "direct", "self", "enemy"],
 	"cost": 15,
 	"base": {
 		"cost": 12
@@ -1009,7 +1009,7 @@
 	"formula": "1",
 	"combat": true,
 	"mass": false,
-	"type": ["fire", "area", "debuff", "dmg", "self", "enemy"],
+	"type": ["fire", "area", "debuff", "dmg", "move", "self", "enemy"],
 	"cost": 20,
 	"base": {
 		"cost": 16
@@ -1037,7 +1037,7 @@
 	"formula": "@SP*40+25",
 	"combat": true,
 	"mass": true,
-	"type": ["air", "area", "instant", "self", "enemy"],
+	"type": ["air", "area", "direct", "self", "enemy"],
 	"cost": 24,
 	"base": {
 		"cost": 20
@@ -1090,7 +1090,7 @@
 	"formula": "@SP*10+20",
 	"combat": true,
 	"mass": true,
-	"type": ["fire", "area", "instant", "self", "enemy"],
+	"type": ["fire", "area", "direct", "self", "enemy"],
 	"cost": 16,
 	"base": {
 		"cost": 12
@@ -1222,7 +1222,7 @@
 	"formula": "@SP*25+25",
 	"combat": true,
 	"mass": true,
-	"type": ["earth", "instant", "area", "self", "enemy"],
+	"type": ["earth", "direct", "area", "self", "enemy"],
 	"cost": 16,
 	"base": {
 		"cost": 12
@@ -1435,7 +1435,7 @@
 	"formula": "@SP*50+30",
 	"combat": true,
 	"mass": true,
-	"type": ["fire", "instant", "area", "enemy", "self"],
+	"type": ["fire", "direct", "area", "enemy", "self"],
 	"cost": 24,
 	"base": {
 		"cost": 20

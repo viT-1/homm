@@ -12,9 +12,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "dmg", "self"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "max(@dmg)+1"
@@ -37,9 +37,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "buff", "dmg", "self"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@At+6"
@@ -61,9 +61,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "hp", "self"],
-	"cost": 6,
+	"points": 6,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "@SP*5+20"
@@ -86,9 +86,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "debuff", "dmg", "enemy"],
-	"cost": 6,
+	"points": 6,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "min(@dmg)-1"
@@ -101,7 +101,7 @@
 },{
 	"id": 5,
 	"level": 1,
-	"title": "Dispel Magic",
+	"title": "Dispel",
 	"descr": "Removes all spell effects (except Disruption Ray) of target allied creature.",
 	"ru": {
 		"title": "Снятие заклинаний",
@@ -110,9 +110,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "self", "enemy"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"descr": "Removes all spells of target any creature, except Disruption Ray.",
@@ -141,9 +141,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "move", "self"],
-	"cost": 6,
+	"points": 6,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "@spd + 5"
@@ -165,9 +165,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "earth", "fire", "water", "direct", "enemy"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@SP*10 + 20"
@@ -189,9 +189,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "buff", "def", "self"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@dmg*0.7"
@@ -213,9 +213,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "debuff", "move", "enemy"],
-	"cost": 6,
+	"points": 6,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "@mv*0.5"
@@ -237,9 +237,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "buff", "def", "self"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@Df+6"
@@ -259,9 +259,9 @@
 	},
 	"combat": false,
 	"type": ["earth", "view"],
-	"cost": 2,
+	"points": 2,
 	"base": {
-		"cost": 1
+		"points": 1
 	},
 	"advanced": {
 		"descr": "Displays the location of all mines and loose resources on the view world screen.",
@@ -290,9 +290,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "dmg", "self"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"formula": "@At+6"
@@ -315,9 +315,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "debuff", "move", "enemy", "mind"],
-	"cost": 10,
+	"points": 10,
 	"base": {
-		"cost": 8
+		"points": 8
 	},
 	"advanced": {
 		"formula": "@dmg*0.25"
@@ -339,9 +339,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "direct", "enemy"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"formula": "@SP*20 + 20"
@@ -363,9 +363,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["earth", "area", "direct", "self", "enemy"],
-	"cost": 10,
+	"points": 10,
 	"base": {
-		"cost": 8
+		"points": 8
 	},
 	"advanced": {
 		"formula": "@SP*5 + 20"
@@ -387,9 +387,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "debuff", "def", "enemy"],
-	"cost": 10,
+	"points": 10,
 	"base": {
-		"cost": 8
+		"points": 8
 	},
 	"advanced": {
 		"formula": "@Df - 4"
@@ -411,9 +411,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "buff", "dmg", "self"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"descr": "Target allied troop's attack rating is increased against behemoths, dragons, hydras, firebirds, angels and devils.",
@@ -440,9 +440,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "move", "enemy", "self"],
-	"cost": 7,
+	"points": 7,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"descr": "Removes any non-magic obstacle or Fire Wall of the caster's choice from the battlefield. Integrated obstacles, such as cliffs are not affected.",
@@ -471,9 +471,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "direct", "enemy"],
-	"cost": 10,
+	"points": 10,
 	"base": {
-		"cost": 8
+		"points": 8
 	},
 	"advanced": {
 		"formula": "@SP*25+20"
@@ -494,9 +494,9 @@
 	"formula": "50%",
 	"combat": false,
 	"type": ["water", "move"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"formula": "75%"
@@ -517,9 +517,9 @@
 	"formula": "50%",
 	"combat": false,
 	"type": ["water", "move"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 7
+		"points": 7
 	},
 	"advanced": {
 		"formula": "75%"
@@ -539,9 +539,9 @@
 	},
 	"combat": false,
 	"type": ["air", "view", "hero"],
-	"cost": 4,
+	"points": 4,
 	"base": {
-		"cost": 2
+		"points": 2
 	},
 	"advanced": {
 		"descr": "All of the hero's creature troops are displayed as if they were composed of the most powerful creatures in the hero's army. Troop population numbers are represented as 0.",
@@ -568,9 +568,9 @@
 	"formula": "@SP*1",
 	"combat": false,
 	"type": ["air", "earth", "fire", "water", "view"],
-	"cost": 4,
+	"points": 4,
 	"base": {
-		"cost": 2
+		"points": 2
 	},
 	"advanced": {
 		"formula": "@SP*2",
@@ -600,9 +600,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "hp", "self"],
-	"cost": 15,
+	"points": 15,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@SP*50+60"
@@ -624,9 +624,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "buff", "self"],
-	"cost": 15,
+	"points": 15,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": [1, 2, 3, 4]
@@ -652,9 +652,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["water", "instant", "direct", "area", "enemy", "self"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "@SP*10+30"
@@ -676,9 +676,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "area", "move", "self", "enemy"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "3"
@@ -700,9 +700,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "move", "self", "enemy"],
-	"cost": 20,
+	"points": 20,
 	"base": {
-		"cost": 17
+		"points": 17
 	},
 	"advanced": {
 		"formula": "3"
@@ -725,9 +725,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["fire", "area", "direct", "self", "enemy"],
-	"cost": 15,
+	"points": 15,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@SP*10+30"
@@ -749,9 +749,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["air", "area", "direct", "self", "enemy"],
-	"cost": 15,
+	"points": 15,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@SP*10+20"
@@ -773,9 +773,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "dmg", "self"],
-	"cost": 7,
+	"points": 7,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "@luck+2"
@@ -798,9 +798,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "debuff", "dmg", "enemy"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "@luck-2"
@@ -823,9 +823,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "move", "self"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "@morale+2"
@@ -848,9 +848,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "debuff", "move", "enemy"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@morale-2"
@@ -873,9 +873,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "debuff", "dmg", "enemy"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"formula": "@At-6"
@@ -897,9 +897,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "debuff", "dmg", "enemy", "mind"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"descr": "Causes target enemy stack to forget to use their ranged attack. Half of them forget how to use melee attack.",
@@ -926,9 +926,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "move", "self"],
-	"cost": 15,
+	"points": 15,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"descr": "Causes target enemy stack to forget to use their ranged attack. Half of them forget how to use melee attack.",
@@ -954,9 +954,9 @@
 	},
 	"combat": false,
 	"type": ["air", "view"],
-	"cost": 2,
+	"points": 2,
 	"base": {
-		"cost": 1
+		"points": 1
 	},
 	"advanced": {
 		"descr": "Displays the location of all artifacts and heroes on the view world screen.",
@@ -985,9 +985,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "def", "self"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "@dmg*0.5"
@@ -1010,9 +1010,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "area", "debuff", "dmg", "move", "self", "enemy"],
-	"cost": 20,
+	"points": 20,
 	"base": {
-		"cost": 16
+		"points": 16
 	},
 	"advanced": {
 		"mass": true,
@@ -1038,9 +1038,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["air", "area", "direct", "self", "enemy"],
-	"cost": 24,
+	"points": 24,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*40+50"
@@ -1066,9 +1066,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "buff", "dmg", "self"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@dmg*0.25"
@@ -1091,9 +1091,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["fire", "area", "direct", "self", "enemy"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@SP*10+40"
@@ -1104,7 +1104,7 @@
 	"artifacts": []
 },{
 	"id": 44,
-	"level": 2,
+	"level": 4,
 	"title": "Frenzy",
 	"descr": "One friendly unit's attack rating is increased by troop's defense rating, and its defense rating is reduced to zero.",
 	"ru": {
@@ -1115,9 +1115,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "buff", "dmg", "mind", "self"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@At+@Df*1.5"
@@ -1141,9 +1141,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["earth", "area", "move", "enemy"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"descr-ext": "Quicksand pits are placed in 6 random hexes."
@@ -1167,9 +1167,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["fire", "area", "enemy", "self"],
-	"cost": 8,
+	"points": 8,
 	"base": {
-		"cost": 6
+		"points": 6
 	},
 	"advanced": {
 		"formula": "@SP*10+20",
@@ -1199,9 +1199,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["fire", "area", "enemy", "self"],
-	"cost": 18,
+	"points": 18,
 	"base": {
-		"cost": 15
+		"points": 15
 	},
 	"advanced": {
 		"formula": "@SP*10+50"
@@ -1223,9 +1223,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["earth", "direct", "area", "self", "enemy"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"formula": "@SP*25+50"
@@ -1249,9 +1249,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "hp", "self"],
-	"cost": 20,
+	"points": 20,
 	"base": {
-		"cost": 16
+		"points": 16
 	},
 	"advanced": {
 		"formula": "@SP*50+80",
@@ -1281,9 +1281,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "def", "self"],
-	"cost": 7,
+	"points": 7,
 	"base": {
-		"cost": 5
+		"points": 5
 	},
 	"advanced": {
 		"formula": "@mdmg*0.5"
@@ -1307,9 +1307,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "buff", "def", "self"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 9
+		"points": 9
 	},
 	"advanced": {
 		"formula": "@mdmg*0.5"
@@ -1332,10 +1332,10 @@
 	"formula": "@mdmg*0.3",
 	"combat": true,
 	"mass": false,
-	"type": ["water", "buff", "def", "self"],
-	"cost": 5,
+	"type": ["fire", "buff", "def", "self"],
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@mdmg*0.5"
@@ -1359,9 +1359,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "def", "self"],
-	"cost": 5,
+	"points": 5,
 	"base": {
-		"cost": 4
+		"points": 4
 	},
 	"advanced": {
 		"formula": "@mdmg*0.5"
@@ -1382,9 +1382,9 @@
 	},
 	"combat": false,
 	"type": ["earth", "move", "hero"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"descr": "It teleports the casting hero to any allied town."
@@ -1405,9 +1405,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "dmg", "self"],
-	"cost": 24,
+	"points": 24,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"descr": "Target, allied troop can retaliate against two additional attacks per round.",
@@ -1436,9 +1436,9 @@
 	"combat": true,
 	"mass": true,
 	"type": ["fire", "direct", "area", "enemy", "self"],
-	"cost": 24,
+	"points": 24,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*50+60"
@@ -1460,9 +1460,9 @@
 	},
 	"combat": false,
 	"type": ["air", "move", "hero"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"descr-ext": "The spell may be cast three times per day and reduces the hero's movement by three tiles for each casting.",
@@ -1490,9 +1490,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "move", "dmg", "enemy"],
-	"cost": 18,
+	"points": 18,
 	"base": {
-		"cost": 15
+		"points": 15
 	},
 	"advanced": {
 		"formula": "@SP*25+20"
@@ -1515,9 +1515,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "dmg", "self", "summon"],
-	"cost": 24,
+	"points": 24,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"descr-ext": "6",
@@ -1546,9 +1546,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "dmg", "self", "move", "def"],
-	"cost": 16,
+	"points": 16,
 	"base": {
-		"cost": 12
+		"points": 12
 	},
 	"advanced": {
 		"descr-ext": "Increased by 4.",
@@ -1567,7 +1567,7 @@
 },{
 	"id": 61,
 	"level": 5,
-	"title": "Summon Air Elemental",
+	"title": "Air Elemental",
 	"descr": "It summons a stack of Air Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв воздуха",
@@ -1577,9 +1577,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "summon", "dmg", "self", "hp"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*3"
@@ -1591,7 +1591,7 @@
 },{
 	"id": 62,
 	"level": 5,
-	"title": "Summon Earth Elemental",
+	"title": "Earth Elemental",
 	"descr": "It summons a stack of Earth Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв земли",
@@ -1601,9 +1601,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "summon", "dmg", "self", "hp"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*3"
@@ -1615,7 +1615,7 @@
 },{
 	"id": 63,
 	"level": 5,
-	"title": "Summon Fire Elemental",
+	"title": "Fire Elemental",
 	"descr": "It summons a stack of Fire Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв огня",
@@ -1625,9 +1625,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "summon", "dmg", "self", "hp"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*3"
@@ -1639,7 +1639,7 @@
 },{
 	"id": 64,
 	"level": 5,
-	"title": "Summon Water Elemental",
+	"title": "Water Elemental",
 	"descr": "It summons a stack of Water Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв воды",
@@ -1649,9 +1649,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["water", "summon", "dmg", "self", "hp"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "@SP*3"
@@ -1673,9 +1673,9 @@
 	},
 	"combat": false,
 	"type": ["water", "move", "hero"],
-	"cost": 12,
+	"points": 12,
 	"base": {
-		"cost": 8
+		"points": 8
 	},
 	"advanced": {
 		"descr-ext": "The casting hero may follow a movement path across water with 20% penalty.",
@@ -1703,9 +1703,9 @@
 	},
 	"combat": false,
 	"type": ["air", "move", "hero"],
-	"cost": 20,
+	"points": 20,
 	"base": {
-		"cost": 15
+		"points": 15
 	},
 	"advanced": {
 		"descr-ext": "Allows the casting hero to move over water and any obstacles on the map with 20% penalty.",
@@ -1733,9 +1733,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "hp", "self"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "(@SP+@hp+6)*@n"
@@ -1757,9 +1757,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["air", "buff", "self"],
-	"cost": 25,
+	"points": 25,
 	"base": {
-		"cost": 20
+		"points": 20
 	},
 	"advanced": {
 		"formula": "30%"
@@ -1781,9 +1781,9 @@
 	"combat": true,
 	"mass": false,
 	"type": ["earth", "direct", "enemy"],
-	"cost": 30,
+	"points": 30,
 	"base": {
-		"cost": 25
+		"points": 25
 	},
 	"advanced": {
 		"formula": "@SP*75+200"

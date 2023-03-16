@@ -1,6 +1,8 @@
 Pet project to make Vue SPA without NodeJS bundlers, but XSLT "bundling" and JohnnyDepp dependencies library.
 Just download ZIP, extract in on your drive and click on [index.html](https://viT-1.github.io/homm/), and it's ready!
 
+Disclaimer: All Heroes of Might & Magic 3 images and audio files used in this project belong to 3DO (now owned by Ubisoft) and New World Computing. No code from the original game was used.
+
 ## Browsers support
 These browsers can display XML-translation with local files:
 - IE11,

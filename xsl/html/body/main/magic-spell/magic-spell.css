@@ -1,3 +1,17 @@
+/* #region screen */
+@media screen {
 [iam-magic-spell] {
-	color: green;
+	display: inline-block;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
 }
+
+[iam-magic-spell]::before {
+	content: "";
+	display: inline-block;
+}
+
+}
+/* #endregion screen */

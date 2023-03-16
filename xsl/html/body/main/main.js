@@ -3,6 +3,12 @@
 	if (!_ns.f) {
 		_ns.f = {};
 	}
+
+	// same dom element as head.xsl > $head.homm-version
+	const styleUrls = document.head.querySelector('#css-urls');
+	if (styleUrls) {
+		_ns['homm-version'] = styleUrls.getAttribute('href').split('/')[0];
+	}
 	
 	// recursive function to get plain list of components in cssquery (unique) element
 	_ns.f.getComponentNames = function (queryContext, cssQuery, reduceArray) {

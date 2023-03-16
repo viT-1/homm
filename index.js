@@ -11,8 +11,10 @@
 			const paths = _ns.imports;
 
 			deppLoadScripts({
-				// app
-				main:	['#vue', paths.main],
+				// path to main.[homm-version].css can't be resolved,
+				// because _ns[homm-version] is calculated in main.js or head.xsl
+				// that's why it included in head.xsl
+				main:	['#vue', paths.main], // app
 				store:	['#vue', '#vuex', '#main', paths.store],
 
 				// externals
@@ -158,7 +160,12 @@
 			componentsBundles[name] = [path + '.js'];
 
 			if (useStyles && _ns.f.shouldHaveTemplate(name)) {
+				// common homm2 & homm3 rules
 				componentsBundles[name].push(path + '.css');
+
+				// ie11 crashed if css file has not any content!!!
+				// avoid to use @import into common css file, because of ie11 crashes
+				componentsBundles[name].push(path + '.' + _ns['homm-version'] + '.css');
 			}
 		});
 

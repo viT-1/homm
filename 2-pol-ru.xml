@@ -3,7 +3,7 @@
 <html lang="ru" vocab="http://schema.org/">
 	<head>
 		<title data-xml="2-pol-ru">Заклинания Heroes of Might &amp; Magic II</title>
-		<link rel="stylesheet" href="homm2/index.css" />
+		<link data-xml="2-pol-ru" id="css-urls" rel="stylesheet" href="homm2/urls.css" />
 	</head>
 	<body>
 		<main>

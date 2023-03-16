@@ -8,26 +8,38 @@
 			<xsl:choose>
 				<xsl:when test="@iam-magic-book-mark-title = 'combat'">
 					<xsl:attribute name="title">Боевые заклинания</xsl:attribute>
-					<xsl:text>Боевые</xsl:text>		
+					<xsl:text>Боевые</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'map'">
 					<xsl:attribute name="title">Заклинания карты приключений</xsl:attribute>
-					<xsl:text>Для карты</xsl:text>		
+					<xsl:text>Для карты</xsl:text>	
+				</xsl:when>
+				<xsl:when test="@iam-magic-book-mark-title = 'move'">
+					<xsl:attribute name="title">Заклинания на перемещение</xsl:attribute>	
+					<xsl:text>Перемещение</xsl:text>
+				</xsl:when>
+				<xsl:when test="@iam-magic-book-mark-title = 'close'">
+					<xsl:text>Закрыть книгу</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'air'">
-					<xsl:text>Школа воздуха</xsl:text>		
+					<xsl:attribute name="title">Заклинания школы воздуха</xsl:attribute>
+					<xsl:text>Школа воздуха</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'earth'">
-					<xsl:text>Школа земли</xsl:text>		
+					<xsl:attribute name="title">Заклинания школы земли</xsl:attribute>
+					<xsl:text>Школа земли</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'fire'">
-					<xsl:text>Школа огня</xsl:text>		
+					<xsl:attribute name="title">Заклинания школы огня</xsl:attribute>
+					<xsl:text>Школа огня</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'water'">
-					<xsl:text>Школа воды</xsl:text>		
+					<xsl:attribute name="title">Заклинания школы воды</xsl:attribute>
+					<xsl:text>Школа воды</xsl:text>
 				</xsl:when>
 				<xsl:when test="@iam-magic-book-mark-title = 'all'">
-					<xsl:text>Все школы</xsl:text>		
+					<xsl:attribute name="title">Заклинания всех школ</xsl:attribute>
+					<xsl:text>Все школы</xsl:text>
 				</xsl:when>
 			</xsl:choose>
 		</xsl:if>

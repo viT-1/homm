@@ -5,45 +5,31 @@
 	const predefinedSpells = [{
 		"id": 4,
 		"level": 1,
-		"title": "Curse",
-		"ru": {
-			"title": "Проклятие"
-		}
+		"title": "Curse"
 	},{
 		"id": 33,
 		"level": 3,
-		"title": "Mass Curse",
-		"ru": {
-			"title": "Общее проклятие"
-		}
+		"title": "Mass Curse"
 	},{
 		"id": 34,
 		"level": 3,
-		"title": "Mass Dispel",
-		"ru": {
-			"title": "Общее снятие заклинаний"
-		}
+		"title": "Mass Dispel"
 	},{
 		"id": 35,
 		"level": 3,
-		"title": "Mass Haste",
-		"ru": {
-			"title": "Общее ускорение"
-		}
+		"title": "Mass Haste"
 	},{
 		"id": 41,
 		"level": 4,
-		"title": "Chain Lighting",
-		"ru": {
-			"title": "Цепная молния"
-		}
+		"title": "Chain Lighting"
+	},{
+		"id": 42,
+		"level": 4,
+		"title": "Elemental Storm"
 	},{
 		"id": 56,
 		"level": 5,
-		"title": "Armageddon",
-		"ru": {
-			"title": "Армагедон"
-		}
+		"title": "Armageddon"
 	}];
 
 	describe('main > magic-book Vue template', function () {

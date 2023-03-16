@@ -3,21 +3,11 @@
 <html lang="ru" vocab="http://schema.org/">
 	<head>
 		<title data-xml="3-sod-ru">Заклинания Heroes of Might &amp; Magic III Shadow of Death</title>
-		<link rel="stylesheet" href="homm3/index.css" />
+		<link data-xml="3-sod-ru" id="css-urls" rel="stylesheet" href="homm3/urls.css" />
 	</head>
 	<body>
 		<main>
 			<router-view></router-view>
-			<nav data-xml="3-sod-ru">
-				<menu role="navigation" iam-filter="additional">
-					<a href="#/mind/" title="Заклинания, влияющие на разум войск">Разум</a>
-					<a href="#/movement/" title="Заклинания, влияющие на перемещение войск по полю битвы">Перемещение</a>
-					<a href="#/magic-dmg/" title="Заклинания магического урона">Ударные</a>
-					<a href="#/creature-dmg/" title="Заклинания, влияющие на урон войск">Модификаторы повреждений</a>
-					<a href="#/summon/" title="Заклинания призыва">Призыв</a>
-					<a href="#/creature-spec/" title="Уникальные заклинания, присущие только некоторым видам войск">Специфические</a>
-				</menu>
-			</nav>
 		</main>
 		<hr class="css-naked-day" />
 	</body>

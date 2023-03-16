@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "HoMM3 Small";
+    src: url("georgia.ttf");
+}
+
+@font-face {
+    font-family: "HoMM3 Normal";
+    src: url("tnrb.ttf");
+}
+
+[iam-body] {
+	background-image: url("void.png");
+}
+
+[iam-app] {
+	background-image: url("scouted-area.png");
+}
+
+[iam-magic-book] {
+	background-image: url("magic-book/magic-book.png");
+}
+
+[iam-magic-book-page-btn] {
+	background-image: url("magic-book/page-next-prev.png");
+}
+
+[iam-magic-book-mark ~= "school"] {
+	background-image: url("magic-book/magic-book-mark.png");
+}
+
+[iam-magic-page ~= "first"]::before {
+	background-image: url("magic-book/school-title-decor.png");
+}
+
+[iam-magic-spell]::before {
+	background-image: url("magic-spell/spells-in-book.png");
+}
+
+[iam-panel ~= "top"] {
+	background-image: url("iam-panel/panel-top.png");
+}
+
+[iam-panel ~= "top"]::before
+, [iam-panel ~= "top"]::after {
+	background-image: url("iam-panel/panel-corner.png");
+}
+
+[iam-panel-info ~= "spell"]::before {
+	background-image: url("magic-spell/spells-in-guild.png");
+}

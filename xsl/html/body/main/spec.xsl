@@ -23,19 +23,21 @@
 		<script src="{$config}/any-fills.js"></script>
 		<script src="{$config}/config.js"></script>
 
-		<script src="{$externals}/jasmine/jasmine.js"></script>
-		<script src="{$externals}/jasmine/jasmine-html.js"></script>
-		<script src="{$externals}/jasmine/boot0.js"></script>
-		<script src="{$externals}/jasmine/boot1.js"></script>
-		<script>
-			jasmine.getEnv().addReporter({
-				specStarted: function (result) { jasmine.currentTest = result; },
-				specDone: function (result) { jasmine.currentTest = result; },
-			});
-		</script>
-
+		<xsl:if test="contains(@use, 'jasmine')">
+			<script src="{$externals}/jasmine/jasmine.js"></script>
+			<script src="{$externals}/jasmine/jasmine-html.js"></script>
+			<script src="{$externals}/jasmine/boot0.js"></script>
+			<script src="{$externals}/jasmine/boot1.js"></script>
+			<script>
+				jasmine.getEnv().addReporter({
+					specStarted: function (result) { jasmine.currentTest = result; },
+					specDone: function (result) { jasmine.currentTest = result; },
+				});
+			</script>
+		</xsl:if>
 		<xsl:if test="contains(@use, 'vue')"><script src="{$externals}/vue.js"></script></xsl:if>
 		<xsl:if test="contains(@use, 'vuex')"><script src="{$externals}/vuex.js"></script></xsl:if>
+		
 		<script src="{$spec.mainFolderPath}/main.js"></script>
 		<xsl:apply-templates select="head/node()"/>
 

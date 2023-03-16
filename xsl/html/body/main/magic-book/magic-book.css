@@ -1,3 +1,62 @@
+/* #region screen */
+@media screen {
 [iam-magic-book] {
-	color: red;
+	color: white;
+	position: relative;
+	text-align: center;
 }
+
+[iam-magic-book-page-btn] {
+	border-style: none;
+	position: absolute;
+}
+
+[iam-magic-book-marks] {
+	display: block;
+	font-size: 0;
+	margin: 0;
+	text-align: right;
+}
+
+[iam-magic-book-mark] {
+	font-size: 12px;
+	display: inline-block;
+	text-align: center;
+}
+
+[iam-magic-book-page-btn] {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+[iam-magic-book-page-btn]:disabled
+, [iam-magic-book-mark-title] {
+	display: none;
+}
+
+[iam-magic-book-pages] {
+	display: flex; /* ie11 fix tag "main" */
+	flex-flow: row nowrap;
+	position: relative;
+}
+
+[iam-magic-page] {
+	box-sizing: border-box;
+	flex: 0 1 50%;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+
+[iam-magic-page ~= "first"]::before {
+	background-repeat: no-repeat;
+	box-sizing: content-box;
+	content: "";
+	display: block;
+	margin: 0 auto;
+}
+
+}
+/* #endregion screen */

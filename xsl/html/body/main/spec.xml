@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="spec.xsl" type="text/xsl"?>
-<html use="vue">
+<html use="jasmine vue">
 	<head data-relpath-root="../../../../">
 		<title>HoMM: all components</title>
 		<link rel="stylesheet" href="magic-spell/magic-spell.css"/>
@@ -9,8 +9,7 @@
 		<script src="magic-book/magic-book.js"></script>
 		<script>
 			// vue-router mock
-			globalThis.homm_ns.components['magic-book'].methods.getRouteTo = function () {};
-			globalThis.homm_ns.components['magic-book'].computed.perPage = function () { return 10; }
+			globalThis.homm_ns.components['magic-book'].computed.$route = function () { return { query: { type: 'all' } }; }
 			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
 		</script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>

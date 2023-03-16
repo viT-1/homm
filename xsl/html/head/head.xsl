@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:variable name="head.xml" select="document('head.xml')/head"/>
-<xsl:variable name="head.title-data-xml" select="/html/head/title/@data-xml"/>
+<xsl:variable name="head.title" select="/html/head/title"/>
+<xsl:variable name="head.homm-version" select="substring-before(/html/head/link[@id = 'css-urls']/@href, '/')"/>
 
 <xsl:template match="html/head">
-	<!-- Не можем аннигилировать в отдельную ловушку template, так как ноды вне index.xml -->
-	<xsl:variable name="head.xml.links" select="$head.xml//link[not(@disabled)]"/>
-	<xsl:variable name="head.xml.scripts" select="$head.xml//script[not(@disabled)]"/>
-	<xsl:variable name="head.xml.l-s" select="$head.xml.links | $head.xml.scripts"/>
-		
+	<!--К custom ресурсам открываемого в браузере файла xml добавляем обвязку для работы приложения -->
 	<head>
-		<xsl:apply-templates select="@* | $head.xml/@*"/>
+		<xsl:apply-templates select="@*"/>
 		<xsl:call-template name="config.data-xsl"/>
 
-		<!-- Всё, кроме ссылок и скриптов head.xml -->
-		<xsl:apply-templates select="$head.xml/*[count(. | $head.xml.l-s) != count($head.xml.l-s)]"/>
-
 		<!-- Ссылки и скрипты head.xml -->
-		<xsl:apply-templates select="$head.xml.links[not(@rel = 'stylesheet')]"/>
+		<link rel="icon" href="https://github.com/favicon.ico"/>
+
 		<xsl:if test="not($config.is-css-naked-day)">
-			<!-- Стили head.xml -->
-			<xsl:apply-templates select="$head.xml.links[@rel = 'stylesheet']"/>
+			<!-- Стиль main.css -->
+			<link rel="stylesheet" href="{concat('xsl/html/body/main/main.', $head.homm-version, '.css')}"/>
 			<!-- Стили index.xml -->
 			<xsl:apply-templates select="*[@rel = 'stylesheet']"/>
 		</xsl:if>
 		<script id="importmap" type="importmap"><xsl:value-of select="$index.importmap" /></script>
-		<xsl:apply-templates select="$head.xml.scripts"/>
+		<script src="externals/promise-polyfill.min.js"></script>
+		<script src="xsl/config/any-fills.js"></script>
+		<script src="xsl/config/config.js"></script>
+
+		<script src="externals/depp.min.js"></script>
+		<script src="index.js"></script>
 
 		<!-- Ресурсы index.xml кроме стилей -->
 		<xsl:apply-templates select="*[not(@rel = 'stylesheet')]"/>

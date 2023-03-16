@@ -1,0 +1,307 @@
+[iam-magic-spell]::before {
+	height: 128px;
+	width: 156px;
+}
+
+[iam-magic-spell]:nth-child(2n+1) {
+	margin-right: 16px;
+}
+
+[iam-magic-spell-descr] {
+	color: #fff3de;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0;
+	padding: 0;
+}
+
+[iam-magic-spell-descr ~= "disabled"] {
+	color: #efba21;
+}
+
+[iam-magic-spell-descr ~= "title"] {
+	color: #efd77b;
+}
+
+[iam-magic-spell-descr = "title disabled"] {
+	color: #fff;
+}
+
+[iam-magic-spell = "bless"]::before {
+	background-position: 0 -128px;
+}
+
+[iam-magic-spell = "cure"]::before {
+	background-position: 0 -256px;
+}
+
+[iam-magic-spell ^= "dispel"]::before {
+	background-position: 0 -384px;
+}
+
+[iam-magic-spell ^= "magic"]::before {
+	background-position: -312px -512px;
+}
+
+[iam-magic-spell = "magic mirror"]::before {
+	background-position-x: -1092px;
+}
+
+[iam-magic-spell = "anti-magic"]::before {
+	background-position: -468px -512px;
+}
+
+[iam-magic-spell ~= "protection"]::before {
+	background-position-y: -256px;
+}
+
+[iam-magic-spell = "protection from water"]::before {
+	background-position-x: -624px;
+}
+
+[iam-magic-spell = "protection from fire"]::before {
+	background-position-x: -780px;
+}
+
+[iam-magic-spell = "protection from air"]::before {
+	background-position-x: -936px;
+}
+
+[iam-magic-spell = "protection from earth"]::before {
+	background-position-x: -1094px;
+}
+
+/* #region lighting bolt, ice bolt, chain lighting */
+[iam-magic-spell ~= "bolt"]::before {
+	background-position: 0 -640px;
+}
+
+[iam-magic-spell ~= "lighting"]::before {
+	background-position-x: -312px;
+}
+
+[iam-magic-spell ~= "chain"]::before {
+	background-position-y: -896px;
+}
+/* #endregion lighting bolt, ice bolt, chain lighting */
+
+[iam-magic-spell = "remove obstacle"]::before {
+	background-position: -624px -768px;
+}
+
+[iam-magic-spell = "weakness"]::before {
+	background-position: -624px -384px;
+}
+
+[iam-magic-spell = "cold ring"]::before {
+	background-position: 0 -768px;
+}
+
+[iam-magic-spell = "forgetfullness"]::before {
+	background-position: -780px -512px;
+}
+
+[iam-magic-spell = "mirth"]::before {
+	background-position: -624px -512px;
+}
+
+[iam-magic-spell = "teleport"]::before {
+	background-position: 0 -512px;
+}
+
+[iam-magic-spell = "clone"]::before {
+	background-position: 0 -896px;
+}
+
+[iam-magic-spell = "prayer"]::before {
+	background-position: -624px -896px;
+}
+
+[iam-magic-spell $= "elemental"]::before {
+	background-position: 0 -1024px;
+}
+
+[iam-magic-spell = "fire elemental"]::before {
+	background-position-x: -156px;
+}
+
+[iam-magic-spell = "air elemental"]::before {
+	background-position-x: -312px;
+}
+
+[iam-magic-spell = "earth elemental"]::before {
+	background-position-x: -468px;
+}
+
+[iam-magic-spell = "scuttle boat"]::before {
+	background-position: -624px 0;
+}
+
+[iam-magic-spell = "water walk"]::before {
+	background-position: -780px 0;
+}
+
+[iam-magic-spell = "visions"]::before {
+	background-position: -156px 0;
+}
+
+[iam-magic-spell = "bloodlust"]::before {
+	background-position: -156px -128px;
+}
+
+[iam-magic-spell = "curse"]::before {
+	background-position: -156px -256px;
+}
+
+[iam-magic-spell = "blind"]::before {
+	background-position: -156px -384px;
+}
+
+[iam-magic-spell = "fire wall"]::before {
+	background-position: -936px -128px;
+}
+
+[iam-magic-spell = "fireball"]::before {
+	background-position: -156px -768px;
+}
+
+[iam-magic-spell = "land mine"]::before {
+	background-position: -1092px -128px;
+}
+
+[iam-magic-spell *= "fortune"]::before {
+	background-position: -936px -768px;
+}
+
+[iam-magic-spell = "misfortune"]::before {
+	background-position-x: -780px;
+}
+
+[iam-magic-spell = "armageddon"]::before {
+	background-position: -156px -896px;
+}
+
+[iam-magic-spell = "berserk"]::before {
+	background-position: -156px -512px;
+}
+
+[iam-magic-spell ~= "shield"]::before {
+	background-position: -468px -384px;
+}
+
+[iam-magic-spell = "fire shield"]::before {
+	background-position-x: -780px;
+}
+
+[iam-magic-spell = "air shield"]::before {
+	background-position-x: -936px;
+}
+
+[iam-magic-spell = "frenzy"]::before {
+	background-position: -780px -896px;
+}
+
+[iam-magic-spell = "inferno"]::before {
+	background-position: -936px -640px;
+}
+
+[iam-magic-spell = "slayer"]::before {
+	background-position: -156px -640px;
+}
+
+[iam-magic-spell = "sacrifice"]::before {
+	background-position: -1092px -640px;
+}
+
+[iam-magic-spell ~= "view"]::before {
+	background-position: -312px 0;
+}
+
+[iam-magic-spell = "view earth"]::before {
+	background-position-x: -468px;
+}
+
+[iam-magic-spell = "disguise"]::before {
+	background-position: -1092px 0;
+}
+
+[iam-magic-spell = "haste"]::before {
+	background-position: -312px -128px;
+}
+
+[iam-magic-spell = "disrupting ray"]::before {
+	background-position: -312px -256px;
+}
+
+[iam-magic-spell = "precision"]::before {
+	background-position: -936px -512px;
+}
+
+[iam-magic-spell $= "dead"]::before {
+	background-position: -312px -768px;
+}
+
+[iam-magic-spell = "animate dead"]::before {
+	background-position-x: -1092px;
+}
+
+[iam-magic-spell = "hypnotize"]::before {
+	background-position: -312px -384px;
+}
+
+[iam-magic-spell = "counterstrike"]::before {
+	background-position: -936px -896px;
+}
+
+[iam-magic-spell = "fly"]::before {
+	background-position: -936px 0;
+}
+
+[iam-magic-spell = "dimension door"]::before {
+	background-position: -936px -1024px;
+}
+
+[iam-magic-spell = "town portal"]::before {
+	background-position: -1092px -1024px;
+}
+
+[iam-magic-spell = "slow"]::before {
+	background-position: -468px -128px;
+}
+
+[iam-magic-spell = "stoneskin"]::before {
+	background-position: -468px -256px;
+}
+
+[iam-magic-spell = "death ripple"]::before {
+	background-position: -468px -640px;
+}
+
+[iam-magic-spell = "quicksand"]::before {
+	background-position: -624px -128px;
+}
+
+[iam-magic-spell = "earthquake"]::before {
+	background-position: -468px -768px;
+}
+
+[iam-magic-spell = "force field"]::before {
+	background-position: -780px -128px;
+}
+
+[iam-magic-spell = "meteor shower"]::before {
+	background-position: -468px -896px;
+}
+
+[iam-magic-spell = "ressurection"]::before {
+	background-position: -1092px -896px;
+}
+
+[iam-magic-spell = "sorrow"]::before {
+	background-position: -624px -640px;
+}
+
+[iam-magic-spell = "implosion"]::before {
+	background-position: -780px -640px;
+}

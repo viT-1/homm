@@ -3,38 +3,67 @@
 	<div iam-magic-book="">
 		<vue-ids-pager v-bind="{ ids: ids, limit: perPage }">
 			<template v-slot="idsPager">
-				<div fix-vue="">
+				<main iam-magic-book-pages="">
 					<button
-						iam-magic-book-page-corner="top left"
+						iam-magic-book-page-btn="prev"
 						v-on="idsPager.prevEvents"
 						v-bind="{ disabled: !idsPager.canPrevPg }"></button>
 					<button
-						iam-magic-book-page-corner="top right"
+						iam-magic-book-page-btn="next"
 						v-on="idsPager.nextEvents"
 						v-bind="{ disabled: !idsPager.canNextPg }"></button>
-					<ul iam-spells="">
+					<ul v-bind="{ 'iam-magic-page': idsPager.canPrevPg ? spellsType + ' left': spellsType + ' first left' }">
 						<magic-spell
-							v-bind="{spell: spell}"
-							v-for="spell in getSpellsOnActivePage(idsPager.currentIds)" />
+							v-for="spellCol1 in getSpellsOnActivePage(idsPager.currentIds.slice(
+								0, spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
+							v-bind="{spell: spellCol1}"
+						/>
 					</ul>
-				</div>
+					<ul iam-magic-page="right" v-if="idsPager.currentIds.slice(
+						spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)).length">
+						<magic-spell
+							v-for="spellCol2 in getSpellsOnActivePage(idsPager.currentIds.slice(
+								spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
+							v-bind="{spell: spellCol2}"
+						/>
+					</ul>
+				</main>
 			</template>
 		</vue-ids-pager>
 		<nav data-xml="xsl/html/body/main/magic-book/magic-book">
-			<menu role="navigation" iam-filter="main">
-				<router-link iam-magic-book-mark="combat" v-bind="getRouteTo({ combat: true })">
+			<menu role="navigation" iam-magic-book-marks="slave">
+				<router-link v-bind="{ to: getRouteTo({ combat: true }),
+					'iam-magic-book-mark': 'slave combat' }">
 					<span iam-magic-book-mark-title="combat">Combat spells</span></router-link>
-				<router-link iam-magic-book-mark="map" v-bind="getRouteTo({ combat: false })">
+				<router-link v-bind="{ to: getRouteTo({ combat: false }),
+					'iam-magic-book-mark': 'slave map' }">
 					<span iam-magic-book-mark-title="map">Non combat spells</span></router-link>
-				<router-link iam-magic-book-mark="air" v-bind="getRouteTo({ type: 'air' })">
+				<router-link v-bind="{ to: getRouteTo({ type: 'move' }),
+					'iam-magic-book-mark': 'slave move' }">
+					<span iam-magic-book-mark-title="move">Move spells</span></router-link>
+				<a href="https://vit-1.github.io/homm/" iam-magic-book-mark="slave close">
+					<span iam-magic-book-mark-title="close">GOTO index</span></a>
+			</menu>
+			<menu role="navigation" iam-magic-book-marks="school">
+				<router-link v-bind="{ to: getRouteTo({ type: 'air' }),
+					'iam-magic-book-mark': 'air'
+					+ (spellsType == 'air' ? ' is-active school' : ' is-inactive school')}">
 					<span iam-magic-book-mark-title="air">Air spells</span></router-link>
-				<router-link iam-magic-book-mark="earth" v-bind="getRouteTo({ type: 'earth' })">
+				<router-link v-bind="{ to: getRouteTo({ type: 'earth' }),
+					'iam-magic-book-mark': 'earth'
+					+ (spellsType == 'earth' ? ' is-active school' : ' is-inactive school')}">
 					<span iam-magic-book-mark-title="earth">Earth spells</span></router-link>
-				<router-link iam-magic-book-mark="fire" v-bind="getRouteTo({ type: 'fire' })">
+				<router-link v-bind="{ to: getRouteTo({ type: 'fire' }),
+					'iam-magic-book-mark': 'fire'
+					+ (spellsType == 'fire' ? ' is-active school' : ' is-inactive school')}">
 					<span iam-magic-book-mark-title="fire">Fire spells</span></router-link>
-				<router-link iam-magic-book-mark="water" v-bind="getRouteTo({ type: 'water' })">
+				<router-link v-bind="{ to: getRouteTo({ type: 'water' }),
+					'iam-magic-book-mark': 'water'
+					+ (spellsType == 'water' ? ' is-active school' : ' is-inactive school')}">
 					<span iam-magic-book-mark-title="water">Water spells</span></router-link>
-				<router-link iam-magic-book-mark="all" v-bind="getRouteTo({ type: 'all' })">
+				<router-link v-bind="{ to: getRouteTo({ type: 'all' }),
+					'iam-magic-book-mark': 'all'
+					+ (spellsType == 'all' || spellsType == 'move'  ? ' is-active school' : ' is-inactive school')}">
 					<span iam-magic-book-mark-title="all">All spells</span></router-link>
 			</menu>
 		</nav>

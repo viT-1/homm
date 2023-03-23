@@ -122,15 +122,15 @@
 	background-position: 0 -1024px;
 }
 
-[iam-magic-spell = "fire elemental"]::before {
+[iam-magic-spell *= "fire elemental"]::before {
 	background-position-x: -156px;
 }
 
-[iam-magic-spell = "air elemental"]::before {
+[iam-magic-spell *= "air elemental"]::before {
 	background-position-x: -312px;
 }
 
-[iam-magic-spell = "earth elemental"]::before {
+[iam-magic-spell *= "earth elemental"]::before {
 	background-position-x: -468px;
 }
 

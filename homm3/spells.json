@@ -102,9 +102,11 @@
 	"id": 5,
 	"level": 1,
 	"title": "Dispel",
+	"title-ext": "Dispel Magic",
 	"descr": "Removes all spell effects (except Disruption Ray) of target allied creature.",
 	"ru": {
-		"title": "Снятие заклинаний",
+		"title": "Рассеивание",
+		"title-ext": "Рассеивание заклинаний",
 		"descr": "Снимает все заклинания (кроме Разрушающего луча) со своего существа."
 	},
 	"combat": true,
@@ -1271,7 +1273,8 @@
 },{
 	"id": 50,
 	"level": 2,
-	"title": "Protection from Air",
+	"title": "Prot. from Air",
+	"title-ext": "Protection from Air",
 	"descr": "It reduces damage from air spells for target allied troop.",
 	"ru": {
 		"title": "Защита от Воздуха",
@@ -1297,7 +1300,8 @@
 },{
 	"id": 51,
 	"level": 3,
-	"title": "Protection from Earth",
+	"title": "Prot. from Earth",
+	"title-ext": "Protection from Earth",
 	"descr": "It reduces damage from earth spells for target allied troop.",
 	"ru": {
 		"title": "Защита от Земли",
@@ -1323,7 +1327,8 @@
 },{
 	"id": 52,
 	"level": 1,
-	"title": "Protection from Fire",
+	"title": "Prot. from Fire",
+	"title-ext": "Protection from Fire",
 	"descr": "It reduces damage from fire spells for target allied troop.",
 	"ru": {
 		"title": "Защита от Огня",
@@ -1349,7 +1354,8 @@
 },{
 	"id": 53,
 	"level": 1,
-	"title": "Protection from Water",
+	"title": "Prot. from Water",
+	"title-ext": "Protection from Water",
 	"descr": "It reduces damage from water spells for target allied troop.",
 	"ru": {
 		"title": "Защита от Воды",
@@ -1568,6 +1574,7 @@
 	"id": 61,
 	"level": 5,
 	"title": "Air Elemental",
+	"title-ext": "Summon Air Elemental",
 	"descr": "It summons a stack of Air Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв воздуха",
@@ -1592,6 +1599,7 @@
 	"id": 62,
 	"level": 5,
 	"title": "Earth Elemental",
+	"title-ext": "Summon Earth Elemental",
 	"descr": "It summons a stack of Earth Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв земли",
@@ -1616,6 +1624,7 @@
 	"id": 63,
 	"level": 5,
 	"title": "Fire Elemental",
+	"title-ext": "Summon Fire Elemental",
 	"descr": "It summons a stack of Fire Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв огня",
@@ -1640,6 +1649,7 @@
 	"id": 64,
 	"level": 5,
 	"title": "Water Elemental",
+	"title-ext": "Summon Water Elemental",
 	"descr": "It summons a stack of Water Elementals on the first row of combat field; on casting hero's side. The stack will remain among the hero's army for the rest of the combat, or until killed. Only one type of elementals may be summoned during combat.",
 	"ru": {
 		"title": "Призыв воды",

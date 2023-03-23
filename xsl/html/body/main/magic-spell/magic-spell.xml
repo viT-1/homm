@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-spell" data-xml="xsl/html/body/main/magic-spell/magic-spell">
-	<li v-bind="{ 'iam-magic-spell': spell.title.toLowerCase() }">
+	<li v-bind="{ 'iam-magic-spell': spell['title-ext'] ? spell['title-ext'].toLowerCase() : spell.title.toLowerCase() }">
 		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'title disabled' : 'title' }">{{spell.title}}</p>
 		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'level disabled' : 'level' }">{{spell.level + lvlSuffix}} lev/Exp</p>
 		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'points disabled' : 'points' }">Spell points: {{spell.points}}</p>

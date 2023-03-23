@@ -12,6 +12,7 @@
 			perPage: function () {
 				return this.spellsType === 'all' || this.spellsType === 'move' ? 12 : 10;
 			},
+			// TODO: remove coupling with vue-router, vue-book-marks should give us that data
 			spellsType: function () {
 				return this.$route.query.type;
 			},
@@ -20,13 +21,6 @@
 			},
 		},
 		methods: {
-			getRouteTo: function (filterConfig) {
-				const query = merge({}, this.$route.query);
-				if ((query.type == 'move')) {
-					query.type = 'all';
-				}
-				return { query: merge(query, filterConfig) };
-			},
 			getSpellsOnActivePage: function (ids) {
 				return _ns.f.getSublistByIds(this.spells, ids);
 			}

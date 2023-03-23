@@ -1,0 +1,88 @@
+/* #region bookmarks */
+[iam-magic-book-marks ~= "school"] {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 165px;
+}
+
+[iam-magic-book-mark ~= "school"] {
+	display: block;
+	height: 106px;
+	position: absolute;
+	width: 122px;
+}
+
+[iam-magic-book-mark *= "is-active school"] {
+	background-position-x: -122px;
+}
+
+[iam-magic-book-mark ~= "air"] {
+	right: -36px;
+	top: 40px;
+}
+
+[iam-magic-book-mark *= "air is-active"] {
+	right: 14px;
+	top: 28px;
+}
+
+[iam-magic-book-mark ~= "earth"] {
+	background-position-y: -106px;
+	right: -28px;
+	top: 152px;
+}
+
+[iam-magic-book-mark *= "earth is-active"] {
+	right: 14px;
+	top: 144px;
+}
+
+[iam-magic-book-mark ~= "fire"] {
+	background-position-y: -212px;
+	right: -24px;
+	top: 268px;
+}
+
+[iam-magic-book-mark *= "fire is-active"] {
+	right: 14px;
+	top: 264px;
+}
+
+[iam-magic-book-mark ~= "water"] {
+	background-position-y: -318px;
+	right: -34px;
+	top: 392px;
+}
+
+[iam-magic-book-mark *= "water is-active"] {
+	right: 14px;
+	top: 390px;
+}
+
+[iam-magic-book-mark ~= "all"] {
+	background-position-y: -424px;
+	right: -28px;
+	top: 516px;
+}
+
+[iam-magic-book-mark *= "all is-active"] {
+	right: 12px;
+	top: 512px;
+}
+
+[iam-magic-book-marks ~= "slave"] {
+	padding: 0 6px;
+}
+
+[iam-magic-book-mark ~= "slave"] {
+	height: 90px;
+	margin-left: 52px;
+	vertical-align: top;
+	width: 70px;
+}
+
+[iam-magic-book-mark ~= "slave"]:first-child {
+	margin-right: 152px;
+}
+/* #endregion */

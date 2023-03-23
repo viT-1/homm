@@ -30,42 +30,6 @@
 				</main>
 			</template>
 		</vue-ids-pager>
-		<nav data-xml="xsl/html/body/main/magic-book/magic-book">
-			<menu role="navigation" iam-magic-book-marks="slave">
-				<router-link v-bind="{ to: getRouteTo({ combat: true }),
-					'iam-magic-book-mark': 'slave combat' }">
-					<span iam-magic-book-mark-title="combat">Combat spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ combat: false }),
-					'iam-magic-book-mark': 'slave map' }">
-					<span iam-magic-book-mark-title="map">Non combat spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ type: 'move' }),
-					'iam-magic-book-mark': 'slave move' }">
-					<span iam-magic-book-mark-title="move">Move spells</span></router-link>
-				<a href="https://vit-1.github.io/homm/" iam-magic-book-mark="slave close">
-					<span iam-magic-book-mark-title="close">GOTO index</span></a>
-			</menu>
-			<menu role="navigation" iam-magic-book-marks="school">
-				<router-link v-bind="{ to: getRouteTo({ type: 'air' }),
-					'iam-magic-book-mark': 'air'
-					+ (spellsType == 'air' ? ' is-active school' : ' is-inactive school')}">
-					<span iam-magic-book-mark-title="air">Air spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ type: 'earth' }),
-					'iam-magic-book-mark': 'earth'
-					+ (spellsType == 'earth' ? ' is-active school' : ' is-inactive school')}">
-					<span iam-magic-book-mark-title="earth">Earth spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ type: 'fire' }),
-					'iam-magic-book-mark': 'fire'
-					+ (spellsType == 'fire' ? ' is-active school' : ' is-inactive school')}">
-					<span iam-magic-book-mark-title="fire">Fire spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ type: 'water' }),
-					'iam-magic-book-mark': 'water'
-					+ (spellsType == 'water' ? ' is-active school' : ' is-inactive school')}">
-					<span iam-magic-book-mark-title="water">Water spells</span></router-link>
-				<router-link v-bind="{ to: getRouteTo({ type: 'all' }),
-					'iam-magic-book-mark': 'all'
-					+ (spellsType == 'all' || spellsType == 'move'  ? ' is-active school' : ' is-inactive school')}">
-					<span iam-magic-book-mark-title="all">All spells</span></router-link>
-			</menu>
-		</nav>
+		<magic-book-marks/>
 	</div>
 </script>

@@ -1,0 +1,19 @@
+@media screen {
+[iam-magic-book-marks] {
+	display: block;
+	font-size: 0;
+	margin: 0;
+	text-align: right;
+}
+
+[iam-magic-book-mark] {
+	font-size: 12px;
+	display: inline-block;
+	text-align: center;
+}
+
+[iam-magic-book-mark-title] {
+	display: none;
+}
+
+}

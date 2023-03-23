@@ -24,6 +24,7 @@
 	</div>
 	<!--vue components templates-->
 	<xsl:apply-templates select="document('magic-book/magic-book.xml')/script"/>
+	<xsl:apply-templates select="document('magic-book-marks/magic-book-marks.xml')/script"/>
 	<xsl:apply-templates select="document('magic-spell/magic-spell.xml')/script"/>
 </xsl:template>
 

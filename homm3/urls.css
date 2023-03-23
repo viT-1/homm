@@ -24,12 +24,12 @@
 	background-image: url("magic-book/page-next-prev.png");
 }
 
-[iam-magic-book-mark ~= "school"] {
-	background-image: url("magic-book/magic-book-mark.png");
-}
-
 [iam-magic-page ~= "first"]::before {
 	background-image: url("magic-book/school-title-decor.png");
+}
+
+[iam-magic-book-mark ~= "school"] {
+	background-image: url("magic-book-marks/magic-book-marks.png");
 }
 
 [iam-magic-spell]::before {

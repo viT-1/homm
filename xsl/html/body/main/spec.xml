@@ -7,9 +7,14 @@
 		<script src="magic-spell/magic-spell.js"></script>
 		<link rel="stylesheet" href="magic-book/magic-book.css"/>
 		<script src="magic-book/magic-book.js"></script>
+		<link rel="stylesheet" href="magic-book-marks/magic-book-marks.css"/>
+		<script src="magic-book-marks/magic-book-marks.js"></script>
 		<script>
 			// vue-router mock
-			globalThis.homm_ns.components['magic-book'].computed.$route = function () { return { query: { type: 'all' } }; }
+			const routeMock = function () { return { query: { type: 'air' } }; };
+			globalThis.homm_ns.components['magic-book'].computed.$route = routeMock;
+			globalThis.homm_ns.components['magic-book-marks'].computed.$route = routeMock;
+
 			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
 		</script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>
@@ -20,6 +25,7 @@
 			<magic-spell v-bind="{ spell: specSpell }" />
 		</main>
 		<script data-component-tmpl="magic-book/magic-book.xml"></script>
+		<script data-component-tmpl="magic-book-marks/magic-book-marks.xml"></script>
 		<script data-component-tmpl="magic-spell/magic-spell.xml"></script>
 
 		<!-- For main.spec shoud be specific <main> innerHTML. You can run tests by main.spec.xml -->

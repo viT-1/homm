@@ -9,8 +9,12 @@
 		<script src="magic-book.js"></script>
 		<script>
 			// vue-router mock
-			globalThis.homm_ns.components['magic-book'].computed.$route = function () { return { query: { type: 'air' } }; }
+			const routeMock = function () { return { query: { type: 'air' } }; };
+			globalThis.homm_ns.components['magic-book'].computed.$route = routeMock;
 			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
+
+			// magic-book-marks mock
+			globalThis.homm_ns.components['magic-book-marks'] = { template: '<p></p>' };
 		</script>
 	</head>
 	<body>

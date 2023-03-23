@@ -11,27 +11,13 @@
 	position: absolute;
 }
 
-[iam-magic-book-marks] {
-	display: block;
-	font-size: 0;
-	margin: 0;
-	text-align: right;
-}
-
-[iam-magic-book-mark] {
-	font-size: 12px;
-	display: inline-block;
-	text-align: center;
-}
-
 [iam-magic-book-page-btn] {
 	display: block;
 	margin: 0;
 	padding: 0;
 }
 
-[iam-magic-book-page-btn]:disabled
-, [iam-magic-book-mark-title] {
+[iam-magic-book-page-btn]:disabled {
 	display: none;
 }
 

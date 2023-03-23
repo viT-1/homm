@@ -1,6 +1,6 @@
 (function (_ns) {
 	const spellTitle = 'something';
-	const spellTitleAttName = 'iam-magic-spell-title';
+	const spellTitleAttName = 'iam-magic-spell-descr';
 	const predefinedSpell = { level: 3, title: spellTitle };
 
 	const vueConfig = _ns.vues[_ns.vues.length - 1];
@@ -28,7 +28,7 @@
 		it('title is rendered with ' + spellTitleAttName + ' attribute and title property', function () {
 			const vm = setupIt();
 
-			const elTitles = vm.$el.querySelectorAll('['+spellTitleAttName+']');
+			const elTitles = vm.$el.querySelectorAll('['+spellTitleAttName+' = "title"]');
 			expect(elTitles.length).toEqual(1);
 
 			const elTitle = elTitles[elTitles.length - 1];

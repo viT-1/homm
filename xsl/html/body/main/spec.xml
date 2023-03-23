@@ -12,9 +12,7 @@
 		<script>
 			// vue-router mock
 			const routeMock = function () { return { query: { type: 'air' } }; };
-			globalThis.homm_ns.components['magic-book'].computed.$route = routeMock;
 			globalThis.homm_ns.components['magic-book-marks'].computed.$route = routeMock;
-
 			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
 		</script>
 		<script src="vue-ids-pager/vue-ids-pager.js"></script>

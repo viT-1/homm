@@ -9,9 +9,8 @@
 		<script src="magic-book.js"></script>
 		<script>
 			// vue-router mock
-			const routeMock = function () { return { query: { type: 'air' } }; };
-			globalThis.homm_ns.components['magic-book'].computed.$route = routeMock;
-			globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
+			// TODO: move to magic-book-marks spec
+			// globalThis.homm_ns.components['router-link'] = { template: '<a href="#"><slot></slot></a>' };
 
 			// magic-book-marks mock
 			globalThis.homm_ns.components['magic-book-marks'] = { template: '<p></p>' };
@@ -19,7 +18,7 @@
 	</head>
 	<body>
 		<main>
-			<magic-book v-bind="{spells: computedSpells, config: configBook }"></magic-book>
+			<magic-book v-bind="{ spells: computedSpells, config: configBook }"></magic-book>
 		</main>
 		<script data-component-tmpl="../magic-spell/magic-spell.xml"></script>
 		<script data-component-tmpl="magic-book.xml"></script>

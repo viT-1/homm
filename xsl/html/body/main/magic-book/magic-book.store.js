@@ -1,7 +1,8 @@
 // Stores the spell filtering state. Paging works without vuex
 (function (_ns) {
+	// @see also ../router/index.router.js _ns.store.commit
 	const defaultFilterConfig = {
-		combat: true, // TODO: default/reSet filter should be { combat: true }
+		combat: true,
 	};
 
 	// filters API deprecated, methods should be used

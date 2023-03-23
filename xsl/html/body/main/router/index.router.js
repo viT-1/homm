@@ -18,7 +18,8 @@ if (!window.location.search) {
 			props: function () {
 				return {
 					spells: _ns.store.getters['magic-book/spells'],
-				};;
+					spellsType: _ns.store.getters['magic-book/activeFilters'].type,
+				};
 			},
 		}],
 	};

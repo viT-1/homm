@@ -67,6 +67,16 @@
 			expect(allExpectedAreCalculated).toBeTruthy();
 			expect(calculatedNames.length).toBeGreaterThanOrEqual(globalThis.mainSpecXmlNames.length);
 		});
+
+		it('calculates all components and subcomponents names without css query', function () {
+			const elDiv = globalThis.document.createElement('div');
+			elDiv.innerHTML = '<magic-boob><a></a><b><some-component></some-component></b></magic-boob>'
+
+			var calculatedNames = [];
+			_ns.f.getComponentNames(elDiv, undefined, calculatedNames);
+
+			expect(calculatedNames.length).toBeGreaterThan(1);
+		});
 	});
 
 	describe('main functions > helpers', function () {

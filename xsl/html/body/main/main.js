@@ -12,7 +12,7 @@
 	
 	// recursive function to get plain list of components in cssquery (unique) element
 	_ns.f.getComponentNames = function (queryContext, cssQuery, reduceArray) {
-		const elem = queryContext.querySelector(cssQuery);
+		const elem = cssQuery ? queryContext.querySelector(cssQuery) : queryContext;
 
 		if (!elem) {
 			console.warn('Element ' + cssQuery + ' is not found!');
@@ -26,7 +26,7 @@
 			const attType = elem.getAttribute('type');
 			if (attType && attType.indexOf('template') > -1) {
 				const docFragment = new DOMParser().parseFromString(elem.innerHTML.trim(), 'text/html');
-				elems = docFragment.querySelectorAll('body *');
+				elems = docFragment.querySelectorAll('*');
 			}
 		} else {
 			elems = elem.querySelectorAll('*');

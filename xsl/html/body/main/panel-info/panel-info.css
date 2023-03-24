@@ -1,0 +1,17 @@
+[iam-panel-info] {
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: relative;
+}
+
+[iam-panel-info ~= "spell"]::before {
+	content: "";
+	display: block;
+	left: 0;
+	position: absolute;
+}
+
+[iam-panel-info-descr] {
+	column-count: 2;
+	margin: 0;
+}

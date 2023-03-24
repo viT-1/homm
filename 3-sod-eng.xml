@@ -6,9 +6,7 @@
 		<link data-xml="3-sod-eng" id="css-urls" rel="stylesheet" href="homm3/urls.css" />
 	</head>
 	<body>
-		<main>
-			<router-view></router-view>
-		</main>
+		<main></main>
 		<hr class="css-naked-day" />
 	</body>
 </html>

@@ -43,48 +43,4 @@
 [iam-panel]::after {
 	right: 0;
 }
-
-[iam-panel-info] {
-	box-sizing: border-box;
-	font-size: 20px;
-	margin: 0 auto;
-	padding: 16px 142px 16px 196px;
-	position: relative;
-	width: 1138px;
-}
-
-[iam-panel-info ~= "spell"]::before {
-	content: "";
-	display: block;
-	height: 122px;
-	left: 0;
-	position: absolute;
-	width: 166px;
-}
-
-[iam-panel-info ~= "quicksand"]::before {
-	background-position: -664px -122px;
-}
-
-[iam-panel-info ~= "skill"] {
-	display: none;
-}
-
-[iam-panel-info-descr] {
-	column-count: 2;
-	column-gap: 42px;
-	line-height: 1.2em;
-	margin: 0;
-	text-indent: 42px;
-}
-
-[iam-panel-info ~= "spell"] {
-	height: 160px;
-}
-
-[iam-panel-info-skill-label] {
-	display: inline-block;
-	line-height: 1em;
-	margin-right: 1ex;
-}
 /* #endregion */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="panel-info" data-xml="xsl/html/body/main/panel-info/panel-info">
+	<div iam-panel-info="spell quicksand">
+		<p iam-panel-info-descr="">Случайным образом размещает на поле битвы участки зыбучего песка, видимые только тому, кто направил заклинание, а также существам, для которых данный тип местности является «родным». Если отряд попал на зыбучий песок, его ход кончается, и участок с зыбучим песком становится видимым для всех.</p>
+	</div>
+</script>

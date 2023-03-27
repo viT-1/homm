@@ -39,10 +39,13 @@
 		activeFilters: function (state) {
 			return state.activeFilters;
 		},
+		activeSpell: function (state) {
+			return state.activeSpell;
+		},
 		filtersFuncs: function() {
 			return filters;
 		},
-		spells: function(state, getters) {
+		spells: function(state) {
 			const allSpells = _ns.store.getters['spells/all'];
 			const retSpells = _ns.f.applyFiltersByConfig(
 				allSpells, filters, state.activeFilters
@@ -50,13 +53,20 @@
 
 			return retSpells;
 		},
-		ids: function (state, getters) {
-			return _ns.f.getIds(getters.spells);
+		ids: function (state, moduleGetters) {
+			return _ns.f.getIds(moduleGetters.spells);
 		},
 	};
 
 	// TODO: make config constants for mutations names
 	const mutations = {
+		setActiveSpellById: function (state, spellId) {
+			//* Warning: access to getter from mutation here!
+			// It can be set by payload - whole spell (not by id), but unsecure data object
+			state.activeSpell = getters.spells(state).filter(function (spell) {
+				return spell.id == spellId;
+			})[0];
+		},
 		// @see https://github.com/vuejs/vuex/issues/1118
 		setDefaultFilter: function (state) {
 			state.activeFilters = defaultFilterConfig;
@@ -70,6 +80,7 @@
 		namespaced: true,
 		state: {
 			activeFilters: defaultFilterConfig,
+			activeSpell: undefined,
 		},
 		getters: getters,
 		// mapGetters needs context of vue instance to access $store

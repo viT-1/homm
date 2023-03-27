@@ -1,6 +1,6 @@
 (function (_ns) {
 	_ns.components['vue-ids-pager'] = {
-		emits: ['input'],
+		emits: ['input', 'page-changed'],
 		props: {
 			ids: {
 				type: Array,
@@ -14,6 +14,7 @@
 					return value > 0;
 				}
 			},
+			// outer pageIndex (for @input or v-model)
 			value: {
 				type: Number,
 				default: 0,
@@ -36,6 +37,9 @@
 			},
 			canNextPg: function () {
 				return  !(this.isLastPageIndex(this.config, this.pageIndex));
+			},
+			currentIds: function () {
+				return this.getIdsOnPage(this.config, this.pageIndex);
 			}
 		},
 		methods: {
@@ -88,6 +92,7 @@
 				if (this.isValidPageIndex(config, pageIndex)) {
 					this.pageIndex = Number(pageIndex);
 					this.$emit('input', this.pageIndex);
+					this.$emit('page-changed', { index: this.pageIndex, ids: this.currentIds });
 				} else {
 					throw Error('Invalid page index value: ' + pageIndex);
 				}
@@ -103,10 +108,8 @@
 			config: {
 				deep: true,
 				handler: function (val) {
-					const maxPageIndex = this.getLastPageIndex(val);
-					if (this.pageIndex > maxPageIndex) {
-						this.setPageIndex(val, maxPageIndex);
-					}
+					// very simple logic now: if any changes then go to first page
+					this.setPageIndex(val, 0);
 				}
 			},
 			value: {
@@ -121,7 +124,7 @@
 			const maxPageIndex = this.getLastPageIndex(this.config);
 
 			return this.$scopedSlots.default({
-				currentIds: this.getIdsOnPage(this.config, this.pageIndex),
+				currentIds: this.currentIds,
 				lastPgIndex: maxPageIndex,
 				currPgIndex: this.pageIndex,
 				canFirstPg: this.canPrevPg,

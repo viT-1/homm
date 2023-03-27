@@ -81,7 +81,7 @@
 			}
 		});
 
-		it('changes page index if it was the last and new perPage get us less pages', function (done) {
+		it('changes page index if config (ids and limit) has any changes', function (done) {
 			// set pageIndex state to max
 			const oldLastIndex = methods.getLastPageIndex(config);
 			const newLimit = vm.ids.length;
@@ -95,7 +95,7 @@
 			vm.$nextTick(function () {
 				// next tick by triggering @input event
 				vm.$nextTick(function () {
-					expect(vm.inputIndex).toEqual(newLastIndex);
+					expect(vm.inputIndex).toEqual(0);
 					done();
 				});
 			});

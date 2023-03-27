@@ -45,6 +45,6 @@
 	background-image: url("iam-panel/panel-corner.png");
 }
 
-[iam-panel-info ~= "spell"]::before {
+[iam-panel-info]::before {
 	background-image: url("magic-spell/spells-in-guild.png");
 }

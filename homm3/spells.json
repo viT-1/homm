@@ -232,7 +232,7 @@
 	"title": "Stoneskin",
 	"descr": "Increases target, allied troop's defense.",
 	"ru": {
-		"title": "Камненная кожа",
+		"title": "Каменная кожа",
 		"descr": "Увеличивает защиту выбранного существа."
 	},
 	"formula": "@Df+3",

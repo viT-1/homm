@@ -36,6 +36,7 @@
 	background-position: 0 -256px;
 }
 
+/* #region dispel magic, magic arrow, magic mirror & anti-magic */
 [iam-magic-spell ^= "dispel"]::before {
 	background-position: 0 -384px;
 }
@@ -51,6 +52,7 @@
 [iam-magic-spell = "anti-magic"]::before {
 	background-position: -468px -512px;
 }
+/* #endregion dispel magic, magic arrow, magic mirror & anti-magic */
 
 [iam-magic-spell ~= "protection"]::before {
 	background-position-y: -256px;

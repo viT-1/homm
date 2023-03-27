@@ -46,4 +46,15 @@
 	</xsl:copy>
 </xsl:template>
 
+<xsl:template match="*[@id = 'magic-spell']/li/p/span[contains(.,'Spell points')]">
+	<xsl:choose>
+		<xsl:when test="$html.lang = 'ru'">
+			<xsl:text>Очки магии</xsl:text>		
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:copy-of select="." />
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>

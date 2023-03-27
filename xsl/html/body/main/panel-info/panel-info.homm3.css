@@ -1,16 +1,8 @@
 [iam-panel-info] {
 	font-size: 20px;
+	height: 160px;
 	padding: 16px 142px 16px 196px;
 	width: 1138px;
-}
-
-[iam-panel-info ~= "spell"]::before {
-	height: 122px;
-	width: 166px;
-}
-
-[iam-panel-info ~= "quicksand"]::before {
-	background-position: -664px -122px;
 }
 
 [iam-panel-info-descr] {
@@ -19,6 +11,297 @@
 	text-indent: 42px;
 }
 
-[iam-panel-info ~= "spell"] {
-	height: 160px;
+[iam-panel-info]::before {
+	height: 122px;
+	width: 166px;
 }
+
+[iam-panel-info = "bless"]::before {
+	background-position: 0 calc(122px*-1);
+}
+
+[iam-panel-info = "cure"]::before {
+	background-position: 0 calc(122px*-2);
+}
+
+/* #region dispel magic, magic arrow, magic mirror & anti-magic */
+[iam-panel-info ^= "dispel"]::before {
+	background-position: 0 calc(122px*-3);
+}
+
+[iam-panel-info ^= "magic"]::before {
+	background-position: calc(166px*-2) calc(122px*-4);
+}
+
+[iam-panel-info *= "magic mirror"]::before {
+	background-position-x: calc(166px*-7);
+}
+
+[iam-panel-info = "anti-magic"]::before {
+	background-position: calc(166px*-3) calc(122px*-4);
+}
+/* #endregion dispel magic, magic arrow, magic mirror & anti-magic */
+
+[iam-panel-info ~= "quicksand"]::before {
+	background-position: calc(166px*-4) calc(122px*-1);
+}
+
+[iam-panel-info ~= "protection"]::before {
+	background-position-y: calc(122px*-2);
+}
+
+[iam-panel-info = "protection from water"]::before {
+	background-position-x: calc(166px*-4);
+}
+
+[iam-panel-info = "protection from fire"]::before {
+	background-position-x: calc(166px*-5);
+}
+
+[iam-panel-info = "protection from air"]::before {
+	background-position-x: calc(166px*-6);
+}
+
+[iam-panel-info = "protection from earth"]::before {
+	background-position-x: calc(166px*-7);
+}
+
+/* #region lighting bolt, ice bolt, chain lighting */
+[iam-panel-info ~= "bolt"]::before {
+	background-position: 0 calc(122px*-5);
+}
+
+[iam-panel-info ~= "lighting"]::before {
+	background-position-x: calc(166px*-2);
+}
+
+[iam-panel-info ~= "chain"]::before {
+	background-position-y: calc(122px*-7);
+}
+/* #endregion lighting bolt, ice bolt, chain lighting */
+
+[iam-panel-info = "remove obstacle"]::before {
+	background-position: calc(166px*-4) calc(122px*-6);
+}
+
+[iam-panel-info = "weakness"]::before {
+	background-position: calc(166px*-4) calc(122px*-3);
+}
+
+[iam-panel-info = "cold ring"]::before {
+	background-position: 0 calc(122px*-6);
+}
+
+[iam-panel-info = "forgetfullness"]::before {
+	background-position: calc(166px*-5) calc(122px*-4);
+}
+
+[iam-panel-info = "mirth"]::before {
+	background-position: calc(166px*-4) calc(122px*-4);
+}
+
+[iam-panel-info = "teleport"]::before {
+	background-position: 0 calc(122px*-4);
+}
+
+[iam-panel-info = "clone"]::before {
+	background-position: 0 calc(122px*-7);
+}
+
+[iam-panel-info = "prayer"]::before {
+	background-position: calc(166px*-4) calc(122px*-7);
+}
+
+[iam-panel-info $= "elemental"]::before {
+	background-position: 0 calc(122px*1);
+}
+
+[iam-panel-info *= "fire elemental"]::before {
+	background-position-x: calc(166px*-1);
+}
+
+[iam-panel-info *= "air elemental"]::before {
+	background-position-x: calc(166px*-2);
+}
+
+[iam-panel-info *= "earth elemental"]::before {
+	background-position-x: calc(166px*-3);
+}
+
+/* all spells graal (unreachable) */
+[iam-panel-info = ""]::before {
+	background-position: calc(166px*-4) calc(122px*-7);
+}
+
+[iam-panel-info = "scuttle boat"]::before {
+	background-position: calc(166px*-4) 0;
+}
+
+[iam-panel-info = "water walk"]::before {
+	background-position: calc(166px*-5) 0;
+}
+
+[iam-panel-info = "visions"]::before {
+	background-position: calc(166px*-1) 0;
+}
+
+[iam-panel-info = "bloodlust"]::before {
+	background-position: calc(166px*-1) calc(122px*-1);
+}
+
+[iam-panel-info = "curse"]::before {
+	background-position: calc(166px*-1) calc(122px*-2);
+}
+
+[iam-panel-info = "blind"]::before {
+	background-position: calc(166px*-1) calc(122px*-3);
+}
+
+[iam-panel-info = "fire wall"]::before {
+	background-position: calc(166px*-6) calc(122px*-1);
+}
+
+[iam-panel-info = "fireball"]::before {
+	background-position: calc(166px*-1) calc(122px*3);
+}
+
+[iam-panel-info = "land mine"]::before {
+	background-position: calc(166px*-7) calc(122px*-1);
+}
+
+[iam-panel-info *= "fortune"]::before {
+	background-position: calc(166px*-6) calc(122px*-6);
+}
+
+[iam-panel-info = "misfortune"]::before {
+	background-position-x: calc(166px*-5);
+}
+
+[iam-panel-info = "armageddon"]::before {
+	background-position: calc(166px*-1) calc(122px*2);
+}
+
+[iam-panel-info = "berserk"]::before {
+	background-position: calc(166px*-1) calc(122px*-4);
+}
+
+[iam-panel-info ~= "shield"]::before {
+	background-position: calc(166px*-3) calc(122px*-3);
+}
+
+[iam-panel-info = "fire shield"]::before {
+	background-position-x: calc(166px*-5);
+}
+
+[iam-panel-info = "air shield"]::before {
+	background-position-x: calc(166px*-6);
+}
+
+[iam-panel-info = "frenzy"]::before {
+	background-position: calc(166px*-5) calc(122px*-7);
+}
+
+[iam-panel-info = "inferno"]::before {
+	background-position: calc(166px*-6) calc(122px*-5);
+}
+
+[iam-panel-info = "slayer"]::before {
+	background-position: calc(166px*-1) calc(122px*-5);
+}
+
+[iam-panel-info = "sacrifice"]::before {
+	background-position: calc(166px*-7) calc(122px*-5);
+}
+
+[iam-panel-info ~= "view"]::before {
+	background-position: calc(166px*-2) 0;
+}
+
+[iam-panel-info = "view earth"]::before {
+	background-position-x: calc(166px*-3);
+}
+
+[iam-panel-info = "disguise"]::before {
+	background-position: calc(166px*-7) 0;
+}
+
+[iam-panel-info = "haste"]::before {
+	background-position: calc(166px*-2) calc(122px*-1);
+}
+
+[iam-panel-info = "disrupting ray"]::before {
+	background-position: calc(166px*-2) calc(122px*-2);
+}
+
+[iam-panel-info = "precision"]::before {
+	background-position: calc(166px*-6) calc(122px*-4);
+}
+
+[iam-panel-info $= "dead"]::before {
+	background-position: calc(166px*-2) calc(122px*-6);
+}
+
+[iam-panel-info = "animate dead"]::before {
+	background-position-x: calc(166px*-7);
+}
+
+[iam-panel-info = "hypnotize"]::before {
+	background-position: calc(166px*-2) calc(122px*-3);
+}
+
+[iam-panel-info = "counterstrike"]::before {
+	background-position: calc(166px*-6) calc(122px*-7);
+}
+
+[iam-panel-info = "fly"]::before {
+	background-position: calc(166px*-6) 0;
+}
+
+[iam-panel-info = "dimension door"]::before {
+	background-position: calc(166px*2) calc(122px*1);
+}
+
+[iam-panel-info = "town portal"]::before {
+	background-position: calc(166px*1) calc(122px*1);
+}
+
+[iam-panel-info = "slow"]::before {
+	background-position: calc(166px*-3) calc(122px*-1);
+}
+
+[iam-panel-info = "stoneskin"]::before {
+	background-position: calc(166px*-3) calc(122px*-2);
+}
+
+[iam-panel-info = "death ripple"]::before {
+	background-position: calc(166px*-3) calc(122px*-5);
+}
+
+[iam-panel-info = "quicksand"]::before {
+	background-position: calc(166px*-4) calc(122px*-1);
+}
+
+[iam-panel-info = "earthquake"]::before {
+	background-position: calc(166px*-3) calc(122px*-6);
+}
+
+[iam-panel-info = "force field"]::before {
+	background-position: calc(166px*-5) calc(122px*-1);
+}
+
+[iam-panel-info = "meteor shower"]::before {
+	background-position: calc(166px*-3) calc(122px*-7);
+}
+
+[iam-panel-info = "ressurection"]::before {
+	background-position: calc(166px*1) calc(122px*-7);
+}
+
+[iam-panel-info = "sorrow"]::before {
+	background-position: calc(166px*-4) calc(122px*-5);
+}
+
+[iam-panel-info = "implosion"]::before {
+	background-position: calc(166px*-5) calc(122px*-5);
+}
+

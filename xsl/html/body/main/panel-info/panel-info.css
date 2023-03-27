@@ -4,7 +4,7 @@
 	position: relative;
 }
 
-[iam-panel-info ~= "spell"]::before {
+[iam-panel-info]::before {
 	content: "";
 	display: block;
 	left: 0;
@@ -13,5 +13,6 @@
 
 [iam-panel-info-descr] {
 	column-count: 2;
+	column-fill: auto;
 	margin: 0;
 }

@@ -11,6 +11,7 @@
 				default: function () { return 'all' },
 			}
 		},
+		emits: ['spell-click'],
 		computed: {
 			// if filtered by school magic, than -2 spells for caption place
 			perPage: function () {
@@ -21,6 +22,13 @@
 			},
 		},
 		methods: {
+			getOnSpellClickFunc: function(spell) {
+				const func = function () {
+					this.$emit('spell-click', spell.id);
+				};
+
+				return func.bind(this);
+			},
 			getSpellsOnActivePage: function (ids) {
 				return _ns.f.getSublistByIds(this.spells, ids);
 			}

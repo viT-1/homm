@@ -1,6 +1,7 @@
 /* #region screen */
 @media screen {
 [iam-magic-spell] {
+	cursor: pointer;
 	display: inline-block;
 	list-style-type: none;
 	margin: 0;

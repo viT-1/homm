@@ -35,6 +35,11 @@ if (!window.location.search) {
 		}
 
 		_ns.store.commit('magic-book/setFilters', configFilter);
+		
+		// set first spell as active to every spells filtering by commit above
+		const firstFilteredSpell = _ns.store.getters['magic-book/spells'][0];
+		_ns.store.commit('magic-book/setActiveSpellById', firstFilteredSpell.id);
+
 		next();
 	});
 

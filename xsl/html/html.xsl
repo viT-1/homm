@@ -11,6 +11,8 @@
 <xsl:include href="head/head.xsl"/>
 <xsl:include href="body/body.xsl"/>
 
+<xsl:variable name="html.lang" select="//html/@lang"/>
+
 <xsl:template match="html">
 	<xsl:variable name="defIsOff" select="'js touch'"/>
 	<xsl:variable name="defIsOn">
@@ -23,8 +25,6 @@
 		<xsl:apply-templates />
 	</html>
 </xsl:template>
-
-<xsl:variable name="html.lang" select="//html/@lang"/>
 
 <xsl:template match="@* | node()">
 	<xsl:copy>

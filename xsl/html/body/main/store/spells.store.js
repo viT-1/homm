@@ -25,7 +25,7 @@
 		mutations: {
 			reSet: function (state, jsonSpells) {
 				state.jsonSpells = jsonSpells;
-			}
+			},
 		},
 	};
 })(globalThis.homm_ns);

@@ -8,13 +8,11 @@
 
 [iam-magic-book-page-btn] {
 	border-style: none;
-	position: absolute;
-}
-
-[iam-magic-book-page-btn] {
+	cursor: pointer;
 	display: block;
 	margin: 0;
 	padding: 0;
+	position: absolute;
 }
 
 [iam-magic-book-page-btn]:disabled {

@@ -3,7 +3,7 @@
 	// document.addEventListener('DOMContentLoaded', setup);
 	window.addEventListener('load', setup);
 	// TODO: ??? move component list into vues array, needs redefine every component js
-	
+
 	function setup() {
 		setAttrsIsOnOff();
 		parseJsons();
@@ -29,7 +29,7 @@
 					'store/magic-book': ['xsl/html/body/main/magic-book/magic-book.store.js']
 				}, function() {
 					_ns.f.registerDeclaredStoreModules(_ns.store);
-					deppRequireApp({ el: '[iam-app ~= "vueMain"]' });
+					deppRequireApp();
 				});
 			});
 		} else {
@@ -101,27 +101,30 @@
 	}
 
 	// Can be called only after 'main' script is loaded
-	function deppRequireApp(vueConfig) {
-		const computed = merge({
-			some: function () {
-				return this.computedSpells.length;
-			}
-		}, Vuex.mapGetters({
-			computedSpells: 'spells/all'
-		}));
-
-		// special configuration for appMain
-		Object.assign(vueConfig, {
+	function deppRequireApp() {
+		const vueMainConfig = {
+			el: '[iam-app ~= "vueMain"]',
 			store: _ns.store,
-			computed: computed,
-		});
+			computed: Vuex.mapGetters({
+				activeSpell: 'magic-book/activeSpell',
+				computedSpells: 'spells/all'
+			}),
+			methods: {
+				onPageChanged: function(currentMagicPage) {
+					_ns.store.commit('magic-book/setActiveSpellById', currentMagicPage.ids[0]);
+				},
+				onSpellClick: function(spellId) {
+					_ns.store.commit('magic-book/setActiveSpellById', spellId);
+				}
+			}
+		};
 
 		// defined in html/body/main/main.js
-		_ns.f.appendVueConfig(vueConfig);
+		_ns.f.appendVueConfig(vueMainConfig);
 
 		var compNames = [];
 		// defined in html/body/main/main.js
-		_ns.f.getComponentNames(globalThis.document, vueConfig.el, compNames);
+		_ns.f.getComponentNames(globalThis.document, vueMainConfig.el, compNames);
 		if (compNames.indexOf('router-view') > -1) {
 			compNames = compNames.concat(_ns.routerViews);
 			_ns.routerViews.forEach(function (viewComponent) {

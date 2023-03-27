@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-book" data-xml="xsl/html/body/main/magic-book/magic-book">
 	<div iam-magic-book="">
-		<vue-ids-pager v-bind="{ ids: ids, limit: perPage }">
+		<vue-ids-pager v-bind="{ ids: ids, limit: perPage }" v-on="$listeners">
 			<template v-slot="idsPager">
 				<main iam-magic-book-pages="">
 					<button
@@ -17,6 +17,7 @@
 							v-for="spellCol1 in getSpellsOnActivePage(idsPager.currentIds.slice(
 								0, spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
 							v-bind="{spell: spellCol1}"
+							v-on="{ 'click': getOnSpellClickFunc(spellCol1) }"
 						/>
 					</ul>
 					<ul iam-magic-page="right" v-if="idsPager.currentIds.slice(
@@ -25,6 +26,7 @@
 							v-for="spellCol2 in getSpellsOnActivePage(idsPager.currentIds.slice(
 								spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
 							v-bind="{spell: spellCol2}"
+							v-on="{ 'click': getOnSpellClickFunc(spellCol2) }"
 						/>
 					</ul>
 				</main>

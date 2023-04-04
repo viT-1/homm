@@ -152,4 +152,43 @@
 			expect(filtered.length).toEqual(arr.length);
 		});
 	});
+
+	describe('main functions > helpers > mustache templates rendering', function () {
+		it('mustTransform template without keys, it should be the same', function () {
+			const tmpl = 'The {truth} is out there';
+
+			const rendered = _ns.f.mustTransform(tmpl, { truth: 'lie' });
+			expect(rendered).toEqual(tmpl);
+		});
+
+		it('mustTransform template with keys', function () {
+			const mustacheInject = '{{truth}}';
+			const tmpl = 'The ' + mustacheInject + ' is out there';
+			const replaceTo = 'lie';
+
+			const rendered = _ns.f.mustTransform(tmpl, { truth: replaceTo });
+			expect(rendered).toEqual(tmpl.replace(mustacheInject, replaceTo));
+		});
+
+		it('mustTransform template with nested template', function () {
+			const mustacheKey = 'truth';
+			const mustacheInject = '{{' + mustacheKey + '}}';
+			const tmpl = 'The ' + mustacheInject + ' is out there';
+			const json = { nest: 'thing' };
+			// ie11 don't like { [dynamicKey]: val }
+			json[mustacheKey] = 'some{{nest}}';
+
+			const rendered = _ns.f.mustTransform(tmpl, json);
+			expect(rendered).toEqual(
+				tmpl.replace(mustacheInject, json[mustacheKey].replace('{{nest}}', json['nest']))
+			);
+		});
+
+		it('mustTransform template as is if key is not resolved', function () {
+			const tmpl = 'The {{truth}} is out there';
+
+			const rendered = _ns.f.mustTransform(tmpl, { lie: 'truth' });
+			expect(rendered).toEqual(tmpl);
+		})
+	});
 })(globalThis.homm_ns);

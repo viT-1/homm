@@ -4,7 +4,7 @@
 	window.addEventListener('load', setup);
 	// TODO: ??? move component list into vues array, needs redefine every component js
 
-	function setup() {
+	function setup () {
 		setAttrsIsOnOff();
 		parseJsons();
 		if (globalThis.depp && _ns.imports) {
@@ -25,6 +25,7 @@
 				_ns.f.setGlobalStore();
 				// storeModules are independed from creating new Vuex.Store, they are configs only!
 				deppLoadScripts({
+					'store/hero': ['xsl/html/body/main/hero-info/hero-info.store.js'],
 					'store/spells': ['xsl/html/body/main/store/spells.store.js'],
 					'store/magic-book': ['xsl/html/body/main/magic-book/magic-book.store.js']
 				}, function() {
@@ -38,7 +39,7 @@
 	}
 
 	// Set attributes html[is-on] & html[is-off] for css UX-rules
-	function setAttrsIsOnOff() {
+	function setAttrsIsOnOff () {
 		const htmlTag = document.querySelector('html[is-off]');
 	
 		if (htmlTag) {
@@ -74,7 +75,7 @@
 		}
 	}
 	
-	function isTouchSupported() {
+	function isTouchSupported () {
 		return Boolean(
 			( 'ontouchstart' in window)
 			|| (navigator.msMaxTouchPoints > 0)
@@ -82,7 +83,7 @@
 		);
 	}
 
-	function parseJsons() {
+	function parseJsons () {
 		const scriptImportmap = document.querySelector('#importmap');
 		if (scriptImportmap && scriptImportmap.textContent && scriptImportmap.textContent != '&importmap;') {
 			_ns.imports = JSON.parse(scriptImportmap.textContent).imports;
@@ -91,7 +92,7 @@
 		}
 	}
 
-	function deppLoadScripts(deps, afterLoading) {
+	function deppLoadScripts (deps, afterLoading) {
 		const depKeys = Object.keys(deps);
 		if (!depp.isDefined(depKeys[0])) {
 			depp.define(deps);
@@ -101,7 +102,7 @@
 	}
 
 	// Can be called only after 'main' script is loaded
-	function deppRequireApp() {
+	function deppRequireApp () {
 		const vueMainConfig = {
 			el: '[iam-app ~= "vueMain"]',
 			store: _ns.store,
@@ -110,11 +111,16 @@
 				computedSpells: 'spells/all'
 			}),
 			methods: {
-				onPageChanged: function(currentMagicPage) {
+				onPageChanged: function (currentMagicPage) {
 					_ns.store.commit('magic-book/setActiveSpellById', currentMagicPage.ids[0]);
 				},
-				onSpellClick: function(spellId) {
+				onSpellClick: function (spellId) {
 					_ns.store.commit('magic-book/setActiveSpellById', spellId);
+				},
+				onWisdomSkillChanged: function (wisdomSkill) {
+					var magicBookFilters = _ns.store.getters['magic-book/activeFilters'];
+					merge(magicBookFilters, { wisdom: wisdomSkill });
+					_ns.store.commit('magic-book/setFilters', magicBookFilters);
 				}
 			}
 		};
@@ -149,7 +155,7 @@
 		});
 	}
 
-	function deppDefineComponentsFiles(componentsNames) {
+	function deppDefineComponentsFiles (componentsNames) {
 		const pathSep = '/';
 		var arrMainPath = _ns.imports.main.split(pathSep);
 		arrMainPath.pop();

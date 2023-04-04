@@ -88,6 +88,4 @@
 		// getters:  Vuex.mapGetters.apply({ $store: _ns.store }, [{ spells: 'spells/all' }]),
 		mutations: mutations,
 	};
-
-
 })(globalThis.homm_ns);

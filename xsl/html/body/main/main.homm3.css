@@ -12,7 +12,7 @@
 
 [iam-app] {
 	background-repeat: no-repeat;
-	background-position-y: 160px;
+	position: relative;
 }
 
 /* #region iam-panel */
@@ -22,17 +22,21 @@
 	height: 212px;
 	margin-bottom: 38px;
 	min-width: 1140px;
-	position: relative;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 1;
 }
 
 [iam-panel]::before
-, [iam-panel]::after {
+, [iam-panel]::after
+, [iam-hero-info]::after {
 	content: "";
 	height: 90px;
 	position: absolute;
 	top: 0;
 	width: 88px;
-	z-index: 1;
+	z-index: 3;
 }
 
 [iam-panel]::before {
@@ -42,5 +46,10 @@
 
 [iam-panel]::after {
 	right: 0;
+}
+
+[iam-hero-info]::after {
+	right: -10px;
+	top: -10px;
 }
 /* #endregion */

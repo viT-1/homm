@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="vue-toggler" data-xml="xsl/html/body/main/vue-toggler/vue-toggler">
+	<fieldset v-bind="{ 'iam-toggler': iamMod + ' ' + labels[checkedN-1], id: id }">
+		<span
+			v-for="n in labels.length"
+			v-bind="{
+				'iam-toggler-item': n == nextVisibleN ? iamMod : 'hide ' + iamMod
+			}">
+			<input
+				type="radio"
+				v-bind="{
+					'iam-toggler-input': iamMod,
+					id: id + '_' + n,
+					name: id, value: start + n - 1,
+					'checked': n == checkedN,
+				}"
+				v-on="{ 'click': getOnClickFunc(n) }"/>
+			<label
+				v-bind="{
+					'iam-toggler-label': iamMod,
+					for: id + '_' + n
+				}">
+				<span
+					v-bind="{ 'iam-toggler-label-txt': iamMod }">{{labels[n-1]}}</span>
+			</label>
+		</span>
+	</fieldset>
+</script>

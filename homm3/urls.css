@@ -41,10 +41,19 @@
 }
 
 [iam-panel ~= "top"]::before
-, [iam-panel ~= "top"]::after {
+, [iam-panel ~= "top"]::after
+, [iam-hero-info]::after {
 	background-image: url("iam-panel/panel-corner.png");
 }
 
 [iam-panel-info]::before {
 	background-image: url("magic-spell/spells-in-guild.png");
+}
+
+[iam-hero-info] {
+	background-image: url("hero-info/skill-popup.png");
+}
+
+[iam-hero-skill] {
+	background-image: url("hero-info/skill-lvls.png");
 }

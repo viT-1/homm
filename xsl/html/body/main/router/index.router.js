@@ -17,6 +17,10 @@ if (!window.location.search) {
 			component: _ns.components['magic-book'],
 			props: function () {
 				return {
+					hero: {
+						spellPoints: _ns.store.getters['hero/spellPoints'],
+						skills: _ns.store.getters['hero/skills'],
+					},
 					spells: _ns.store.getters['magic-book/spells'],
 					spellsType: _ns.store.getters['magic-book/activeFilters'].type,
 				};
@@ -34,6 +38,10 @@ if (!window.location.search) {
 			configFilter.type = to.query.type;
 		}
 
+		const wisdomLvl = _ns.store.getters['hero/skills'].wisdom;
+		configFilter.wisdom = wisdomLvl;
+
+		// TODO: merge filters logic move to store?
 		_ns.store.commit('magic-book/setFilters', configFilter);
 		
 		// set first spell as active to every spells filtering by commit above

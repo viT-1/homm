@@ -16,7 +16,7 @@
 						<magic-spell
 							v-for="spellCol1 in getSpellsOnActivePage(idsPager.currentIds.slice(
 								0, spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
-							v-bind="{spell: spellCol1}"
+							v-bind="{ spell: spellCol1, skill: getSpellSkillLvl(spellCol1), heroPoints: hero.spellPoints }"
 							v-on="{ 'click': getOnSpellClickFunc(spellCol1) }"
 						/>
 					</ul>
@@ -25,7 +25,7 @@
 						<magic-spell
 							v-for="spellCol2 in getSpellsOnActivePage(idsPager.currentIds.slice(
 								spellsType == 'all' || spellsType == 'move' ? 6 : (idsPager.canPrevPg ? 6 : 4)))"
-							v-bind="{spell: spellCol2}"
+							v-bind="{ spell: spellCol2, skill: getSpellSkillLvl(spellCol2), heroPoints: hero.spellPoints }"
 							v-on="{ 'click': getOnSpellClickFunc(spellCol2) }"
 						/>
 					</ul>

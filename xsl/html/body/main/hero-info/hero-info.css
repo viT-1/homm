@@ -1,0 +1,21 @@
+[iam-hero-info] {
+	position: fixed;
+	z-index: 1;
+}
+
+/* #region modify child component styles with "iam-hero-info" modificator */
+[iam-toggler-label ~= "iam-hero-info"] {
+	display: block;
+	cursor: pointer;
+}
+
+[iam-toggler-label-txt ~= "iam-hero-info"]
+, [iam-toggler-input ~= "iam-hero-info"] {
+	display: none;
+}
+/* #endregion */
+
+/* we can override root element of children component */
+[iam-hero-skill] {
+	margin: 0 auto;
+}

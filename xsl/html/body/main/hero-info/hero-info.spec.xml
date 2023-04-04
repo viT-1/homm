@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+<html use="vuex">
+	<head data-relpath-root="../../../../../">
+		<title>HoMM: hero-info</title>
+		<link rel="stylesheet" href="../vue-toggler/vue-toggler.css"/>
+		<link rel="stylesheet" href="hero-info.css"/>
+		<link rel="stylesheet" href="hero-info.homm3.css"/>
+		<style>
+			[iam-hero-skill ~= "none"] { background: yellow }
+			[iam-hero-skill ~= "basic"] { background: greenyellow }
+			[iam-hero-skill ~= "advanced"] { background: forestgreen }
+			[iam-hero-skill ~= "expert"] { background: darkgreen }
+		</style>
+		<script src="../vue-toggler/vue-toggler.js"></script>
+		<script src="../store/index.store.js"></script>
+		<script src="hero-info.js"></script>
+		<script src="hero-info.store.js"></script>
+	</head>
+	<body>
+		<main>
+			<hero-info />
+		</main>
+		<script data-component-tmpl="hero-info.xml"></script>
+		<script data-component-tmpl="../vue-toggler/vue-toggler.xml"></script>
+		<script>
+			const specStore = globalThis.homm_ns.f.setGlobalStore();
+			globalThis.homm_ns.f.registerDeclaredStoreModules(specStore);
+			globalThis.homm_ns.f.mount();
+		</script>
+	</body>
+</html>

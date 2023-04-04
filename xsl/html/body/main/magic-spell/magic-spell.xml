@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="magic-spell" data-xml="xsl/html/body/main/magic-spell/magic-spell">
 	<li	v-bind="{ 'iam-magic-spell': iamTitle }" v-on="$listeners">
-		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'title disabled' : 'title' }">{{i18nTitle}}</p>
-		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'level disabled' : 'level' }">{{spell.level + lvlSuffix}}/Exp</p>
+		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'title disabled' : 'title' }">
+			{{mData.title}}</p>
+		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'level disabled' : 'level' }">
+			{{mData.level + i18nLvlSuffix}}<span v-if="i18nSkill">/{{i18nSkill}}</span></p>
 		<p v-bind="{ 'iam-magic-spell-descr': isDisabled ? 'points disabled' : 'points' }">
-			<span>Spell points</span>: {{spell.points}}</p>
+			<span>Spell points</span>: {{mData.points}}</p>
 	</li>
 </script>

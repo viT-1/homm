@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="hero-info" data-xml="xsl/html/body/main/hero-info/hero-info">
+	<form iam-hero-info="">
+		<vue-toggler id="airLvl" v-model="airSkill" iam-mod="iam-hero-info"
+			v-bind="{ labels: labels, 'iam-hero-skill': 'air ' + labels[airSkill] }" />
+		<vue-toggler id="earthLvl" v-model="earthSkill" iam-mod="iam-hero-info"
+			v-bind="{ labels: labels, 'iam-hero-skill': 'earth ' + labels[earthSkill] }" />
+		<vue-toggler id="fireLvl" v-model="fireSkill" iam-mod="iam-hero-info"
+			v-bind="{ labels: labels, 'iam-hero-skill': 'fire ' + labels[fireSkill] }" />
+		<vue-toggler id="waterLvl" v-model="waterSkill" iam-mod="iam-hero-info"
+			v-bind="{ labels: labels, 'iam-hero-skill': 'water ' + labels[waterSkill] }" />
+		<vue-toggler id="wisdomLvl" v-model="wisdomSkill" iam-mod="iam-hero-info"
+			v-bind="{ labels: labels, 'iam-hero-skill': 'wisdom ' + labels[wisdomSkill] }" />
+	</form>
+</script>

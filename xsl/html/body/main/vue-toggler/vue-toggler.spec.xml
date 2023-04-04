@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="../spec.xsl" type="text/xsl"?>
+<html use="vue">
+	<head data-relpath-root="../../../../../">
+		<title>HoMM: vue-toggler</title>
+		<link rel="stylesheet" href="vue-toggler.css"/>
+		<script src="vue-toggler.js"></script>
+	</head>
+	<body>
+		<main>
+			<vue-toggler
+				id="sample1Toggle"
+				v-bind="{
+					labels: ['none', 'basic', 'advanced', 'expert']
+				}"
+				v-model="togglerVal" />
+			<p>{{togglerVal}}</p>
+		</main>
+		<script data-component-tmpl="vue-toggler.xml"></script>
+		<script>
+			globalThis.homm_ns.f.injectToVueConfig({ data: { togglerVal: 0 } });
+			globalThis.homm_ns.f.mount();
+		</script>
+	</body>
+</html>

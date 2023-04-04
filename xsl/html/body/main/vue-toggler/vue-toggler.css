@@ -1,0 +1,7 @@
+[iam-toggler] {
+	border: none;
+}
+
+[iam-toggler-item ~= "hide"] {
+	display: none;
+}

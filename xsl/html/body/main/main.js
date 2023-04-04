@@ -9,7 +9,7 @@
 	if (styleUrls) {
 		_ns['homm-version'] = styleUrls.getAttribute('href').split('/')[0];
 	}
-	
+
 	// recursive function to get plain list of components in cssquery (unique) element
 	_ns.f.getComponentNames = function (queryContext, cssQuery, reduceArray) {
 		const elem = cssQuery ? queryContext.querySelector(cssQuery) : queryContext;
@@ -34,11 +34,11 @@
 
 		// inner function with reduceArray closure
 		const checkElems = function (elems) {
-			Array.prototype.forEach.call(elems,	function (el) {
+			Array.prototype.forEach.call(elems, function (el) {
 				const childTagName = el.tagName.toLowerCase();
 				const isAlreadyPushed = reduceArray.indexOf(childTagName) > -1;
 				const isWebComponentTag = childTagName.indexOf('-') > -1
-	
+
 				if (!isAlreadyPushed && isWebComponentTag) {
 					reduceArray.push(childTagName);
 
@@ -61,7 +61,7 @@
 						if (el.children && el.children.length > 0) {
 							innerTags = el.children;
 						}
-	
+
 						if (el.content && el.content.children && el.content.children.length > 0) {
 							innerTags = el.content.children;
 						}
@@ -105,7 +105,7 @@
 		elDiv.setAttribute(specAttName, specId);
 		document.body.insertAdjacentElement('beforeend', elDiv);
 
-		const queryString = '['+ specAttName +' = "' + specId + '"] > div';
+		const queryString = '[' + specAttName + ' = "' + specId + '"] > div';
 
 		return queryString;
 	}
@@ -131,7 +131,7 @@
 		merge(lastVueConfig, injectConfig);
 	}
 
-	_ns.f.registerDeclaredComponents = (function() {
+	_ns.f.registerDeclaredComponents = (function () {
 		var alreadyRegistered = false;
 
 		return function () {
@@ -140,7 +140,7 @@
 					// TODO: if not registered yet (in other scripts)
 					Vue.component(key, _ns.components[key]);
 				});
-				
+
 				if (Object.keys(_ns.components).length) {
 					alreadyRegistered = true;
 				}
@@ -172,13 +172,13 @@
 (function (_ns) {
 	_ns.f.getIds = function (arrObjWithId) {
 		const arrIds = [];
-		arrObjWithId.forEach(function (obj){ arrIds.push(obj.id); });
+		arrObjWithId.forEach(function (obj) { arrIds.push(obj.id); });
 		return arrIds;
 	}
 
 	_ns.f.getSublistByIds = function (arrObjWithId, arrIds) {
 		const sublist = [];
-		arrObjWithId.forEach(function (obj){
+		arrObjWithId.forEach(function (obj) {
 			if (arrIds.indexOf(obj.id) > -1) {
 				sublist.push(obj);
 			}
@@ -187,7 +187,7 @@
 	}
 
 	// array.filter callbacks config/manager
-	_ns.f.applyFiltersByConfig = function(list, filters, configFilters) {
+	_ns.f.applyFiltersByConfig = function (list, filters, configFilters) {
 		var filtered = list; // initial list
 		// applying all filters, defined in configFilters
 		Object.keys(configFilters).forEach(function (filterKey) {
@@ -198,4 +198,30 @@
 
 		return filtered;
 	}
+
+	_ns.f.mustTransform = function (tmpl, obj) {
+		const regex = new RegExp('{{([^}]+)}}', 'g');
+		var rendered;
+		
+		const regReplacerFn = function (match, prop) {
+			// mustache key is not exist in obj, tmpl should stay as is
+			if (Object.keys(obj).indexOf(prop) == -1) {
+				return match;
+			}
+
+			var retVal = obj[prop];
+
+			if (typeof retVal !== 'string' ||
+				typeof retVal === 'string' && retVal.indexOf('{{') == -1) {
+				return retVal;
+			}
+
+			// recursive resolving template matches
+			return retVal.replace(regex, regReplacerFn);
+		};
+		
+		rendered = tmpl.replace(regex, regReplacerFn);
+		
+		return rendered;
+	};
 })(globalThis.homm_ns);

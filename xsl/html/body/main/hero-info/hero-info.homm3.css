@@ -1,0 +1,57 @@
+[iam-hero-info] {
+	height: 800px;
+	right: 10px;
+	top: 10px;
+	width: 160px;
+}
+
+[iam-toggler-label ~= "iam-hero-info"]
+, [iam-hero-skill] {
+	height: 88px;
+	width: 88px;
+}
+
+[iam-hero-skill] {
+	margin-top: 8px;
+	padding: 0;
+}
+
+[iam-hero-skill]:first-child {
+	margin-top: 292px;
+}
+
+[iam-hero-skill ~= "none"] {
+	background-position-x: 0;
+}
+
+[iam-hero-skill ~= "basic"] {
+	background-position-x: -88px;
+}
+
+[iam-hero-skill ~= "advanced"] {
+	background-position-x: -176px;
+}
+
+[iam-hero-skill ~= "expert"] {
+	background-position-x: 88px;
+}
+
+[iam-hero-skill ~= "air"] {
+	background-position-y: 0;
+}
+
+[iam-hero-skill ~= "earth"] {
+	background-position-y: -88px;
+}
+
+[iam-hero-skill ~= "fire"] {
+	background-position-y: -176px;
+}
+
+[iam-hero-skill ~= "water"] {
+	background-position-y: 176px;
+}
+
+[iam-hero-skill ~= "wisdom"] {
+	background-position-y: 88px;
+}

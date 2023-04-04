@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="panel-info" data-xml="xsl/html/body/main/panel-info/panel-info">
 	<div v-bind="{ 'iam-panel-info': iamTitle }">
-		<p iam-panel-info-descr="">{{i18nDescription}}
-			<span v-if="info.formula" iam-panel-info-descr="formula">{{info.formula}}</span></p>
+		<p iam-panel-info-descr="">{{i18nDescription}}</p>
 	</div>
 </script>

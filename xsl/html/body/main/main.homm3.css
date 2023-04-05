@@ -30,7 +30,7 @@
 
 [iam-panel]::before
 , [iam-panel]::after
-, [iam-hero-info]::after {
+, [iam-hero-info]::before {
 	content: "";
 	height: 90px;
 	position: absolute;
@@ -48,8 +48,9 @@
 	right: 0;
 }
 
-[iam-hero-info]::after {
-	right: -10px;
+[iam-hero-info]::before {
+	background-position-x: -88px;
+	left: -10px;
 	top: -10px;
 }
 /* #endregion */

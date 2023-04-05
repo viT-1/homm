@@ -42,7 +42,7 @@
 
 [iam-panel ~= "top"]::before
 , [iam-panel ~= "top"]::after
-, [iam-hero-info]::after {
+, [iam-hero-info]::before {
 	background-image: url("iam-panel/panel-corner.png");
 }
 

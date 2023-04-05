@@ -7,7 +7,7 @@
 [iam-panel-info]::before {
 	content: "";
 	display: block;
-	left: 0;
+	right: -20px;
 	position: absolute;
 }
 

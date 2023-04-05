@@ -1,4 +1,6 @@
-// functions for work with XHTML
+/*
+**	functions for work with XHTML
+*/
 (function (_ns) {
 	if (!_ns.f) {
 		_ns.f = {};
@@ -111,7 +113,9 @@
 	}
 })(globalThis.homm_ns);
 
-// functions for work with Vue
+/*
+**	functions for work with Vue
+*/
 (function (_ns) {
 	_ns.vues = [];
 	_ns.f.appendVueConfig = function (vueConfig) {
@@ -166,9 +170,30 @@
 			vueConfig.vue = new Vue(vueConfig);
 		}
 	}
+
+	/*
+	**	specific to App common functions
+	*/
+	//	TODO: need spec for this algorithm
+	_ns.f.getSpellSkillLvl = function (spell, skills) {
+		const schoolsArr = spell.type.filter(function (spellType) {
+			return Object.keys(skills).indexOf(spellType) > -1;
+		});
+
+		var maxLvl = 0;
+		schoolsArr.forEach(function (schoolKey) {
+			if (skills[schoolKey] > maxLvl) {
+				maxLvl = skills[schoolKey];
+			}
+		});
+
+		return maxLvl;
+	};
 })(globalThis.homm_ns);
 
-// helpers
+/*
+**	helpers
+*/
 (function (_ns) {
 	_ns.f.getIds = function (arrObjWithId) {
 		const arrIds = [];

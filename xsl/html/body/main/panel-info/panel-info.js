@@ -45,9 +45,18 @@
 					mData['descr'] :
 					mustacheRender(mData['descr'], mData);
 
-				return mData['descr-ext'] ?
-					descr + ' ' + mData['descr-ext'] :
-					descr;
+				var descrExt;
+				if ((typeof mustacheRender != undefined) && mData['descr-ext']) {
+					descrExt = mustacheRender(mData['descr-ext'], mData);
+				}
+
+				if (mData.mass) {
+					// TODO: i18n!!!
+					var massEffectText = 'Применяется ко всем отрядам.';
+					descrExt = descrExt ? descrExt + ' ' + massEffectText : massEffectText;
+				}
+
+				return descrExt ? descr + ' ' + descrExt : descr;
 			},
 			iamTitle: function () {
 				return this.info['title-ext'] ?

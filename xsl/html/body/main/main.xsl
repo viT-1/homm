@@ -7,7 +7,7 @@
 		<xsl:apply-templates />
 		<router-view v-on="{{ 'spell-click': onSpellClick, 'page-changed': onPageChanged }}" />
 		<div iam-panel="top">
-			<panel-info v-bind="{{ info: activeSpell }}" />
+			<panel-info v-bind="{{ info: activeSpell, skill: spellSchoolLvl }}" />
 		</div>
 		<hero-info v-on="{{ 'wisdom-skill-changed': onWisdomSkillChanged }}" />
 	</div>

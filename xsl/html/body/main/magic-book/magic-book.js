@@ -44,21 +44,8 @@
 
 				return func.bind(this);
 			},
-			// TODO: need spec for this algorithm
-			getSpellSkillLvl: function (spell) {
-				const skills = this.hero.skills;
-				const schoolsArr = spell.type.filter(function (spellType) {
-					return Object.keys(skills).indexOf(spellType) > -1;
-				});
-
-				var maxLvl = 0;
-				schoolsArr.forEach(function (schoolKey) {
-					if (skills[schoolKey] > maxLvl) {
-						maxLvl = skills[schoolKey];
-					}
-				});
-
-				return maxLvl;
+			getSpellSkillLvl: function (spell, skills) {
+				return _ns.f.getSpellSkillLvl (spell, skills);
 			},
 			getSpellsOnActivePage: function (ids) {
 				return _ns.f.getSublistByIds(this.spells, ids);

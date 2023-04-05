@@ -42,6 +42,10 @@
 		activeSpell: function (state) {
 			return state.activeSpell;
 		},
+		activeSkillLvl: function (state) {
+			const heroSkills = _ns.store.getters['hero/skills'];
+			return _ns.f.getSpellSkillLvl(state.activeSpell, heroSkills);
+		},
 		filtersFuncs: function() {
 			return filters;
 		},

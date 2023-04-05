@@ -103,13 +103,16 @@
 
 	// Can be called only after 'main' script is loaded
 	function deppRequireApp () {
+		const computed = Vuex.mapGetters({
+			activeSpell: 'magic-book/activeSpell',
+			computedSpells: 'spells/all',
+			spellSchoolLvl: 'magic-book/activeSkillLvl',
+		});
+
 		const vueMainConfig = {
 			el: '[iam-app ~= "vueMain"]',
 			store: _ns.store,
-			computed: Vuex.mapGetters({
-				activeSpell: 'magic-book/activeSpell',
-				computedSpells: 'spells/all'
-			}),
+			computed: computed,
 			methods: {
 				onPageChanged: function (currentMagicPage) {
 					_ns.store.commit('magic-book/setActiveSpellById', currentMagicPage.ids[0]);
@@ -122,7 +125,7 @@
 					merge(magicBookFilters, { wisdom: wisdomSkill });
 					_ns.store.commit('magic-book/setFilters', magicBookFilters);
 				}
-			}
+			},
 		};
 
 		// defined in html/body/main/main.js

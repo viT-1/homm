@@ -611,7 +611,7 @@
 	"title": "Animate Dead",
 	"descr": "Reanimates {{formula}} health points worth of killed undead creatures in target, allied troop.",
 	"ru": {
-		"title": "Поднятие мертвецов",
+		"title": "Оживить упыря",
 		"descr": "Реанимирует нежить в целевом отряде, суммарным здоровьем равным {{formula}}."
 	},
 	"formula": "@SP*50+{{@delta}}",

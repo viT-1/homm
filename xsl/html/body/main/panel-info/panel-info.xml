@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <script type="text/x-template" id="panel-info" data-xml="xsl/html/body/main/panel-info/panel-info">
 	<div v-bind="{ 'iam-panel-info': iamTitle }">
-		<p iam-panel-info-descr="">{{i18nDescription}}</p>
+		<p iam-panel-info-descr="">{{i18nDescription}}
+			<span v-if="mData.mass"><span iam-panel-info-mass="">Mass effect.</span></span>
+		</p>
 	</div>
 </script>

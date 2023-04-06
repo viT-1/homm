@@ -50,12 +50,6 @@
 					descrExt = mustacheRender(mData['descr-ext'], mData);
 				}
 
-				if (mData.mass) {
-					// TODO: i18n!!!
-					var massEffectText = 'Применяется ко всем отрядам.';
-					descrExt = descrExt ? descrExt + ' ' + massEffectText : massEffectText;
-				}
-
 				return descrExt ? descr + ' ' + descrExt : descr;
 			},
 			iamTitle: function () {

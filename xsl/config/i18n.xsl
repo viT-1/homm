@@ -57,4 +57,15 @@
 	</xsl:choose>
 </xsl:template>
 
+<xsl:template match="*[@id = 'panel-info']//*[@iam-panel-info-mass]">
+	<xsl:choose>
+		<xsl:when test="$html.lang = 'ru'">
+			<xsl:text> Носит массовый характер.</xsl:text>		
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:copy-of select="." />
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>

@@ -1149,8 +1149,7 @@
 	"id": 45,
 	"level": 2,
 	"title": "Quicksand",
-	"descr": "The spell places quicksand pits randomly in combat field hexes. They are invisible to enemy hero, unless the hero has a creature fighting on native terrain. A creature stack that tries to move through a hex with quicksand pit is halted and cannot act until next round. Once a pit is stepped on, it is revealed for all to see.",
-	"descr-ext": "Quicksand pits are placed in {{@count}} random hexes.",
+	"descr": "The spell places quicksand pits randomly in combat field hexes. They are invisible to enemy hero, unless the hero has a creature fighting on native terrain. A creature stack that tries to move through a hex with quicksand pit is halted and cannot act until next round. Once a pit is stepped on, it is revealed for all to see. Quicksand pits are placed in {{@count}} random hexes.",
 	"ru": {
 		"title": "Зыбучие пески",
 		"descr": "Случайным образом размещает на поле битвы {{@count}} клеток зыбучего песка, видимые только тому, кто направил заклинание, а также существам, для которых данный тип местности является «родным». Если отряд попал на зыбучий песок, его ход кончается, и участок с зыбучим песком становится видимым для всех."

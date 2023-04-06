@@ -1,5 +1,5 @@
 [iam-hero-info] {
-	height: 800px;
+	height: 674px;
 	left: 10px;
 	top: 10px;
 	width: 160px;
@@ -17,7 +17,7 @@
 }
 
 [iam-hero-skill]:first-child {
-	margin-top: 292px;
+	margin-top: 166px;
 }
 
 [iam-hero-skill ~= "none"] {

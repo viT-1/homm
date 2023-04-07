@@ -68,7 +68,7 @@
 				const lang = _ns.i18n ? _ns.i18n.lang : 'en';
 				var skillStr = [, 'Bas', 'Adv', 'Exp'];
 				if (lang == 'ru') {
-					skillStr = [, 'Осн.', 'Пр.', 'Эксп.'];
+					skillStr = [, 'Баз.', 'Пр.', 'Эксп.'];
 				}
 
 				return skillStr[this.skill];

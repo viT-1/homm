@@ -11,9 +11,9 @@
 				<span v-if="skill == 2" iam-i18n-skill-lvl="advanced">Skill level: advanced</span>
 				<span v-if="skill == 3" iam-i18n-skill-lvl="expert">Skill level: expert</span>
 			</h4>
-			<p iam-i18n-mass="" v-if="mData.mass">Mass effect.</p>
 			<p iam-popup-descr="">{{mustacheRender(mData['descr'], mData)}}</p>
 			<p iam-popup-descr-ext="" v-if="mData['descr-ext']">{{mustacheRender(mData['descr-ext'], mData)}}</p>
+			<p iam-i18n-mass="" v-if="mData.mass">Mass effect.</p>
 			<button iam-popup-window-close="" v-on="{ click: onCloseClick }">
 				<span iam-popup-window-close-text="">Close</span>
 			</button>

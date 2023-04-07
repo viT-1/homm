@@ -6,9 +6,9 @@
 	"descr": "Causes the selected friendly unit to inflict maximum damage when it attacks. Bless can be removed with Curse spell.",
 	"ru": {
 		"title": "Благословление",
-		"descr": "Увеличивает урон своего существа до максимального ({{formula}}). Можно снять проклятием."
+		"descr": "Выбранный дружеский отряд наносит максимальный урон.",
+		"descr-ext": "Можно снять проклятием."
 	},
-	"formula": "max(@dmg)",
 	"combat": true,
 	"mass": false,
 	"type": ["water", "buff", "dmg", "self"],
@@ -17,7 +17,10 @@
 		"points": 4
 	},
 	"advanced": {
-		"formula": "max(@dmg)+1"
+		"formula": "max(@dmg)+1",
+		"ru": {
+			"descr": "Выбранный дружеский отряд наносит урон на единицу болььше максимально возможного."
+		}
 	},
 	"expert": {
 		"mass": true
@@ -82,9 +85,9 @@
 	"descr": "Causes the selected creature to inflict minimal damage. Curse can be removed with Bless spell.",
 	"ru": {
 		"title": "Проклятие",
-		"descr": "Вражеское существо наносит минимальный урон, снимается благословлением."
+		"descr": "Вражеское существо наносит минимальный урон.",
+		"descr-ext": "Заклинание нейтрализуется благословлением."
 	},
-	"formula": "min(@dmg)",
 	"combat": true,
 	"mass": false,
 	"type": ["fire", "debuff", "dmg", "enemy"],
@@ -93,7 +96,9 @@
 		"points": 5
 	},
 	"advanced": {
-		"formula": "min(@dmg)-1"
+		"ru": {
+			"descr": "Вражеское существо наносит урон на единицу меньше минимально возможного."
+		}
 	},
 	"expert": {
 		"mass": true
@@ -139,7 +144,8 @@
 	"descr": "It increases speed of target allied creature stack by {{@delta}}. Haste can be removed with Slow spell.",
 	"ru": {
 		"title": "Ускорение",
-		"descr": "Увеличивает скорость выбранного существа своей армии на {{@delta}}. Эффект ускорения отменяется замедлением."
+		"descr": "Увеличивает скорость выбранного существа своей армии на {{@delta}}.",
+		"descr-ext": "Эффект ускорения нейтрализуется замедлением."
 	},
 	"formula": "@spd + {{@delta}}",
 	"@delta": 3,
@@ -214,7 +220,8 @@
 	"descr": "Reduces the speed by {{@delta}}% of target enemy stack. Slow can be removed with Haste spell.",
 	"ru": {
 		"title": "Замедление",
-		"descr": "Снижает скорость вражеского отряда на {{@delta}}%. Замедление можно нейтрализовать ускорением."
+		"descr": "Снижает скорость вражеского отряда на {{@delta}}%.",
+		"descr-ext": "Замедление можно нейтрализовать ускорением."
 	},
 	"@delta": 25,
 	"formula": "@mv*(1-0.{{@delta}})",
@@ -279,7 +286,6 @@
 		}
 	},
 	"expert": {
-		"mass": true,
 		"descr": "Displays the entire terrain, all mines and loose resources on the view world screen.",
 		"ru": {
 			"descr": "Показывает расположение всех ресурсов, шахт и всей местности с дорогами."
@@ -811,7 +817,7 @@
 	"descr": "Decreases the luck of the selected unit by {{@delta}}.",
 	"ru": {
 		"title": "Неудача",
-		"descr": "Снижает удачу выбранного отряда."
+		"descr": "Снижает удачу выбранного отряда на {{@delta}}."
 	},
 	"@delta": 1,
 	"formula": "@luck-{{@delta}}",
@@ -950,9 +956,9 @@
 		"points": 12
 	},
 	"advanced": {
-		"descr": "Causes target enemy stack to forget to use their ranged attack. Half of them forget how to use melee attack.",
+		"descr": "Target allied troop instantly moves to an unoccupied target hex. Troop cannot teleport over walls.",
 		"ru": {
-			"descr": "Target allied troop instantly moves to an unoccupied target hex. Troop cannot teleport over walls."
+			"descr": "Перемещает дружественный отряд в любую точку поля боя, но без возможности переместить за вражеские стены."
 		}
 	},
 	"expert": {
@@ -1018,10 +1024,12 @@
 	"id": 40,
 	"level": 4,
 	"title": "Berserk",
-	"descr": "Target attacks nearest troop. Berserk is applied to a {{@diameter}} hexes area diameter of the battlefield.",
+	"descr": "Target attacks nearest troop.",
+	"descr-ext": "Berserk is applied to a {{@diameter}} hexes area diameter of the battlefield.",
 	"ru": {
 		"title": "Берсерк",
-		"descr": "Отряд, на который наложено заклинание Берсерк, будет случайным образом атаковать ближайшее к себе подразделение, независимо от того вражеское оно или союзное. Берсерк накладывается на площадь диаметром {{@diameter}} клеток."
+		"descr": "Отряд, на который наложено заклинание Берсерк, будет случайным образом атаковать ближайшее к себе подразделение, независимо от того вражеское оно или союзное.",
+		"descr-ext": "Берсерк накладывается на один отряд."
 	},
 	"@diameter": 1,
 	"combat": true,
@@ -1033,10 +1041,16 @@
 	},
 	"advanced": {
 		"mass": true,
-		"@diameter": 3
+		"@diameter": 3,
+		"ru": {
+			"descr-ext": "Берсерк накладывается на площадь диаметром {{@diameter}} клетки."
+		}
 	},
 	"expert": {
-		"@diameter": 5
+		"@diameter": 5,
+		"ru": {
+			"descr-ext": "Берсерк накладывается на площадь диаметром {{@diameter}} клеток."
+		}
 	},
 	"artifacts": []
 },{
@@ -1065,7 +1079,10 @@
 	},
 	"expert": {
 		"@delta": 100,
-		"@count": 5
+		"@count": 5,
+		"ru": {
+			"descr-ext": "Молния поражает {{@count}} отрядов."
+		}
 	},
 	"artifacts": []
 },{
@@ -1233,7 +1250,7 @@
 	"descr": "Deals damage to an area with a diameter of three cells",
 	"ru": {
 		"title": "Метеоритный дождь",
-		"descr": "Наносит урон на площадь диаметром в три клетки."
+		"descr": "Наносит урон размером в {{formula}} очков жизни на площадь диаметром в три клетки."
 	},
 	"@delta": 25,
 	"formula": "@SP*25+{{@delta}}",
@@ -1734,7 +1751,8 @@
 	"descr": "The spell destroys (sacrifices) the target living troop in order to resurrect creatures of another stack back to life. The other stack must be receptive to the Resurrection spell. A sacrificed stack leaves an empty hex on the battlefield without anything to be resurrected or summoned as Demons.",
 	"ru": {
 		"title": "Жертва",
-		"descr": "Приносит в жертву дружественный отряд существ, чтобы воскресить погибшее подразделение. Количество воскрешенных существ зависит от силы заклинания героя и здоровья жертвуемого отряда. Подсчитывается суммарное здоровье, равное {{formula}}."
+		"descr": "Приносит в жертву дружественный отряд существ, чтобы воскресить погибшее подразделение. Количество воскрешенных существ зависит от силы заклинания героя и здоровья жертвуемого отряда.",
+		"descr-ext": "Подсчитывается суммарное здоровье, равное {{formula}}."
 	},
 	"@delta": 3,
 	"formula": "(@SP+@hp+{{@delta}})*@n",

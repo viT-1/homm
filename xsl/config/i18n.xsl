@@ -84,10 +84,10 @@
 						<xsl:text>Базовый уровень владения заклинанием.</xsl:text>
 					</xsl:when>
 					<xsl:when test="@iam-i18n-skill-lvl = 'advanced'">
-						<xsl:text>Продвинутый уровень владения заклинанием.</xsl:text>
+						<xsl:text>Продвинутый уровень.</xsl:text>
 					</xsl:when>
 					<xsl:when test="@iam-i18n-skill-lvl = 'expert'">
-						<xsl:text>Экспертный уровень владения заклинанием.</xsl:text>
+						<xsl:text>Экспертный уровень.</xsl:text>
 					</xsl:when>
 				</xsl:choose>
 			</xsl:when>

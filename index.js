@@ -113,12 +113,19 @@
 			el: '[iam-app ~= "vueMain"]',
 			store: _ns.store,
 			computed: computed,
+			data: function () {
+				return { isPopupWindowOpen: false };
+			},
 			methods: {
 				onPageChanged: function (currentMagicPage) {
 					_ns.store.commit('magic-book/setActiveSpellById', currentMagicPage.ids[0]);
 				},
 				onSpellClick: function (spellId) {
 					_ns.store.commit('magic-book/setActiveSpellById', spellId);
+					this.isPopupWindowOpen = true;
+				},
+				onPopupWindowCloseClick: function () {
+					this.isPopupWindowOpen = false;
 				},
 				onWisdomSkillChanged: function (wisdomSkill) {
 					var magicBookFilters = _ns.store.getters['magic-book/activeFilters'];

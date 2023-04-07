@@ -41,8 +41,7 @@
 }
 
 [iam-panel ~= "top"]::before
-, [iam-panel ~= "top"]::after
-, [iam-hero-info]::before {
+, [iam-panel ~= "top"]::after {
 	background-image: url("iam-panel/panel-corner.png");
 }
 
@@ -56,4 +55,8 @@
 
 [iam-hero-skill] {
 	background-image: url("hero-info/skill-lvls.png");
+}
+
+[iam-popup-window] {
+	background-image: url("popup-window/popup-background.png");
 }

@@ -57,15 +57,45 @@
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="*[@id = 'panel-info']//*[@iam-panel-info-mass]">
-	<xsl:choose>
-		<xsl:when test="$html.lang = 'ru'">
-			<xsl:text> Носит массовый характер.</xsl:text>		
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:copy-of select="." />
-		</xsl:otherwise>
-	</xsl:choose>
+<xsl:template match="*[@iam-i18n-mass]">
+	<xsl:copy>
+		<xsl:apply-templates select="@*" />
+		<xsl:choose>
+			<xsl:when test="$html.lang = 'ru'">
+				<xsl:text>Носит массовый характер.</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:copy-of select="." />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:copy>
+</xsl:template>
+
+<xsl:template match="*[@iam-i18n-skill-lvl]">
+	<xsl:copy>
+		<xsl:apply-templates select="@*" />
+		<xsl:choose>
+			<xsl:when test="$html.lang = 'ru'">
+				<xsl:choose>
+					<xsl:when test="@iam-i18n-skill-lvl = 'none'">
+						<xsl:text>Герой едва владеет этим заклинанием.</xsl:text>
+					</xsl:when>
+					<xsl:when test="@iam-i18n-skill-lvl = 'basic'">
+						<xsl:text>Базовый уровень владения заклинанием.</xsl:text>
+					</xsl:when>
+					<xsl:when test="@iam-i18n-skill-lvl = 'advanced'">
+						<xsl:text>Продвинутый уровень владения заклинанием.</xsl:text>
+					</xsl:when>
+					<xsl:when test="@iam-i18n-skill-lvl = 'expert'">
+						<xsl:text>Экспертный уровень владения заклинанием.</xsl:text>
+					</xsl:when>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:copy-of select="." />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:copy>
 </xsl:template>
 
 </xsl:stylesheet>

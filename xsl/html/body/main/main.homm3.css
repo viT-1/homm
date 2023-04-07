@@ -13,6 +13,7 @@
 [iam-app] {
 	background-repeat: no-repeat;
 	background-position: right;
+	min-width: 1185px;
 	position: relative;
 }
 
@@ -30,8 +31,7 @@
 }
 
 [iam-panel]::before
-, [iam-panel]::after
-, [iam-hero-info]::before {
+, [iam-panel]::after {
 	content: "";
 	height: 90px;
 	position: absolute;
@@ -47,11 +47,5 @@
 
 [iam-panel]::after {
 	right: 0;
-}
-
-[iam-hero-info]::before {
-	background-position-x: -88px;
-	left: -10px;
-	top: -10px;
 }
 /* #endregion */

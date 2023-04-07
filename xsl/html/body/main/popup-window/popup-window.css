@@ -1,0 +1,22 @@
+[iam-popup-window] {
+	box-sizing: border-box;
+	margin: 0 auto;
+	position: absolute;
+}
+
+[iam-popup-content] {
+	position: relative;
+}
+
+[iam-popup-window]
+, [iam-popup-window-state] {
+	display: none;
+}
+
+[iam-popup-window-state]:checked + [iam-popup-window] {
+	display: block;
+}
+
+[iam-popup-window-close] {
+	cursor: pointer;
+}

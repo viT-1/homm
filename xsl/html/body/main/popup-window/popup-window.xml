@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script type="text/x-template" id="popup-window" data-xml="xsl/html/body/main/panel-info/panel-info">
+	<div v-bind="{ 'iam-popup-window': iamTitle }">
+		<div iam-popup-content="">
+			<div v-bind="{ 'iam-magic-spell': iamTitle }" iam-popup-spell="">
+				<h3 iam-magic-spell-descr="title" iam-popup-title="main">{{i18nTitleExt}}</h3>
+			</div>
+			<h4 iam-popup-title="secondary">
+				<span v-if="skill == 0" iam-i18n-skill-lvl="none">Skill level: none</span>
+				<span v-if="skill == 1" iam-i18n-skill-lvl="basic">Skill level: basic</span>
+				<span v-if="skill == 2" iam-i18n-skill-lvl="advanced">Skill level: advanced</span>
+				<span v-if="skill == 3" iam-i18n-skill-lvl="expert">Skill level: expert</span>
+			</h4>
+			<p iam-i18n-mass="" v-if="mData.mass">Mass effect.</p>
+			<p iam-popup-descr="">{{mustacheRender(mData['descr'], mData)}}</p>
+			<p iam-popup-descr-ext="" v-if="mData['descr-ext']">{{mustacheRender(mData['descr-ext'], mData)}}</p>
+			<button iam-popup-window-close="" v-on="{ click: onCloseClick }">
+				<span iam-popup-window-close-text="">Close</span>
+			</button>
+		</div>
+	</div>
+</script>

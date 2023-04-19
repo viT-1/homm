@@ -3,8 +3,8 @@
 	width: 156px;
 }
 
-[iam-magic-spell]:nth-child(2n+1) {
-	margin-right: 16px;
+[iam-magic-spell]:nth-child(2n) {
+	margin-left: 16px;
 }
 
 [iam-magic-spell-descr] {

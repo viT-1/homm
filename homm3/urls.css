@@ -45,10 +45,6 @@
 	background-image: url("iam-panel/panel-corner.png");
 }
 
-[iam-panel-info]::before {
-	background-image: url("magic-spell/spells-in-guild.png");
-}
-
 [iam-hero-info] {
 	background-image: url("hero-info/skill-popup.png");
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="index.xsl" type="text/xsl"?>
-<html lang="eng" vocab="http://schema.org/">
+<html lang="en" vocab="http://schema.org/">
 	<head>
 		<title data-xml="3-sod-eng">Heroes of Might &amp; Magic III Shadow of Death spells</title>
 		<link data-xml="3-sod-eng" id="css-urls" rel="stylesheet" href="homm3/urls.css" />
